@@ -60,6 +60,24 @@ class Phone:
         else:
             print("Battery is running low. Please charge it")
 
+
+     def charge_phone(self):
+        if (self.battery == 100):
+            print("Battery is already full !!")
+            return
+        if (self.battery < 100):
+            charge = int(input("Enter the battery parcentage to charge below 100 :"))
+            if (charge > 100):
+                print("Please enter battery below 100")    
+            else:
+                print("Current battery :",self.battery)
+                print("Charge amount :", charge)
+                self.battery = self.battery+charge   
+                if (self.battery > 100):
+                    self.battery = 100 
+                print("\nBattery charged successfully.")
+                print("Current battery :", self.battery)
+
 #Password authentication before accessing the phone
 real_p=12345   
 password=int(input("Enter the password : "))
@@ -89,7 +107,8 @@ while True:
     print("5.Show call history")
     print("6.Show message history")
     print("7.Show phone battery")
-    print("8.Exit")
+    print("8.Charge battery")
+    print("9.Exit")
 
     #Processing user's menu choice
     choice=int(input("Enter a choice number from the menu : "))
@@ -113,6 +132,8 @@ while True:
         elif choice==7:
             print(phone1.battery)
         elif choice == 8:
+            phone1.charge_phone()
+        elif choice == 9:
             exit()    
         else:
             print("Please enter a valid number!!!")                    
