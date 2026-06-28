@@ -61,6 +61,7 @@ class Phone:
             print("Battery is running low. Please charge it")
 
 
+    # Method to recharge the battery
      def charge_phone(self):
         if (self.battery == 100):
             print("Battery is already full !!")
@@ -78,7 +79,22 @@ class Phone:
                 print("\nBattery charged successfully.")
                 print("Current battery :", self.battery)
 
-#Password authentication before accessing the phone
+    # Method to see the menu
+     def see_menu(self):
+        print("========Menu========")
+        print("1.Show the details of the Mobile phone")
+        print("2.Make a call")
+        print("3.Send a message")
+        print("4.Play a music")
+        print("5.Show call history")
+        print("6.Show message history")
+        print("7.Show phone battery")
+        print("8.Charge battery")
+        print("9.See menu")
+        print("10.Exit")
+
+
+# Password authentication before accessing the phone
 real_p=12345   
 password=int(input("Enter the password : "))
 if(real_p==password):
@@ -87,30 +103,31 @@ else:
     print("The password is incorrect")   
     exit() 
 
-#Taking phone details from the user
+# Taking phone details from the user
 name=input("Enter the phone company name : ")
 brand=input("Enter the mobile phone brand name : ")
 colour=input("Enter the mobile phone colour : ")
 memory=input("Enter the memory of the mobile phone : ")
 
-#Creating a Phone object
+# Creating a Phone object
 phone1=Phone(name,brand,colour,memory)
 
+# Displaying menu repeatedly until the user exits the program
+print("========Menu========")
+print("1.Show the details of the Mobile phone")
+print("2.Make a call")
+print("3.Send a message")
+print("4.Play a music")
+print("5.Show call history")
+print("6.Show message history")
+print("7.Show phone battery")
+print("8.Charge battery")
+print("9.See menu")
+print("10.Exit")
 
-#Displaying menu repeatedly until the user exits the program
+# Processing user's menu choice
 while True:
-    print("========Menu========")
-    print("1.Show the details of the Mobile phone")
-    print("2.Make a call")
-    print("3.Send a message")
-    print("4.Play a music") 
-    print("5.Show call history")
-    print("6.Show message history")
-    print("7.Show phone battery")
-    print("8.Charge battery")
-    print("9.Exit")
 
-    #Processing user's menu choice
     choice=int(input("Enter a choice number from the menu : "))
 
     if phone1.battery>20:
@@ -131,12 +148,15 @@ while True:
                 print(phone1.list1)
         elif choice==7:
             print(phone1.battery)
-        elif choice == 8:
+        elif choice==8:
             phone1.charge_phone()
         elif choice == 9:
+            phone1.see_menu()    
+        elif choice == 10:
             exit()    
         else:
             print("Please enter a valid number!!!")                    
     else:
-        print("Battery running low please charge it.\nCurrent battery :", phone1.battery)
+        print("Battery running slow please charge it./n current battery :  ",phone1.battery)
         exit()
+
