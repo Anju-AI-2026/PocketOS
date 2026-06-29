@@ -81,52 +81,79 @@ class Phone:
 
     # Method to see the menu
     def see_menu(self):
-        print("========Menu========")
-        print("1.Show the details of the Mobile phone")
-        print("2.Make a call")
-        print("3.Send a message")
-        print("4.Play a music")
-        print("5.Show call history")
-        print("6.Show message history")
-        print("7.Show phone battery")
-        print("8.Charge battery")
-        print("9.See menu")
-        print("10.Add Contact")
-        print("11.View saved contact")
-        print("12.Exit")
+        if (self.battery > 20):
+            print("========Menu========")
+            print("1.Show the details of the Mobile phone")
+            print("2.Make a call")
+            print("3.Send a message")
+            print("4.Play a music")
+            print("5.Show call history")
+            print("6.Show message history")
+            print("7.Show phone battery")
+            print("8.Charge battery")
+            print("9.See menu")
+            print("10.Add Contact")
+            print("11.View saved contact")
+            print("12.Delete contact")
+            print("13.Exit")
+        else:
+            print("Battery is running low. Please charge it")
+
 
     # Adds a contact after validating the name and phone number
     def add_contact(self):
-        while True:
-            name=input("Enter the contact name :")
-            if (name.replace(" ","").isalnum()):
-                if (name.isdigit()):
-                    print("Contact name should not be only made up of numbers!")
+        if (self.battery > 20):
+            while True:
+                name=input("Enter the contact name :")
+                if (name.replace(" ","").isalnum()):
+                    if (name.isdigit()):
+                        print("Contact name should not be only made up of numbers!")
+                    else:
+                        break
                 else:
-                    break
-            else:
-                print("Name only contain alpha+numeric name")
+                    print("Name only contain alpha+numeric name")
 
-        while True:
-            phone_number=input("Enter phone number :")
-            if (len(phone_number) == 10):
-                if (phone_number.isdigit()):
-                    self.contact[name] = phone_number
-                    print("Phone number successfully saved")
-                    break
+            while True:
+                phone_number=input("Enter phone number :")
+                if (len(phone_number) == 10):
+                    if (phone_number.isdigit()):
+                        self.contact[name] = phone_number
+                        print("Phone number successfully saved")
+                        break
+                    else:
+                        print("Phone number should not contain charector!!")
                 else:
-                    print("Phone number should not contain charector!!")
-            else:
-                print("Phone number should contain 10 digit")
+                    print("Phone number should contain 10 digit")
+        else:
+            print("Battery is running low. Please charge it")
+
 
     # Displays all contacts stored in the contact book
     def view_contact(self):
-        if (not self.contact):
-            print("Contact is empty")
+        if (self.battery > 20):
+            if (not self.contact):
+                print("Contact is empty")
+            else:
+                print("Contacts :")
+                for key,value in self.contact.items():
+                    print(key, ":",value)
         else:
-            print("Contacts :")
-            for key,value in self.contact.items():
-                print(key, ":",value)
+            print("Battery is running low. Please charge it")
+
+    # Method to delete a saved contact from the contact book
+    def delete_contact(self):
+        if (self.battery > 20):
+            if (not self.contact):
+                print("Contact is empty")
+            else:
+                contact_name = input("Enter the contact name to delete :")
+                if (contact_name in self.contact):
+                    del self.contact[contact_name]
+                    print("Contact deleted successfully!")
+                else:
+                    print("Contact not found!!")
+        else:
+            print("Battery is running low. Please charge it")
 
 # Password authentication before accessing the phone
 real_p=12345   
@@ -159,7 +186,8 @@ print("8.Charge battery")
 print("9.See menu")
 print("10.Add Contact")
 print("11.View saved contact")
-print("12.Exit")
+print("12.Delete contact")
+print("13.Exit")
 
 # Processing user's menu choice
 while True:
@@ -192,8 +220,10 @@ while True:
         elif choice == 10:
             phone1.add_contact() 
         elif choice == 11:
-            phone1.view_contact()         
+            phone1.view_contact()  
         elif choice == 12:
+            phone1.delete_contact()           
+        elif choice == 13:
             exit()    
         else:
             print("Please enter a valid number!!!")                    
