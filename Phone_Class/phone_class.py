@@ -2,20 +2,21 @@
 
 class Phone:
 
-    # Constructor to initialize phone details and default values
+     # Constructor to initialize phone details and default values
     def __init__(self,name,brand,colour,memory):
         self.name=name
         self.brand=brand
         self.colour=colour
         self.memory=memory
-        self.list=[]
-        self.list1=[]
+        self.call_list=[]
+        self.message_list=[]
+        self.contact={}
         self.battery=100
 
     # Method to display phone details
     def showdetails(self):
         print("Mobile Phone company name :",self.name)
-        print("The mobile phone brand is : ",self.brand)
+        print("The mobile phone brand i : ",self.brand)
         print("The colour of the mobile phone",self.colour)
         print("The memory of the mobile phone is : ",self.memory)
 
@@ -24,8 +25,8 @@ class Phone:
         if self.battery>20:
             num=(input("Enter the phone number : +19"))    
             if (len(num)==10):
-                print("Dialing!!!!!")
-                self.list.append(num)
+                print("Dailing!!!!!")
+                self.call_list.append(num)
                 self.battery=self.battery-10
             else:
                 print("Enter the correct phone number")  
@@ -41,7 +42,7 @@ class Phone:
             if (lenght==10):
                 msg=input("Enter the message to send : ")    
                 print("Message sent!!!")
-                self.list1.append((num,msg))
+                self.message_list.append((num,msg))
                 if self.battery>0:
                     self.battery=self.battery-5
             else:
@@ -54,15 +55,14 @@ class Phone:
     def playmusic(self):
         if self.battery>20:
             music=input("Enter the song name : ")
-            print("Playing",music,"music")
+            print("Plyaing",music,"music") 
             if self.battery>0:
                 self.battery=self.battery-15
         else:
             print("Battery is running low. Please charge it")
 
-
     # Method to recharge the battery
-     def charge_phone(self):
+    def charge_phone(self):
         if (self.battery == 100):
             print("Battery is already full !!")
             return
@@ -80,7 +80,7 @@ class Phone:
                 print("Current battery :", self.battery)
 
     # Method to see the menu
-     def see_menu(self):
+    def see_menu(self):
         print("========Menu========")
         print("1.Show the details of the Mobile phone")
         print("2.Make a call")
@@ -91,8 +91,42 @@ class Phone:
         print("7.Show phone battery")
         print("8.Charge battery")
         print("9.See menu")
-        print("10.Exit")
+        print("10.Add Contact")
+        print("11.View saved contact")
+        print("12.Exit")
 
+    # Adds a contact after validating the name and phone number
+    def add_contact(self):
+        while True:
+            name=input("Enter the contact name :")
+            if (name.replace(" ","").isalnum()):
+                if (name.isdigit()):
+                    print("Contact name should not be only made up of numbers!")
+                else:
+                    break
+            else:
+                print("Name only contain alpha+numeric name")
+
+        while True:
+            phone_number=input("Enter phone number :")
+            if (len(phone_number) == 10):
+                if (phone_number.isdigit()):
+                    self.contact[name] = phone_number
+                    print("Phone number successfully saved")
+                    break
+                else:
+                    print("Phone number should not contain charector!!")
+            else:
+                print("Phone number should contain 10 digit")
+
+    # Displays all contacts stored in the contact book
+    def view_contact(self):
+        if (not self.contact):
+            print("Contact is empty")
+        else:
+            print("Contacts :")
+            for key,value in self.contact.items():
+                print(key, ":",value)
 
 # Password authentication before accessing the phone
 real_p=12345   
@@ -123,10 +157,13 @@ print("6.Show message history")
 print("7.Show phone battery")
 print("8.Charge battery")
 print("9.See menu")
-print("10.Exit")
+print("10.Add Contact")
+print("11.View saved contact")
+print("12.Exit")
 
 # Processing user's menu choice
 while True:
+
 
     choice=int(input("Enter a choice number from the menu : "))
 
@@ -140,19 +177,23 @@ while True:
         elif choice==4:
             phone1.playmusic()
         elif choice==5:
-            print(phone1.list) 
+            print(phone1.call_list) 
         elif choice==6:
-            if not phone1.list1:
+            if not phone1.message_list:
                 print("History is empty")
             else:    
-                print(phone1.list1)
+                print(phone1.message_list)
         elif choice==7:
             print(phone1.battery)
         elif choice==8:
             phone1.charge_phone()
         elif choice == 9:
-            phone1.see_menu()    
+            phone1.see_menu()  
         elif choice == 10:
+            phone1.add_contact() 
+        elif choice == 11:
+            phone1.view_contact()         
+        elif choice == 12:
             exit()    
         else:
             print("Please enter a valid number!!!")                    
