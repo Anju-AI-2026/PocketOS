@@ -136,16 +136,33 @@ class Phone:
 
     # Method to send messages and store message history
     def message(self):
-        num=(input("Enter the phone number to send message : "))
-        lenght=len(num)
-        if (lenght==10):
-            msg=input("Enter the message to send : ")    
-            print("Message sent!!!")
-            self.message_list.append((num,msg))
-            self.battery=self.battery-5
+        user_choice=(input("Enter the phone number or name to send message : "))
+        if (user_choice.isdigit()):
+            if (len(user_choice)==10):
+                for key,value in self.contact.items():
+                    if (value == user_choice):
+                        msg=input(f"Enter the message to send {key} : ")    
+                        print("Message sent!!!")
+                        self.message_list.append((user_choice,msg))
+                        self.battery=self.battery-5
+                        return
+                msg=input("Enter the message to send unknown number :")
+                print("Message sent!!!")
+                self.message_list.append((user_choice,msg))
+                self.battery=self.battery-5   
+                return
+            else:
+                print("Please enter the correct contact number")
+                return
         else:
-            print("Please enter the correct contact number")
-            return
+            if(user_choice in self.contact):
+                msg=input(f"Enter the message to send {user_choice}: ")
+                print("Message sent!!!")
+                self.message_list.append((self.contact[user_choice],msg))
+                self.battery=self.battery-5
+                return
+            else:
+                 print("Contact not found")
          
 
     # Method to play music and reduce battery percentage
