@@ -104,7 +104,7 @@ class Phone:
             else:
                 print("Contact not found!!")                                  
 
-    # Method to make a phone call and store call history
+  # Method to make a phone call and store call history
     def call(self):
         user_choice=(input("Enter the contact name or phone number :")) 
         if (user_choice.isdigit()):   
@@ -113,22 +113,65 @@ class Phone:
                         if (value == user_choice):
                             print(f"Calling {key}")
                             print("Dailing!!!!!")
-                            self.call_list.append(user_choice)
+                            call_record = {
+                                "name" : key ,
+                                "number" : value,
+                                "type" : "Outgoing" 
+                            }
+                            self.call_list.append(call_record)
                             self.battery=self.battery-10
                             return
-                        
-                    print("Calling unknown number")
-                    print("Dailing!!!!!")  
-                    self.call_list.append(user_choice)
-                    self.battery=self.battery-10
-                    return  
-            else:
+                    while True:
+                        save_choice = input("Do you want to save the number? (y/n) :").lower()
+                        if (save_choice.isalpha()):
+                            if save_choice == "y":
+                                while True:
+                                    name=input("Enter the contact name :")
+                                    if (name.replace(" ","").isalnum()):
+                                        if (name.isdigit()):
+                                            print("Contact name should not be only made up of numbers!")
+                                        else:
+                                            call_record = {
+                                                "name" : name,
+                                                "number" : user_choice,
+                                                "type" : "Outgoing"
+                                            }
+                                            self.call_list.append(call_record)
+                                            self.contact[name] = user_choice
+                                            self.battery=self.battery-10
+                                            print("Contact saved successfully!")
+                                            print(f"Calling {name}")
+                                            print("Dailing!!!")
+                                            return 
+                                    else:
+                                        print("Name only contain alphabet or alphanumeric name")       
+                            elif (save_choice == "n"):
+                                print("Calling unknown number")
+                                print("Dailing!!!!!")  
+                                call_record = {
+                                    "name" : "Unknown",
+                                    "number" : user_choice,
+                                    "type" : "Outgoing"
+                                }
+                                self.call_list.append(call_record)
+                                self.battery=self.battery-10
+                                return
+                            else:
+                                print("Please enter a valid choice!")
+                        else:
+                            print("Please enter a valid choice")
+            else:   
                 print("Please enter a 10 digit number")
         else:
             if (user_choice in self.contact):
                 print(f"Calling {user_choice}")
                 print("Dailing!!!!!")
-                self.call_list.append(self.contact[user_choice])
+                call_record={
+                    "name" : user_choice,
+                    "number" : self.contact[user_choice],
+                    "type" : "Outgoing" 
+                }
+                self.call_list.append(call_record)
                 self.battery=self.battery-10
                 return
             else:
