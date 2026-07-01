@@ -81,15 +81,44 @@ class Phone:
             else:
                 print("Phone number should contain 10 digit")  
 
-    # Displays all contacts stored in the contact book
+   # Displays all contacts stored in the contact book
     def view_contact(self):
         self.battery=self.battery-2
         if (not self.contact):
+            print("=================")
             print("Contact is empty")
+            print("=================")
         else:
-            print("Contacts :")
+            print()
+            print("==========CALL HISTORY==========")
+            print()
+            print("\nContacts :")
+            count = 1
             for key,value in self.contact.items():
-                print(key, ":",value)   
+                    print(count)
+                    print("Name :",key)
+                    print("Number :",value) 
+                    print("-" * 20)  
+                    count=count+1
+
+    # Method to display call history
+    def view_call_history(self):
+        self.battery = self.battery - 2
+
+        if not self.call_list:
+            print("==========================")
+            print("No call history available.")
+            print("==========================")
+            return
+
+        print("\n========== CALL HISTORY ==========\n")
+
+        for index, call in enumerate(self.call_list, start=1):
+            print(f"Call {index}")
+            print(f"Name   : {call['name']}")
+            print(f"Number : {call['number']}")
+            print(f"Type   : {call['type']}")
+            print("-" * 35)
 
     # Method to delete the contact from the contact
     def delete_contact(self):
