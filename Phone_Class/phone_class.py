@@ -36,7 +36,8 @@ class Phone:
         print("10.Add Contact")
         print("11.View saved contact")
         print("12.Delete contact")
-        print("13.Exit")  
+        print("13.Search contact")  
+        print("14.Exit") 
 
     # Method to recharge the battery
     def charge_phone(self):
@@ -61,13 +62,17 @@ class Phone:
         self.battery=self.battery-2
         while True:
             name=input("Enter the contact name :")
-            if (name.replace(" ","").isalnum()):
-                if (name.isdigit()):
-                    print("Contact name should not be only made up of numbers!")
-                else:
-                    break
+            if (name in self.contact):
+                print("Contact already exit")
+                return
             else:
-                print("Name only contain alphabet or alphanumeric name")
+                if (name.replace(" ","").isalnum()):
+                    if (name.isdigit()):
+                        print("Contact name should not be only made up of numbers!")
+                    else:
+                        break
+                else:
+                    print("Name only contain alphabet or alphanumeric name")
 
         while True:
             phone_number=input("Enter phone number :")
@@ -81,7 +86,7 @@ class Phone:
             else:
                 print("Phone number should contain 10 digit")  
 
-   # Displays all contacts stored in the contact book
+    # Displays all contacts stored in the contact book
     def view_contact(self):
         self.battery=self.battery-2
         if (not self.contact):
@@ -119,23 +124,73 @@ class Phone:
             print(f"Number : {call['number']}")
             print(f"Type   : {call['type']}")
             print("-" * 35)
-
+            
     # Method to delete the contact from the contact
     def delete_contact(self):
         self.battery=self.battery-2
         if (not self.contact):
             print("Contact is empty")
         else:
-            contact_name = input("Enter the contact name to delete :")
-            if (contact_name in self.contact):
-                del self.contact[contact_name]
-                print("Contact deleted successfully!")
-            else:
-                print("Contact not found!!")                                  
+            while True:
+                contact_name = input("Enter the contact name to delete :")
+                if (contact_name.isalnum()):
+                    if (contact_name in self.contact):
+                        del self.contact[contact_name]
+                        print("Contact deleted successfully!")
+                        break 
+                else:
+                    print("Contact not found")         
 
-  # Method to make a phone call and store call history
+    # Method to search for contact in recent call and contact also
+    def search_contact(self):
+        search_record = input("Enter the name or number to search :") 
+        found = False
+        if (search_record.isdigit()):
+            for key,value in self.contact.items():
+                if (search_record == value):
+                    print("="*20)
+                    print("Search sucssefull!!")
+                    print(f"Name :{key}")
+                    print(f"Number : {value}")
+                    print("="*20)
+                    return
+            for call in self.call_list:
+                if (search_record == call["number"]):
+                    print("="*20)
+                    print("Search sucssefull!!")
+                    print(f"Name :",call["name"])
+                    print(f"Number :",call["number"])
+                    print("="*20)
+                    return
+
+        else:
+            for key, value in self.contact.items():
+                if (search_record == key):
+                    print("="*20)
+                    print("Search sucssefull!!")
+                    print(f"Name :{search_record}")                        
+                    print(f"Number : {self.contact[search_record]}")
+                    print("="*20)
+                    return 
+            for call in self.call_list:
+                if (search_record == call["name"]) :
+                    print("="*20)
+                    print("Search sucssefull!!")
+                    print(f"Name :",call["name"])
+                    print(f"Number :",call["number"])
+                    print("="*20)
+                    return
+
+        if not found:
+            print("====================")
+            print("Contact not found")
+            print("====================")
+        
+
+
+    # Method to make a phone call and store call history
     def call(self):
-        user_choice=(input("Enter the contact name or phone number :")) 
+        user_choice=(input("Enter the contact number :")) 
         if (user_choice.isdigit()):   
             if (len(user_choice)==10):
                     for key,value in self.contact.items():
@@ -234,8 +289,7 @@ class Phone:
                 self.battery=self.battery-5
                 return
             else:
-                 print("Contact not found")
-         
+                print("Contact not found") 
 
     # Method to play music and reduce battery percentage
     def playmusic(self):
