@@ -29,15 +29,16 @@ class Phone:
         print("3.Send a message")
         print("4.Play a music")
         print("5.Show call history")
-        print("6.Show message history")
-        print("7.Show phone battery")
-        print("8.Charge battery")
-        print("9.See menu")
-        print("10.Add Contact")
-        print("11.View saved contact")
-        print("12.Delete contact")
-        print("13.Search contact")  
-        print("14.Exit") 
+        print("6.Show phone battery")
+        print("7.Charge battery")
+        print("8.See menu")
+        print("9.Add Contact")
+        print("10.View saved contact")
+        print("11.Delete contact")
+        print("12.Search contact") 
+        print("13.View message history") 
+        print("14.Delete message")
+        print("15.Exit") 
 
     # Method to recharge the battery
     def charge_phone(self):
@@ -95,7 +96,7 @@ class Phone:
             print("=================")
         else:
             print()
-            print("==========CALL HISTORY==========")
+            print("==========CONTACT BOOK==========")
             print()
             print("\nContacts :")
             count = 1
@@ -190,13 +191,13 @@ class Phone:
 
     # Method to make a phone call and store call history
     def call(self):
-        user_choice=(input("Enter the contact number :")) 
+        user_choice=(input("Enter the contact number or name:")) 
         if (user_choice.isdigit()):   
             if (len(user_choice)==10):
                     for key,value in self.contact.items():
                         if (value == user_choice):
                             print(f"Calling {key}")
-                            print("Dailing!!!!!")
+                            print("Dialing!!!!!")
                             call_record = {
                                 "name" : key ,
                                 "number" : value,
@@ -225,13 +226,13 @@ class Phone:
                                             self.battery=self.battery-10
                                             print("Contact saved successfully!")
                                             print(f"Calling {name}")
-                                            print("Dailing!!!")
+                                            print("Dialing!!!")
                                             return 
                                     else:
                                         print("Name only contain alphabet or alphanumeric name")       
                             elif (save_choice == "n"):
                                 print("Calling unknown number")
-                                print("Dailing!!!!!")  
+                                print("Dialing!!!!!")  
                                 call_record = {
                                     "name" : "Unknown",
                                     "number" : user_choice,
@@ -249,7 +250,7 @@ class Phone:
         else:
             if (user_choice in self.contact):
                 print(f"Calling {user_choice}")
-                print("Dailing!!!!!")
+                print("Dialing!!!!!")
                 call_record={
                     "name" : user_choice,
                     "number" : self.contact[user_choice],
@@ -260,8 +261,9 @@ class Phone:
                 return
             else:
                 print("Contact not found")
-                 
-    # Method to display call history
+
+#feat: add message history viewing and deletion
+ # Method to display call history
     def view_message_history(self):
         self.battery = self.battery - 2
 
@@ -297,8 +299,9 @@ class Phone:
             else:
                 print("Message not found") 
 
-         # Method to send messages and store message history
-     def message(self):
+
+    # Method to send messages and store message history
+    def message(self):
         user_choice=(input("Enter the phone number or name to send message : "))
         if (user_choice.isdigit()):
             if (len(user_choice)==10):
