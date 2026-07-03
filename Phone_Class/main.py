@@ -24,7 +24,7 @@ print("1.Show the details of the Mobile phone")
 print("2.Make a call")
 print("3.Send a message")
 print("4.Play a music")
-print("5.Show call history")
+print("5.View recent call ")
 print("6.Show message history")
 print("7.Show phone battery")
 print("8.Charge battery")
@@ -32,7 +32,8 @@ print("9.See menu")
 print("10.Add Contact")
 print("11.View saved contact")
 print("12.Delete contact")
-print("13.Exit")
+print("13.Search contact")  
+print("14.Exit") 
 
 # Processing user's menu choice
 while True:
@@ -50,7 +51,7 @@ while True:
         elif choice==4:
             phone1.playmusic()
         elif choice==5:
-            print(phone1.call_list) 
+            print(phone1.view_call_history()) 
         elif choice==6:
             if not phone1.message_list:
                 print("History is empty")
@@ -67,13 +68,16 @@ while True:
         elif choice == 11:
             phone1.view_contact()  
         elif choice == 12:
-            phone1.delete_contact()           
+            phone1.delete_contact() 
         elif choice == 13:
+            phone1.search_contact()              
+        elif choice == 14:
             exit()    
         else:
             print("Please enter a valid number!!!")                    
     else:
         print("Battery running slow please charge it.\n current battery :  ",phone1.battery)
         exit()
+
 if __name__ == "__main__":
     main()
