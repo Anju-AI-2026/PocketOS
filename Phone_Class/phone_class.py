@@ -260,6 +260,42 @@ class Phone:
                 return
             else:
                 print("Contact not found")
+                 
+    # Method to display call history
+    def view_message_history(self):
+        self.battery = self.battery - 2
+
+        if not self.message_list:
+            print("==========================")
+            print("No message history available.")
+            print("==========================")
+            return
+
+        print("\n========== MESSAGE HISTORY ==========\n")
+
+        for index, message in enumerate(self.message_list, start=1):
+            print(f"Message {index}")
+            print(f"Name   : {message['name']}")
+            print(f"Number : {message['number']}")
+            print(f"Messgae : {message['message']}")
+            print(f"Type   : {message['type']}")
+            print("-" * 35)
+
+    def delete_message(self):
+        self.battery=self.battery-2
+        if (not self.message_list):
+            print("Message history is empty")
+        else:
+            while True:
+                contact_name = input("Enter the contact name to delete :")
+                if (contact_name.isalnum()):
+                    for i, message in enumerate(self.message_list):
+                        if contact_name == message["name"]:
+                            del self.message_list[i]
+                            print("Message deleted successfully!")
+                            return
+            else:
+                print("Message not found") 
 
          # Method to send messages and store message history
      def message(self):
