@@ -20,20 +20,22 @@ phone1=Phone(name,brand,colour,memory)
 
 # Displaying menu repeatedly until the user exits the program
 print("========Menu========")
+print("========Menu========")
 print("1.Show the details of the Mobile phone")
 print("2.Make a call")
 print("3.Send a message")
 print("4.Play a music")
-print("5.View recent call ")
-print("6.Show message history")
-print("7.Show phone battery")
-print("8.Charge battery")
-print("9.See menu")
-print("10.Add Contact")
-print("11.View saved contact")
-print("12.Delete contact")
-print("13.Search contact")  
-print("14.Exit") 
+print("5.Show call history")
+print("6.Show phone battery")
+print("7.Charge battery")
+print("8.See menu")
+print("9.Add Contact")
+print("10.View saved contact")
+print("11.Delete contact")
+print("12.Search contact") 
+print("13.View message history") 
+print("14.Delete message")
+print("15.Exit") 
 
 # Processing user's menu choice
 while True:
@@ -53,25 +55,24 @@ while True:
         elif choice==5:
             print(phone1.view_call_history()) 
         elif choice==6:
-            if not phone1.message_list:
-                print("History is empty")
-            else:    
-                print(phone1.message_list)
-        elif choice==7:
             print(phone1.battery)
-        elif choice==8:
+        elif choice==7:
             phone1.charge_phone()
-        elif choice == 9:
+        elif choice == 8:
             phone1.see_menu()  
-        elif choice == 10:
+        elif choice == 9:
             phone1.add_contact() 
-        elif choice == 11:
+        elif choice == 10:
             phone1.view_contact()  
-        elif choice == 12:
+        elif choice == 11:
             phone1.delete_contact() 
+        elif choice == 12:
+            phone1.search_contact() 
         elif choice == 13:
-            phone1.search_contact()              
+            phone1.view_message_history()  
         elif choice == 14:
+            phone1.delete_message()                   
+        elif choice == 15:
             exit()    
         else:
             print("Please enter a valid number!!!")                    
