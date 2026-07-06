@@ -428,4 +428,26 @@ class Phone:
             else:
                 print("The limit should be a number") 
 
-
+      def subtraction(self):
+        while True:
+            numbers = []
+            while True :
+                num = input("Enter the limit to the numbers :")
+                if(num.isdigit()):
+                    num = int(num)
+                    for i in range(1,num+1):
+                        while True:
+                            x = input(f"Enter the {i} numbers :")
+                            if (x.isdigit()):
+                                x = int(x)
+                                numbers.append(x)
+                                break
+                            else:
+                                print("Invalid Input!! Enter again")
+                total = numbers[0]                
+                for j in range (1,len(numbers)):
+                    total = total - numbers[j]
+                print("The subtraction of numbers is :", total)     
+                return
+            else:
+                print("The limit should be a number") 
