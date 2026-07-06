@@ -380,8 +380,29 @@ class Phone:
         music=input("Enter the song name : ")
         print("Plyaing",music,"music") 
         self.battery=self.battery-15
-         
 
+     
+     # Method to calculate total sum of numbers    
+     def addition(self):
+        numbers = []
+        while True :
+            num = input("Enter the limit to the numbers:")
+            if (num.isdigit()):
+                num = int(num)
+                for i in range(1,num+1):
+                    while True:
+                        x=input(f"Enter the {i} numbers:")
+                        if (x.isdigit()):
+                            x = int(x)
+                            numbers.append(x)
+                            break
+                        else:
+                            print("Invalid input!! Enter again")     
+                total = sum(numbers)
+                print("The sum of all number is :",total)
+                return
+            else:
+                print("The limit should be a number.")
 
 
 
