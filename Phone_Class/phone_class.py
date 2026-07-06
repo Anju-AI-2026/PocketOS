@@ -403,6 +403,29 @@ class Phone:
                 return
             else:
                 print("The limit should be a number.")
-
+                 
+     # Method to calculate the multiplication of numbers
+     def multiplication(self):
+        numbers = []
+        total = 1
+        while True :
+            num = input ("Enter the limit to the numbers :")
+            if (num.isdigit()):
+                num = int(num)
+                for i in range(1,num+1):
+                    while True:
+                        x = input(f"Enter the {i} numbers :")
+                        if (x.isdigit()):
+                            x = int(x)
+                            numbers.append(x)
+                            break
+                        else:
+                            print("Invalid Input!! Enter again")
+                for number in numbers:
+                    total = total * number          
+                print("The multiplication of all number is :",total)
+                return
+            else:
+                print("The limit should be a number") 
 
 
