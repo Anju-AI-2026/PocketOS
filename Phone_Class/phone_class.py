@@ -381,7 +381,19 @@ class Phone:
         print("Plyaing",music,"music") 
         self.battery=self.battery-15
 
-     
+    # Method to show the calculator menu
+    def calculator_menu(self):
+        print("====================")
+        print("1.Addition")
+        print("2.Subtraction")
+        print("3.Multiplication")
+        print("4.Division")
+        print("5.Modulus")
+        print("6.Find Square")
+        print("7.Find Cube")
+        print("8.See calculator menu")
+        print("9.Back")
+   
      # Method to calculate total sum of numbers    
      def addition(self):
         numbers = []
