@@ -451,3 +451,24 @@ class Phone:
                 return
             else:
                 print("The limit should be a number") 
+
+     # Method to calculate the division
+     def division(self):
+        while True:
+            num1=input("Enter the first number :")
+            if(num1.isdigit()):
+                num1 = int(num1)
+                break
+            else:
+                print("Number should be a digit")
+        while True:
+            num2 = input("Enter the second number :")
+            if(num2.isdigit()):
+                num2=int(num2)
+                if (num2 != 0):
+                    print("The division of numbers is :" ,(num1 / num2) )
+                    return
+                else:
+                    print("Error : Cannot divide by zero.")
+            else:
+                print("Number should be a digit")
