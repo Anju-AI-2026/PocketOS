@@ -1,3 +1,4 @@
+        
 # Program to demonstrate a phone class 
 
 class Phone:
@@ -262,7 +263,7 @@ class Phone:
             else:
                 print("Contact not found")
 
-#feat: add message history viewing and deletion
+
  # Method to display call history
     def view_message_history(self):
         self.battery = self.battery - 2
@@ -283,6 +284,7 @@ class Phone:
             print(f"Type   : {message['type']}")
             print("-" * 35)
 
+    # Method to delete a individual message from history
     def delete_message(self):
         self.battery=self.battery-2
         if (not self.message_list):
@@ -381,7 +383,7 @@ class Phone:
         print("Plyaing",music,"music") 
         self.battery=self.battery-15
 
-    # Method to show the calculator menu
+    # Method to show calculator menu
     def calculator_menu(self):
         print("====================")
         print("1.Addition")
@@ -393,9 +395,52 @@ class Phone:
         print("7.Find Cube")
         print("8.See calculator menu")
         print("9.Back")
-   
-     # Method to calculate total sum of numbers    
-     def addition(self):
+       
+    # Method to take user choice for calculator
+    def calculator(self):
+        print("====================")
+        print("1.Addition")
+        print("2.Subtraction")
+        print("3.Multiplication")
+        print("4.Division")
+        print("5.Modulus")
+        print("6.Find Square")
+        print("7.Find Cube")
+        print("8.See calculator menu")
+        print("9.Back")
+        if (self.battery <=20):
+            print("Battery is low please charge it")
+            return
+        else:
+            while True :
+                choice = input("Enter the choice from above menu :")
+                if choice.isdigit():
+                    choice = int(choice)
+                    if (choice == 1):
+                        self.addition()
+                    elif (choice == 2):
+                        self.subtraction()
+                    elif (choice == 3):
+                        self.multiplication()
+                    elif (choice == 4):
+                        self.division()
+                    elif (choice == 5):
+                        self.modulus()
+                    elif (choice == 6):
+                        self.square()
+                    elif (choice == 7):
+                        self.cube()
+                    elif (choice == 8):
+                        self.calculator_menu()    
+                    elif (choice == 9):
+                        return
+                    else:
+                        print("Please enter a valid choice") 
+                else:
+                    print("Error : choice should be a digit")                                     
+
+    # Method to calculate the summation of numbers
+    def addition(self):
         numbers = []
         while True :
             num = input("Enter the limit to the numbers:")
@@ -412,12 +457,13 @@ class Phone:
                             print("Invalid input!! Enter again")     
                 total = sum(numbers)
                 print("The sum of all number is :",total)
+                self.battery = self.battery - 2
                 return
             else:
                 print("The limit should be a number.")
-                 
-     # Method to calculate the multiplication of numbers
-     def multiplication(self):
+
+    # Method to calculate the multiplication of numbers
+    def multiplication(self):
         numbers = []
         total = 1
         while True :
@@ -436,11 +482,13 @@ class Phone:
                 for number in numbers:
                     total = total * number          
                 print("The multiplication of all number is :",total)
+                self.battery = self.battery - 2
                 return
             else:
-                print("The limit should be a number") 
-
-      def subtraction(self):
+                print("The limit should be a number")    
+    
+    # Method to calculate the subtraction of numbers
+    def subtraction(self):
         while True:
             numbers = []
             while True :
@@ -460,12 +508,13 @@ class Phone:
                 for j in range (1,len(numbers)):
                     total = total - numbers[j]
                 print("The subtraction of numbers is :", total)     
+                self.battery = self.battery - 2
                 return
             else:
-                print("The limit should be a number") 
+                print("The limit should be a number")               
 
-     # Method to calculate the division
-     def division(self):
+    # Method to calculate the division of numbers
+    def division(self):
         while True:
             num1=input("Enter the first number :")
             if(num1.isdigit()):
@@ -479,14 +528,15 @@ class Phone:
                 num2=int(num2)
                 if (num2 != 0):
                     print("The division of numbers is :" ,(num1 / num2) )
+                    self.battery = self.battery - 2
                     return
                 else:
                     print("Error : Cannot divide by zero.")
             else:
                 print("Number should be a digit")
-                 
-     #Method to find the remainder of number
-     def modulus(self):
+
+    # Method to find the remainder of numbers
+    def modulus(self):
         while True:
             num1=input("Enter the first number :")
             if(num1.isdigit()):
@@ -500,30 +550,112 @@ class Phone:
                 num2=int(num2)
                 if (num2 != 0):
                     print("The Remainder is :" ,(num1 % num2) )
+                    self.battery = self.battery - 2
                     return
                 else:
-                    print("Error : Cannot divide by zero.")
+                    print("Error : Number can not be zero.")
             else:
                 print("Number should be a digit")            
 
-     # Method to find the square of a number
-     def square(self):
+    # Method to find the square of a number
+    def square(self):
         while True:
             number = input("Enter the number to find square :")
             if (number.isdigit()):
                 number = int(number)
                 print(f"The square of the {number} is :", (number*number))
+                self.battery = self.battery - 2
                 return
             else:
-                print("Number should be a digit") 
+                print("Number should be a digit")           
 
-     # Method to find the cube of a number
-     def cube(self):
+    # Method to find the cube of a number
+    def cube(self):
         while True:
             number = input("Enter the number to find cube :")
             if (number.isdigit()):
                 number = int(number)
                 print(f"The cube of the {number} is :", (number*number*number))
+                self.battery = self.battery - 2
                 return
             else:
                 print("Number should be a digit")           
+            
+# Password authentication before accessing the phone
+real_p=12345   
+password=int(input("Enter the password : "))
+if(real_p==password):
+    print("The password is correct")
+else:
+    print("The password is incorrect")   
+    exit() 
+
+# Taking phone details from the user
+name=input("Enter the phone company name : ")
+brand=input("Enter the mobile phone brand name : ")
+colour=input("Enter the mobile phone colour : ")
+memory=input("Enter the memory of the mobile phone : ")
+
+# Creating a Phone object
+phone1=Phone(name,brand,colour,memory)
+
+# Displaying menu repeatedly until the user exits the program
+print("========Menu========")
+print("========Menu========")
+print("1.Show the details of the Mobile phone")
+print("2.Make a call")
+print("3.Send a message")
+print("4.Play a music")
+print("5.Show call history")
+print("6.Show phone battery")
+print("7.Charge battery")
+print("8.See menu")
+print("9.Add Contact")
+print("10.View saved contact")
+print("11.Delete contact")
+print("12.Search contact") 
+print("13.View message history") 
+print("14.Delete message")
+print("15.Exit") 
+
+# Processing user's menu choice
+while True:
+
+    choice=int(input("Enter a choice number from the menu : "))
+
+    if phone1.battery > 20:
+        if choice==1:
+            phone1.showdetails()
+        elif choice==2:
+            phone1.call()
+        elif choice==3:
+            phone1.message()
+        elif choice==4:
+            phone1.playmusic()
+        elif choice==5:
+            print(phone1.view_call_history()) 
+        elif choice==6:
+            print(phone1.battery)
+        elif choice==7:
+            phone1.charge_phone()
+        elif choice == 8:
+            phone1.see_menu()  
+        elif choice == 9:
+            phone1.add_contact() 
+        elif choice == 10:
+            phone1.view_contact()  
+        elif choice == 11:
+            phone1.delete_contact() 
+        elif choice == 12:
+            phone1.search_contact() 
+        elif choice == 13:
+            phone1.view_message_history()  
+        elif choice == 14:
+            phone1.delete_message()                   
+        elif choice == 15:
+            exit()    
+        else:
+            print("Please enter a valid number!!!")                    
+    else:
+        print("Battery running slow please charge it.\n current battery :  ",phone1.battery)
+        exit()
