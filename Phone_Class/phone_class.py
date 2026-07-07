@@ -494,12 +494,24 @@ class Phone:
             else:
                 print("Number should be a digit")            
 
-     # Method to find the square of number
+     # Method to find the square of a number
      def square(self):
         while True:
             number = input("Enter the number to find square :")
             if (number.isdigit()):
                 number = int(number)
                 print(f"The square of the {number} is :", (number*number))
+                return
             else:
                 print("Number should be a digit") 
+
+     # Method to find the cube of a number
+     def cube(self):
+        while True:
+            number = input("Enter the number to find cube :")
+            if (number.isdigit()):
+                number = int(number)
+                print(f"The cube of the {number} is :", (number*number*number))
+                return
+            else:
+                print("Number should be a digit")           
