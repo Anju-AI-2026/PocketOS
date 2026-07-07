@@ -472,6 +472,7 @@ class Phone:
                     print("Error : Cannot divide by zero.")
             else:
                 print("Number should be a digit")
+                 
      #Method to find the remainder of number
      def modulus(self):
         while True:
@@ -492,3 +493,13 @@ class Phone:
                     print("Error : Cannot divide by zero.")
             else:
                 print("Number should be a digit")            
+
+     # Method to find the square of number
+     def square(self):
+        while True:
+            number = input("Enter the number to find square :")
+            if (number.isdigit()):
+                number = int(number)
+                print(f"The square of the {number} is :", (number*number))
+            else:
+                print("Number should be a digit") 
