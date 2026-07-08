@@ -1,4 +1,5 @@
-        
+import random
+
 # Program to demonstrate a phone class 
 
 class Phone:
