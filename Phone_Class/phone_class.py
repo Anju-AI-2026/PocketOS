@@ -582,3 +582,6 @@ class Phone:
             else:
                 print("Number should be a digit")           
             
+  # Method to demonstate the game app
+    def games(self):
+        print()
