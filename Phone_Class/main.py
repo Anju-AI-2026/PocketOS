@@ -20,7 +20,6 @@ phone1=Phone(name,brand,colour,memory)
 
 # Displaying menu repeatedly until the user exits the program
 print("========Menu========")
-print("========Menu========")
 print("1.Show the details of the Mobile phone")
 print("2.Make a call")
 print("3.Send a message")
@@ -35,11 +34,11 @@ print("11.Delete contact")
 print("12.Search contact") 
 print("13.View message history") 
 print("14.Delete message")
-print("15.Exit") 
+print("15.Calculator")
+print("16.Exit") 
 
 # Processing user's menu choice
 while True:
-
 
     choice=int(input("Enter a choice number from the menu : "))
 
@@ -71,8 +70,10 @@ while True:
         elif choice == 13:
             phone1.view_message_history()  
         elif choice == 14:
-            phone1.delete_message()                   
+            phone1.delete_message() 
         elif choice == 15:
+            phone1.calculator()                      
+        elif choice == 16:
             exit()    
         else:
             print("Please enter a valid number!!!")                    
