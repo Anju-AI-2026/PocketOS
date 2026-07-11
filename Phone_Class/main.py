@@ -35,7 +35,8 @@ print("12.Search contact")
 print("13.View message history") 
 print("14.Delete message")
 print("15.Calculator")
-print("16.Exit") 
+print("16.Games")
+print("17.Exit") 
 
 # Processing user's menu choice
 while True:
@@ -72,8 +73,10 @@ while True:
         elif choice == 14:
             phone1.delete_message() 
         elif choice == 15:
-            phone1.calculator()                      
+            phone1.calculator()
         elif choice == 16:
+            phone1.games()
+        elif choice == 17:
             exit()    
         else:
             print("Please enter a valid number!!!")                    
