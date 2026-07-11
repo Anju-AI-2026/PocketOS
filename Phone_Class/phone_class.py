@@ -29,7 +29,7 @@ class Phone:
         print("1.Show the details of the Mobile phone")
         print("2.Make a call")
         print("3.Send a message")
-        print("4.Play a music")
+        print("4.Music app")
         print("5.Show call history")
         print("6.Show phone battery")
         print("7.Charge battery")
@@ -381,10 +381,8 @@ class Phone:
                 print("Contact not found") 
 
     # Method to play music and reduce battery percentage
-    def playmusic(self):
-        music=input("Enter the song name : ")
-        print("Plyaing",music,"music") 
-        self.battery=self.battery-15
+    def music_app(self):
+          print()
 
     # Method to show calculator menu
     def calculator_menu(self):
