@@ -6,13 +6,14 @@ class Phone:
 
      # Constructor to initialize phone details and default values
     def __init__(self,name,brand,colour,memory):
-        self.name=name
-        self.brand=brand
-        self.colour=colour
-        self.memory=memory
-        self.call_list=[]
-        self.message_list=[]
-        self.contact={}
+        self.name = name
+        self.brand = brand
+        self.colour = colour
+        self.memory = memory
+        self.call_list = []
+        self.message_list = []
+        self.contact = {}
+        self.play_list = {}  
         self.battery=100
 
     # Method to display phone details
@@ -384,6 +385,24 @@ class Phone:
     def music_app(self):
           print()
 
+     # Method to show the playlist
+     def show_play_list(self):
+        self.play_list = {
+            1 : "Perfect",
+            2 : "Love me like you do",
+            3 : "Living hell",
+            4 : "Unholy"
+        }
+        print("="*25)
+        print("           PLAY LIST           ")
+        print("="*25)
+
+        if (not self.play_list):
+            print("The playlist is empty")
+        else:
+            for key,value in self.play_list.items():
+                print(key,". " ,value)
+     
     # Method to show calculator menu
     def calculator_menu(self):
         print("====================")
