@@ -23,7 +23,7 @@ print("========Menu========")
 print("1.Show the details of the Mobile phone")
 print("2.Make a call")
 print("3.Send a message")
-print("4.Play a music")
+print("4.Music app")
 print("5.Show call history")
 print("6.Show phone battery")
 print("7.Charge battery")
@@ -51,7 +51,7 @@ while True:
         elif choice==3:
             phone1.message()
         elif choice==4:
-            phone1.playmusic()
+            phone1.music_app()
         elif choice==5:
             print(phone1.view_call_history()) 
         elif choice==6:
