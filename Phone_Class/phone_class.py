@@ -461,6 +461,47 @@ class Phone:
             self.play_list = new_play_list
             return    
 
+     # Method to delete a song from the play list
+    def delete_song(self):
+        if (not self.play_list):
+            print("The play list is empty can not delete")
+        else:
+            print("="*25)
+            print("           PLAY LIST           ")
+            print("="*25)
+            for key,value in self.play_list.items():
+                print(key,". " ,value)
+
+            while True :
+                choice = input("Enter any song number from the playlist")
+
+                if (choice.isdigit()):
+                    choice = int(choice)
+                    if (choice in self.play_list):
+                        if (self.play_list[choice] == self.current_song):
+                            stop_music = input("Do you want to delete the current playing music (y/n) :").lower()
+                            if (stop_music == "y"):
+                                del self.play_list[choice]
+                                self.current_song = None
+                                print("🎶 Music stopped ")
+                                print("🗑️ Song deleted successfully.")
+                                self.reorganize_playlist()
+                                return
+                            elif (stop_music == "n"):
+                                break
+                            else:
+                                print("Invalid choice")
+                        else:
+                            del self.play_list[choice]
+                            print("🗑️ Song deleted successfully.")
+                            self.reorganize_playlist()
+                            return
+                            
+                    else:
+                        print("The choice is not in playlist")                       
+                else:
+                    print("Invalid choice")                
+
      
     # Method to show calculator menu
     def calculator_menu(self):
