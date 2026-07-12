@@ -381,9 +381,37 @@ class Phone:
             else:
                 print("Contact not found") 
 
+    
     # Method to play music and reduce battery percentage
     def music_app(self):
-          print()
+        print("1.Play music")
+        print("2.Show play list")
+        print("3.Add song")
+        print("4.Delete song")
+        print("5.Stop music")
+        print("6.Back")
+
+        while True :
+            choice = input("Enter a choice from the above menu :")
+
+            if (choice.isdigit()):
+                choice = int(choice)
+                if choice == 1:
+                    self.play_music()
+                elif choice == 2:
+                    self.show_play_list()
+                elif choice == 3:
+                    self.add_song()
+                elif choice == 4:
+                    self.delete_song()
+                elif choice == 5:
+                    self.stop_song()
+                elif choice == 6:
+                    break
+                else:
+                    print("Enter a valid choice from the menu ")
+            else:
+                print("Choice should be a number")   
 
      # Method to show the playlist
      def show_play_list(self):
