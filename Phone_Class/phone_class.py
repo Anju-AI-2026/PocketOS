@@ -402,6 +402,31 @@ class Phone:
         else:
             for key,value in self.play_list.items():
                 print(key,". " ,value)
+
+     # Method to play a music
+    def play_music(self):
+        if (not self.play_list):
+            print("The play list is empty")
+        else:
+            print("="*25)
+            print("           PLAY LIST           ")
+            print("="*25)
+            for key,value in self.play_list.items():
+                print(key,". " ,value)
+
+            while True :
+                choice = input("Enter any song number from the playlist")
+
+                if (choice.isdigit()):
+                    choice = int(choice)
+                    if choice in self.play_list :
+                        self.current_song = self.play_list[choice]
+                        print(f" 🎶 Now playing {self.current_song}")
+                        return
+                    else:    
+                        print("Error : Song number not found")
+                else:
+                    print("The choice should be a number")            
      
     # Method to show calculator menu
     def calculator_menu(self):
