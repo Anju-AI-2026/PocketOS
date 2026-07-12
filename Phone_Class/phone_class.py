@@ -427,6 +427,27 @@ class Phone:
                         print("Error : Song number not found")
                 else:
                     print("The choice should be a number")            
+
+     # Method to add a new song to the play list
+    def add_song(self):
+        while True:
+
+            song_name = input("Enter the song name to add to the play list :")
+            if (song_name.replace(" ","" ).isalnum()):
+
+                if (not self.play_list):  
+                    self.play_list[1] = song_name
+                    print("Song added successfully !!")
+                    return
+                elif (song_name in self.play_list.values()):
+                    print("Song already exits")    
+                else:
+                    current_number = max(self.play_list)
+                    self.play_list[current_number+1] = song_name
+                    print("Song added successfully!!")
+                    return
+            else:
+                print("The song should contain only alphanumeric name")    
      
     # Method to show calculator menu
     def calculator_menu(self):
