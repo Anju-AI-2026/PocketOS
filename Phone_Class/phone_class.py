@@ -290,6 +290,23 @@ class Phone:
                     else:
                         print("Choice is out of range")
 
+     # Method to clear the call history
+    def clear_call_history(self):
+        if (not self.call_list):
+            print("The call history is empty can not delete")
+            return
+        else:
+            while True:
+                sure_thing = input("Are you sure (y/n) :").lower()
+                if (sure_thing == "y"):
+                    self.call_list.clear()
+                    print("Call history deleted sussessfully")
+                    return
+                elif (sure_thing == "n"):
+                    return
+                else:
+                    print("Enter a valid choice")    
+
 
  # Method to display call history
     def view_message_history(self):
