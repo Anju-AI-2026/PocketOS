@@ -41,9 +41,12 @@ class Phone:
         print("12.Search contact") 
         print("13.View message history") 
         print("14.Delete message")
-        print("15.Calculator")  
-        print("16.Games") 
-        print("17.Exit") 
+        print("15.Delete Call history")
+        print("16.Clear call history")
+        print("17.Clear message history") 
+        print("18.Calculator")  
+        print("19.Games") 
+        print("20.Exit") 
 
     # Method to recharge the battery
     def charge_phone(self):
