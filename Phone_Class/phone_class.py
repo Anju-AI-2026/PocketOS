@@ -345,6 +345,22 @@ class Phone:
             else:
                 print("Message not found") 
 
+     # Method to clear the message history
+    def clear_message_history(self):
+        if (not self.message_list):
+            print("Message history is empty. Nothing to clear.")
+            return
+        else:
+            while True:
+                sure_thing = input("Are you sure (y/n) :").lower()
+                if (sure_thing == "y"):
+                    self.message_list.clear()
+                    print("Message history deleted sussessfully")
+                    return
+                elif (sure_thing == "n"):
+                    return
+                else:
+                    print("Enter a valid choice")  
 
     # Method to send messages and store message history
     def message(self):
