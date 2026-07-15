@@ -18,7 +18,8 @@ class Phone(ContactManager, CallManager):
         self.memory = memory
         self.call_list = []
         self.message_list = []
-        self.play_list = {}  
+        self.play_list = {} 
+        self.calculator_history = [] 
         self.battery=100
 
     # Method to display phone details
@@ -552,26 +553,40 @@ class Phone(ContactManager, CallManager):
 
     # Method to calculate the summation of numbers
     def addition(self):
-        numbers = []
         while True :
-            num = input("Enter the limit to the numbers:")
-            if (num.isdigit()):
-                num = int(num)
-                for i in range(1,num+1):
-                    while True:
-                        x=input(f"Enter the {i} numbers:")
-                        if (x.isdigit()):
-                            x = int(x)
-                            numbers.append(x)
-                            break
-                        else:
-                            print("Invalid input!! Enter again")     
-                total = sum(numbers)
-                print("The sum of all number is :",total)
-                self.battery = self.battery - 2
-                return
+            expression = input("Enter the expression :")
+            if (not expression):
+                print("The expression is empty")
+                return None
+            elif (expression.startswith("+") ):
+                print("The expression should not starts with "+" ")     
+                return None   
+            elif (expression.endswith("+")):
+                print("The expression should not ends with "+" ")     
+                return None       
+            elif ("++" in expression):
+                print("The expression should not contain "++"")
+                return None        
             else:
-                print("The limit should be a number.")
+                numbers = expression.split("+")
+
+                for num in numbers:
+                    if not num.isdigit():
+                        print("Expression should contain only numbers.")
+                        return
+
+                numbers = [int(num) for num in numbers]
+
+                total = sum(numbers)
+                calculator_record = {
+                    "operation" : "Addition",
+                    "expression" : expression,
+                    "answer" : total 
+                }
+                self.calculator_history.append(calculator_record)
+
+
+                print("The sum of all numbers is:", total)
 
     # Method to calculate the multiplication of numbers
     def multiplication(self):
