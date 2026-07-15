@@ -75,3 +75,62 @@ class CallManager:
                 return
             else:
                 print("Contact not found")    
+
+    # Method to display call history
+    def view_call_history(self):
+        self.battery = self.battery - 2
+
+        if not self.call_list:
+            print("==========================")
+            print("No call history available.")
+            print("==========================")
+            return
+
+        print("\n========== CALL HISTORY ==========\n")
+
+        for index, call in enumerate(self.call_list, start=1):
+            print(f"Call {index}")
+            print(f"Name   : {call['name']}")
+            print(f"Number : {call['number']}")
+            print(f"Type   : {call['type']}")
+            print("-" * 35)     
+
+    # Method to delete a call history
+    def delete_call_history(self):
+        if (not self.call_list):
+            print("The call history is empty can not delete")
+            return
+        else:
+            for index, call in enumerate(self.call_list, start=1):
+                print(f"Call {index}")
+                print(f"Name   : {call['name']}")
+                print(f"Number : {call['number']}")
+                print(f"Type   : {call['type']}")
+                print("-" * 35) 
+            while True:
+                choice = input("Enter the call number to delete::")
+                if (choice.isdigit()):
+                    choice = int(choice) 
+                    length = len(self.call_list)
+                    if (choice >= 1 and choice <= length):
+                        del self.call_list[choice-1]
+                        return
+                    else:
+                        print("Choice is out of range")
+                        
+    # Method to clear the call history
+    def clear_call_history(self):
+        if (not self.call_list):
+            print("The call history is empty can not delete")
+            return
+        else:
+            while True:
+                sure_thing = input("Are you sure (y/n) :").lower()
+                if (sure_thing == "y"):
+                    self.call_list.clear()
+                    print("Call history deleted sussessfully")
+                    return
+                elif (sure_thing == "n"):
+                    return
+                else:
+                    print("Enter a valid choice")    
