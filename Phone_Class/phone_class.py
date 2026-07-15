@@ -1,14 +1,16 @@
 from contacts import ContactManager
+from calls import CallManager
 import random
 
 # Program to demonstrate a phone class 
 
-class Phone(ContactManager):
+class Phone(ContactManager, CallManager):
 
      # Constructor to initialize phone details and default values
     def __init__(self,name,brand,colour,memory):
 
         ContactManager.__init__(self)
+        CallManager.__init__(self)
          
         self.name = name
         self.brand = brand
