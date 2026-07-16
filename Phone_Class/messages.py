@@ -115,3 +115,20 @@ class MessageManager:
                     print("Contact not found")    
                 else:
                     print("Name should be alphanumeric only") 
+
+    # Method to clear the message history
+    def clear_message_history(self):
+        if (not self.message_list):
+            print("Message history is empty. Nothing to clear.")
+            return
+        else:
+            while True:
+                sure_thing = input("Are you sure (y/n) :").lower()
+                if (sure_thing == "y"):
+                    self.message_list.clear()
+                    print("Message history deleted sussessfully")
+                    return
+                elif (sure_thing == "n"):
+                    return
+                else:
+                    print("Enter a valid choice")                        
