@@ -97,3 +97,21 @@ class MessageManager:
             print(f"Messgae : {message['message']}")
             print(f"Type   : {message['type']}")
             print("-" * 35)   
+
+    # Method to delete a individual message from history
+    def delete_message(self):
+        self.battery=self.battery-2
+        if (not self.message_list):
+            print("Message history is empty")
+        else:
+            while True:
+                contact_name = input("Enter the contact name to delete :")
+                if (contact_name.isalnum()):
+                    for i, message in enumerate(self.message_list):
+                        if contact_name == message["name"]:
+                            del self.message_list[i]
+                            print("Message deleted successfully!")
+                            return
+                    print("Contact not found")    
+                else:
+                    print("Name should be alphanumeric only") 
