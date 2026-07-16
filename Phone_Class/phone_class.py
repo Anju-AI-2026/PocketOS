@@ -73,23 +73,6 @@ class Phone(ContactManager, CallManager, MessageManager):
                 print("Current battery :", self.battery)   
 
 
-    # Method to delete a individual message from history
-    def delete_message(self):
-        self.battery=self.battery-2
-        if (not self.message_list):
-            print("Message history is empty")
-        else:
-            while True:
-                contact_name = input("Enter the contact name to delete :")
-                if (contact_name.isalnum()):
-                    for i, message in enumerate(self.message_list):
-                        if contact_name == message["name"]:
-                            del self.message_list[i]
-                            print("Message deleted successfully!")
-                            return
-            else:
-                print("Message not found") 
-
      # Method to clear the message history
     def clear_message_history(self):
         if (not self.message_list):
