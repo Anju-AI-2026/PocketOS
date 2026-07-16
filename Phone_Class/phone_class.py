@@ -73,26 +73,6 @@ class Phone(ContactManager, CallManager, MessageManager):
                 print("Current battery :", self.battery)   
 
 
- # Method to display call history
-    def view_message_history(self):
-        self.battery = self.battery - 2
-
-        if not self.message_list:
-            print("==========================")
-            print("No message history available.")
-            print("==========================")
-            return
-
-        print("\n========== MESSAGE HISTORY ==========\n")
-
-        for index, message in enumerate(self.message_list, start=1):
-            print(f"Message {index}")
-            print(f"Name   : {message['name']}")
-            print(f"Number : {message['number']}")
-            print(f"Messgae : {message['message']}")
-            print(f"Type   : {message['type']}")
-            print("-" * 35)
-
     # Method to delete a individual message from history
     def delete_message(self):
         self.battery=self.battery-2
