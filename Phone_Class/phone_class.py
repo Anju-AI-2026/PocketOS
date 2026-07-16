@@ -1,23 +1,23 @@
 from contacts import ContactManager
 from calls import CallManager
+from messages import MessageManager
 import random
 
 # Program to demonstrate a phone class 
 
-class Phone(ContactManager, CallManager):
+class Phone(ContactManager, CallManager, MessageManager):
 
      # Constructor to initialize phone details and default values
     def __init__(self,name,brand,colour,memory):
 
         ContactManager.__init__(self)
         CallManager.__init__(self)
+        MessageManager.__init__(self)
          
         self.name = name
         self.brand = brand
         self.colour = colour
         self.memory = memory
-        self.call_list = []
-        self.message_list = []
         self.play_list = {} 
         self.calculator_history = [] 
         self.battery=100
