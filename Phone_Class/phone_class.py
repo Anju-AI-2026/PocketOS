@@ -436,7 +436,7 @@ class Phone(ContactManager, CallManager, MessageManager):
             else:
                 print("Number should be a digit")      
 
-    # Method to find the remainder of numbers
+     # Method to find the remainder of numbers
     def modulus(self):
         while True:
             num1=input("Enter the first number :")
@@ -450,13 +450,21 @@ class Phone(ContactManager, CallManager, MessageManager):
             if(num2.isdigit()):
                 num2=int(num2)
                 if (num2 != 0):
-                    print("The Remainder is :" ,(num1 % num2) )
+                    total = (num1 % num2)
+                    print("The modulus of numbers is :" , total)
+                    expression = f"{num1}%{num2}"
+                    calculator_record = {
+                    "operation" : "Modulus",
+                    "expression" : expression,
+                    "answer" : total 
+                }
+                    self.calculator_history.append(calculator_record)  
                     self.battery = self.battery - 2
                     return
                 else:
                     print("Error : Number can not be zero.")
             else:
-                print("Number should be a digit")            
+                print("Number should be a digit")      
 
     # Method to find the square of a number
     def square(self):
