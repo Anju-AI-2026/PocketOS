@@ -3,6 +3,17 @@ class CallManager:
     def __init__(self):
         self.call_list=[]
 
+    # Method to create the call menu
+    def see_menu(self):
+        print("="*35)
+        print("            CALL MENU")
+        print("="*35)
+        print("1.Make a call")    
+        print("2.View call history")
+        print("3.Delete call history")
+        print("4.Clear call history")
+        print("5.Back")
+
     # Method to make a phone call and store call history
     def call(self):
         user_choice=(input("Enter the contact number or name:")) 
@@ -134,3 +145,34 @@ class CallManager:
                     return
                 else:
                     print("Enter a valid choice")    
+
+    # Method to create the contact controller
+    def call_manager(self):
+        if self.battery <= 20 :
+            print("Battey is running low!! Please charge it")
+            return
+        print("="*35)
+        print("            CALL MENU")
+        print("="*35)
+        print("1.Make a call")    
+        print("2.View call history")
+        print("3.Delete call history")
+        print("4.Clear call history")
+        print("5.Back")
+        while True :
+            choice = input("Enter the choice from above menu :")
+            if choice.isdigit():
+                if choice == 1 :
+                    self.call()
+                elif choice == 2 :
+                    self.view_call_history()
+                elif choice == 3 :
+                    self.delete_call_history()
+                elif choice == 4 :
+                    self.clear_call_history()
+                elif choice == 5 :
+                    return
+                else:
+                    print("Enter a valid choice ")
+            else:
+                print("Error : choice should be a digit")        
