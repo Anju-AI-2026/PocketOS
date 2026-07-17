@@ -287,67 +287,6 @@ class Phone(ContactManager, CallManager, MessageManager):
                     print("Error : choice should be a digit")                                     
 
 
-     # Method to calculate the division of numbers
-    def division(self):
-        while True:
-            num1=input("Enter the first number :")
-            if(num1.isdigit()):
-                num1 = int(num1)
-                break
-            else:
-                print("Number should be a digit")
-        while True:
-            num2 = input("Enter the second number :")
-            if(num2.isdigit()):
-                num2=int(num2)
-                if (num2 != 0):
-                    total = (num1 / num2)
-                    print("The division of numbers is :" , total)
-                    expression = f"{num1}/{num2}"
-                    calculator_record = {
-                    "operation" : "Division",
-                    "expression" : expression,
-                    "answer" : total 
-                }
-                    self.calculator_history.append(calculator_record)                
-
-                    self.battery = self.battery - 2
-                    return
-                else:
-                    print("Error : Cannot divide by zero.")
-            else:
-                print("Number should be a digit")      
-
-     # Method to find the remainder of numbers
-    def modulus(self):
-        while True:
-            num1=input("Enter the first number :")
-            if(num1.isdigit()):
-                num1 = int(num1)
-                break
-            else:
-                print("Number should be a digit")
-        while True:
-            num2 = input("Enter the second number :")
-            if(num2.isdigit()):
-                num2=int(num2)
-                if (num2 != 0):
-                    total = (num1 % num2)
-                    print("The modulus of numbers is :" , total)
-                    expression = f"{num1}%{num2}"
-                    calculator_record = {
-                    "operation" : "Modulus",
-                    "expression" : expression,
-                    "answer" : total 
-                }
-                    self.calculator_history.append(calculator_record)  
-                    self.battery = self.battery - 2
-                    return
-                else:
-                    print("Error : Number can not be zero.")
-            else:
-                print("Number should be a digit")      
-
     # Method to find the square of a number
     def square(self):
         while True:
