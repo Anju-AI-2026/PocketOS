@@ -58,3 +58,44 @@ class CalculatorManager:
                 print("The sum of all numbers is:", total)
                 self.battery = self.battery - 2
                 return
+
+    # Method to calculate the multiplication of numbers
+    def multiplication(self):
+        while True :
+            expression = input("Enter the expression :")
+            if (not expression):
+                print("The expression is empty")
+                return None
+            elif (expression.startswith("*") ):
+                print("The expression should not starts with "*" ")     
+                return None   
+            elif (expression.endswith("*")):
+                print("The expression should not ends with "*" ")     
+                return None       
+            elif ("**" in expression):
+                print("The expression should not contain "**"")
+                return None        
+            else:
+                numbers = expression.split("*")
+
+                for num in numbers:
+                    if not num.isdigit():
+                        print("Expression should contain only numbers.")
+                        return
+
+                numbers = [int(num) for num in numbers]
+
+                total = 1
+                for number in numbers :
+                    total = total * number
+
+                calculator_record = {
+                    "operation" : "Multiplication",
+                    "expression" : expression,
+                    "answer" : total 
+                }
+                self.calculator_history.append(calculator_record)                
+
+                print("The multiplication is :", total)
+                self.battery = self.battery - 2 
+                return
