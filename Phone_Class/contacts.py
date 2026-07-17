@@ -1,9 +1,20 @@
-# Class to demonstrate the contact methods
 class ContactManager:
 
     def __init__(self):
         self.contacts = {}
 
+    # Method to see the contact menu
+    def see_menu(self):
+        print("="*35)
+        print("            CONTACT MENU ")
+        print("="*35)
+        print("1.Add contacts")
+        print("2.View contacts")
+        print("3.Delete contacts")
+        print("4.Search contact")
+        print("5.Clear contacts")
+        print("6.See menu")
+        print("7.Back")
 
     # Adds a contact after validating the name and phone number
     def add_contact(self):
@@ -113,4 +124,60 @@ class ContactManager:
         if not found:
             print("====================")
             print("Contact not found")
-            print("====================")     
+            print("====================")  
+
+    # Method to create the clear the contact 
+    def clear_contact(self):
+        if (not self.contacts):
+            print("Contact is empty can not clear")
+            return
+        else:
+            while True:
+                sure_thing = input("Are you sure (y/n) :").lower()
+                if (sure_thing == "y"):
+                    self.contacts.clear()
+                    print("Contacts deleted sucssessfully")
+                    return
+                elif (sure_thing == "n"):
+                    return
+                else:
+                    print("Enter a valid choice")                         
+
+    def contact_manager(self):
+        if (self.battery <= 20):
+            print("Battery getting low!! Please charge it.")
+            return
+        print("="*35)
+        print("            CONTACT MENU ")
+        print("="*35)
+        print("1.Add contacts")
+        print("2.View contacts")
+        print("3.Delete contacts")
+        print("4.Search contact")
+        print("5.Clear contacts")
+        print("6.See menu")
+        print("7.Back")
+
+        while True :
+            choice = input("Enter a choice from the menu :")
+            if (choice.isdigit()):
+                choice = int(choice)
+                
+                if choice == 1 :
+                    self.add_contact()
+                elif choice == 2 :
+                    self.view_contact()
+                elif choice == 3 :
+                    self.delete_contact()
+                elif choice == 4 :
+                    self.search_contact()
+                elif choice == 5 :
+                    self.clear_contact()
+                elif choice == 6 :
+                    self.see_menu()
+                elif choice == 7 :
+                    return
+                else:
+                    print("Enter a valid choice")
+            else:
+                print("Error : Choice should be a digit") 
