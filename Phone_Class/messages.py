@@ -3,7 +3,19 @@ class MessageManager:
     def __init__(self):
         self.message_list=[]
 
-    # Method to send messages and store message history
+    # Method to see the message menu
+    def see_menu(self):
+        print("="*35)
+        print("            MESSAGE MENU")
+        print("="*35)
+        print("1.Send a message")
+        print("2.View message history")
+        print("3.Delete message ")
+        print("4.Clear message history")
+        print("5.See menu")
+        print("6.Back")    
+
+        # Method to send messages and store message history
     def message(self):
         user_choice=(input("Enter the phone number or name to send message : "))
         if (user_choice.isdigit()):
@@ -96,7 +108,7 @@ class MessageManager:
             print(f"Number : {message['number']}")
             print(f"Messgae : {message['message']}")
             print(f"Type   : {message['type']}")
-            print("-" * 35)   
+            print("-" * 35)             
 
     # Method to delete a individual message from history
     def delete_message(self):
@@ -114,7 +126,7 @@ class MessageManager:
                             return
                     print("Contact not found")    
                 else:
-                    print("Name should be alphanumeric only") 
+                    print("Name should be alphanumeric only")     
 
     # Method to clear the message history
     def clear_message_history(self):
@@ -132,3 +144,38 @@ class MessageManager:
                     return
                 else:
                     print("Enter a valid choice")                        
+
+    # Method to create the message controller
+    def message_manager(self):
+        if self.battery <= 20:
+            print("Battery is running low!! Please charge it. ")
+            return
+        print("="*35)
+        print("            MESSAGE MENU")
+        print("="*35)
+        print("1.Send a message")
+        print("2.View message history")
+        print("3.Delete message ")
+        print("4.Clear message history")
+        print("5.See menu")
+        print("6.Back")     
+        while True :
+            choice = input("Enter a choice from above menu :")
+            if choice.isdigit():
+                choice = int(choice)
+                if choice == 1 :
+                    self.message()
+                elif choice == 2 :
+                    self.view_message_history()
+                elif choice == 3 :
+                    self.delete_message()
+                elif choice == 4 :
+                    self.clear_message_history()
+                elif choice == 5 :
+                    self.see_menu()
+                elif choice == 6 :
+                    return
+                else:
+                    print("Enter a valid choice")
+            else:
+                print("Error : Choice should be a digit")                                           
