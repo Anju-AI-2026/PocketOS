@@ -208,11 +208,20 @@ class CalculatorManager:
             number = input("Enter the number to find square :")
             if (number.isdigit()):
                 number = int(number)
-                print(f"The square of the {number} is :", (number*number))
+                total = (number * number)
+                print("The square is :" , total)
+                expression = f"{number}*{number}"
+                calculator_record = {
+                    "operation" : "Square",
+                    "expression" : expression,
+                    "answer" : total 
+                }
+                self.calculator_history.append(calculator_record)  
+
                 self.battery = self.battery - 2
                 return
             else:
-                print("Number should be a digit")           
+                print("Number should be a digit")     
 
     # Method to find the cube of a number
     def cube(self):
@@ -220,8 +229,16 @@ class CalculatorManager:
             number = input("Enter the number to find cube :")
             if (number.isdigit()):
                 number = int(number)
-                print(f"The cube of the {number} is :", (number*number*number))
+                total = (number * number * number)
+                print("The cube is :" , total)
+                expression = f"{number}*{number}*{number}"
+                calculator_record = {
+                    "operation" : "Cube",
+                    "expression" : expression,
+                    "answer" : total 
+                }
+                self.calculator_history.append(calculator_record)  
                 self.battery = self.battery - 2
                 return
             else:
-                print("Number should be a digit")           
+                print("Number should be a digit")  
