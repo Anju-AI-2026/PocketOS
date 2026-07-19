@@ -242,3 +242,21 @@ class CalculatorManager:
                 return
             else:
                 print("Number should be a digit")  
+
+    # Method to view the calculator history    
+    def view_calculator_history(self):
+        if ( not self.calculator_history):
+            print("=============================")
+            print("Calculator history is empty")
+            print("=============================")
+        else:
+            print()
+            print("="*35)   
+            print("            CALCULATOR HISTORY") 
+            print("="*35)
+            for index , calculation in enumerate(self.calculator_history, start=1):
+                print(f"Calculation {index}")
+                print(f"Operation   : {calculation['operation']}")
+                print(f"Expression : {calculation['expression']}")
+                print(f"Answer      : {calculation['answer']}")
+                print("-" * 35)  
