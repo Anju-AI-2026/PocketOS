@@ -1,11 +1,12 @@
 from contacts import ContactManager
 from calls import CallManager
 from messages import MessageManager
+from calculator import CalculatorManager
 import random
 
 # Program to demonstrate a phone class 
 
-class Phone(ContactManager, CallManager, MessageManager):
+class Phone(ContactManager, CallManager, MessageManager, CalculatorManager):
 
      # Constructor to initialize phone details and default values
     def __init__(self,name,brand,colour,memory):
@@ -19,7 +20,6 @@ class Phone(ContactManager, CallManager, MessageManager):
         self.colour = colour
         self.memory = memory
         self.play_list = {} 
-        self.calculator_history = [] 
         self.battery=100
 
     # Method to display phone details
