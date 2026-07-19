@@ -260,3 +260,20 @@ class CalculatorManager:
                 print(f"Expression : {calculation['expression']}")
                 print(f"Answer      : {calculation['answer']}")
                 print("-" * 35)  
+
+    # Method to clear the calculator history
+    def clear_calculator_history(self):
+        if (not self.calculator_history):
+            print("The calculator history is empty can not clear")
+            return
+        else:
+            while True:
+                sure_thing = input("Are you sure (y/n) :").lower()
+                if (sure_thing == "y"):
+                    self.calculator_history.clear()
+                    print("Calculator history deleted sussessfully")
+                    return
+                elif (sure_thing == "n"):
+                    return
+                else:
+                    print("Enter a valid choice")    
