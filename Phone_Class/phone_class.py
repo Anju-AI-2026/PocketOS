@@ -14,6 +14,7 @@ class Phone(ContactManager, CallManager, MessageManager, CalculatorManager):
         ContactManager.__init__(self)
         CallManager.__init__(self)
         MessageManager.__init__(self)
+        CalculatorManager.__init__(self) 
          
         self.name = name
         self.brand = brand
@@ -229,62 +230,6 @@ class Phone(ContactManager, CallManager, MessageManager, CalculatorManager):
             self.current_song = None
             print("Music stopped successfully.")    
 
-     
-    # Method to show calculator menu
-    def calculator_menu(self):
-        print("====================")
-        print("1.Addition")
-        print("2.Subtraction")
-        print("3.Multiplication")
-        print("4.Division")
-        print("5.Modulus")
-        print("6.Find Square")
-        print("7.Find Cube")
-        print("8.See calculator menu")
-        print("9.Back")
-       
-    # Method to take user choice for calculator
-    def calculator(self):
-        print("====================")
-        print("1.Addition")
-        print("2.Subtraction")
-        print("3.Multiplication")
-        print("4.Division")
-        print("5.Modulus")
-        print("6.Find Square")
-        print("7.Find Cube")
-        print("8.See calculator menu")
-        print("9.Back")
-        if (self.battery <=20):
-            print("Battery is low please charge it")
-            return
-        else:
-            while True :
-                choice = input("Enter the choice from above menu :")
-                if choice.isdigit():
-                    choice = int(choice)
-                    if (choice == 1):
-                        self.addition()
-                    elif (choice == 2):
-                        self.subtraction()
-                    elif (choice == 3):
-                        self.multiplication()
-                    elif (choice == 4):
-                        self.division()
-                    elif (choice == 5):
-                        self.modulus()
-                    elif (choice == 6):
-                        self.square()
-                    elif (choice == 7):
-                        self.cube()
-                    elif (choice == 8):
-                        self.calculator_menu()    
-                    elif (choice == 9):
-                        return
-                    else:
-                        print("Please enter a valid choice") 
-                else:
-                    print("Error : choice should be a digit")                                     
             
   # Method to demonstate the game app
     def games(self):
