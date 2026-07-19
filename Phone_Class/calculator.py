@@ -276,4 +276,55 @@ class CalculatorManager:
                 elif (sure_thing == "n"):
                     return
                 else:
-                    print("Enter a valid choice")    
+                    print("Enter a valid choice")   
+
+    # Method to take user choice for calculator
+    def calculator_manager(self):
+        if (self.battery <=20):
+            print("Battery is low please charge it")
+            return
+        print("="*35)
+        print("            CALCULATOR MENU")
+        print("="*35)
+        print("1.Addition")
+        print("2.Subtraction")
+        print("3.Multiplication")
+        print("4.Division")
+        print("5.Modulus")
+        print("6.Find Square")
+        print("7.Find Cube")
+        print("8.View calculator history")
+        print("9.Clear calculator history")
+        print("10.See calculator menu")
+        print("11.Back")
+        
+        while True :
+            choice = input("Enter the choice from above menu :")
+            if choice.isdigit():
+                choice = int(choice)
+                if (choice == 1):
+                    self.addition()
+                elif (choice == 2):
+                    self.subtraction()
+                elif (choice == 3):
+                    self.multiplication()
+                elif (choice == 4):
+                    self.division()
+                elif (choice == 5):
+                    self.modulus()
+                elif (choice == 6):
+                    self.square()
+                elif (choice == 7):
+                    self.cube()
+                elif (choice == 8 ):  
+                    self.view_calculator_history() 
+                elif (choice == 9):
+                    self.clear_calculator_history() 
+                elif (choice == 10):
+                    self.see_menu()    
+                elif (choice == 11):
+                    return
+                else:
+                    print("Please enter a valid choice") 
+            else:
+                print("Error : choice should be a digit")                                                                        
