@@ -285,31 +285,6 @@ class Phone(ContactManager, CallManager, MessageManager):
                         print("Please enter a valid choice") 
                 else:
                     print("Error : choice should be a digit")                                     
-
-
-    # Method to find the square of a number
-    def square(self):
-        while True:
-            number = input("Enter the number to find square :")
-            if (number.isdigit()):
-                number = int(number)
-                print(f"The square of the {number} is :", (number*number))
-                self.battery = self.battery - 2
-                return
-            else:
-                print("Number should be a digit")           
-
-    # Method to find the cube of a number
-    def cube(self):
-        while True:
-            number = input("Enter the number to find cube :")
-            if (number.isdigit()):
-                number = int(number)
-                print(f"The cube of the {number} is :", (number*number*number))
-                self.battery = self.battery - 2
-                return
-            else:
-                print("Number should be a digit")           
             
   # Method to demonstate the game app
     def games(self):
