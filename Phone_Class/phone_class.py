@@ -71,18 +71,8 @@ class Phone(ContactManager, CallManager, MessageManager, CalculatorManager):
                 if (self.battery > 100):
                     self.battery = 100 
                 print("\nBattery charged successfully.")
-                print("Current battery :", self.battery)   
-
-     # Method to stop the song
-    def stop_song(self):
-        if self.current_song is None :
-            print("No music is playing.")
-            return
-        else:
-            self.current_song = None
-            print("Music stopped successfully.")    
-
-            
+                print("Current battery :", self.battery)  
+     
   # Method to demonstate the game app
     def games(self):
         print("1. Rock Paper Scissors")
