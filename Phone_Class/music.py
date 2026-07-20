@@ -58,7 +58,7 @@ class MusicManager:
                     else:    
                         print("Error : Song number not found")
                 else:
-                    print("The choice should be a number")  
+                    print("The choice should be a number")   
 
     # Method to add a new song to the play list
     def add_song(self):
@@ -91,7 +91,7 @@ class MusicManager:
                 new_play_list[number] = value
 
             self.play_list = new_play_list
-            return  
+            return                   
 
     # Method to delete a song from the play list
     def delete_song(self):
@@ -142,3 +142,43 @@ class MusicManager:
         else:
             self.current_song = None
             print("Music stopped successfully.")                                                               
+
+    # Method to play music and reduce battery percentage
+    def music_manager(self):
+        if self.battery <= 20 :
+            print("Battery is running low!! Please charge it.  ")
+            return
+        print("="*35)
+        print("            MUSIC MENU")
+        print("="*35)
+        print("1.Play music")
+        print("2.Show play list")
+        print("3.Add song")
+        print("4.Delete song")
+        print("5.Stop music")
+        print("6.See menu")
+        print("7.Back")  
+
+        while True :
+            choice = input("Enter a choice from the above menu :")
+
+            if (choice.isdigit()):
+                choice = int(choice)
+                if choice == 1:
+                    self.play_music()
+                elif choice == 2:
+                    self.show_play_list()
+                elif choice == 3:
+                    self.add_song()
+                elif choice == 4:
+                    self.delete_song()
+                elif choice == 5:
+                    self.stop_song()
+                elif choice == 6:
+                    self.see_menu()
+                elif choice == 7 :
+                    return
+                else:
+                    print("Enter a valid choice from the menu ")
+            else:
+                print("Error :Choice should be a digit") 
