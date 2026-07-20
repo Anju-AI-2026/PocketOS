@@ -80,3 +80,15 @@ class MusicManager:
                     return
             else:
                 print("The song should contain only alphanumeric name")   
+
+    # Method to reorganize the playlist
+    def reorganize_playlist(self):
+        new_play_list ={}
+        if (not self.play_list):
+            return False
+        else:
+            for number ,value in enumerate(self.play_list.values(), start = 1):
+                new_play_list[number] = value
+
+            self.play_list = new_play_list
+            return          
