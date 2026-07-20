@@ -133,3 +133,12 @@ class MusicManager:
                         print("The choice is not in playlist")                       
                 else:
                     print("Invalid choice")  
+
+    # Method to stop the song
+    def stop_song(self):
+        if self.current_song is None :
+            print("No music is playing.")
+            return
+        else:
+            self.current_song = None
+            print("Music stopped successfully.")                                                               
