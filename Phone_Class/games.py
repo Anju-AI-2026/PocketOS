@@ -161,3 +161,40 @@ class GameManager:
                 return
             else:
                 print("Invalid choice!")    
+
+  # Method to demonstate the game app
+    def games(self):
+        print("1. Rock Paper Scissors")
+        print("2.Lucky Fortune")
+        print("3.Hangnam")
+        print("4.Tic Tac Toe")
+        print("5.Back")
+
+        if (self.battery <= 20):
+            print("The battery is low please charge it")
+            return
+        else:
+            while True:
+                choice = input("Enter a choice from the menu :")
+                if (choice.isdigit()):
+                    choice = int(choice)
+
+                    if (choice == 1):
+                        self.rock_paper_scissors()
+
+                    elif (choice == 2):
+                        self.lucky_fortune()
+
+                    elif (choice == 3):
+                        print("Still in development level")
+
+                    elif (choice == 4):
+                        print("Still in development level")
+
+                    elif (choice == 5):
+                        return
+
+                    else:
+                        print("Enter a valid choice from yhe menu")    
+                else:
+                    print("Choice should be a number ")
