@@ -54,6 +54,23 @@ class Phone(ContactManager,
         print("10.See menu")
         print("11.Exit") 
 
+# Password authentication before accessing the phone
+real_p=12345   
+password=int(input("Enter the password : "))
+if(real_p==password):
+    print("The password is correct")
+else:
+    print("The password is incorrect")   
+    exit() 
+
+# Taking phone details from the user
+name=input("Enter the phone company name : ")
+brand=input("Enter the mobile phone brand name : ")
+colour=input("Enter the mobile phone colour : ")
+memory=input("Enter the memory of the mobile phone : ")
+
+# Creating a Phone object
+phone1=Phone(name,brand,colour,memory)
 
 
 
