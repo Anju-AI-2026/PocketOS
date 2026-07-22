@@ -47,8 +47,26 @@ class BatteryManager:
             print("Phone is switched off.")
             print("Please charge the battery.")
             return False
-
         if self.battery <= 20:
             print("Battery is getting low! Please charge your phone.")
-
         return True 
+
+    def battery_manager(self):
+        if not self.battery_manager.check_battery():
+            return
+        self.see_battery_menu()
+        while True:
+            choice = input("Enter your choice :")
+
+            if choice.isdigit():
+                choice = int(choice)
+                if choice == 1:
+                    self.charge_battery()
+                elif choice == 2:
+                    self.show_battery()
+                elif choice == 3:
+                    return
+                else:
+                    print("Enter a valid choice") 
+            else:
+                print("Choice should be a number")               
