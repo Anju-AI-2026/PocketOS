@@ -2,27 +2,34 @@ from contacts import ContactManager
 from calls import CallManager
 from messages import MessageManager
 from calculator import CalculatorManager
+from games import GameManager
+from battery import BatteryManager
 from music import MusicManager
-import random
 
 # Program to demonstrate a phone class 
 
-class Phone(ContactManager, CallManager, MessageManager, CalculatorManager, MusicManager):
+class Phone(ContactManager, 
+            CallManager, 
+            MessageManager, 
+            CalculatorManager, 
+            GameManager, 
+            MusicManager
+            ):
 
      # Constructor to initialize phone details and default values
     def __init__(self,name,brand,colour,memory):
 
-        ContactManager.__init__(self)
-        CallManager.__init__(self)
-        MessageManager.__init__(self)
-        CalculatorManager.__init__(self) 
-        MusicManager.__init__(self)
-         
-        self.name = name
-        self.brand = brand
-        self.colour = colour
-        self.memory = memory
-        self.battery=100
+        CalculatorManager.__init__(self, self.battery_manager)
+        ContactManager.__init__(self, self.battery_manager)
+        CallManager.__init__(self, self.battery_manager)
+        MessageManager.__init__(self, self.battery_manager)
+        MusicManager.__init__(self, self.battery_manager)
+        self.battery_manager = BatteryManager()
+
+        self.name=name
+        self.brand=brand
+        self.colour=colour
+        self.memory=memory
 
     # Method to display phone details
     def showdetails(self):
@@ -36,25 +43,18 @@ class Phone(ContactManager, CallManager, MessageManager, CalculatorManager, Musi
     def see_menu(self):
         print("========Menu========")
         print("1.Show the details of the Mobile phone")
-        print("2.Make a call")
-        print("3.Send a message")
-        print("4.Music app")
-        print("5.Show call history")
-        print("6.Show phone battery")
-        print("7.Charge battery")
-        print("8.See menu")
-        print("9.Add Contact")
-        print("10.View saved contact")
-        print("11.Delete contact")
-        print("12.Search contact") 
-        print("13.View message history") 
-        print("14.Delete message")
-        print("15.Delete Call history")
-        print("16.Clear call history")
-        print("17.Clear message history") 
-        print("18.Calculator")  
-        print("19.Games") 
-        print("20.Exit") 
+        print("2.Contact App")
+        print("3.Message App")
+        print("4.Call App")
+        print("5.Music app")
+        print("6.Calculator")
+        print("7.Game app")
+        print("8..Show phone battery")
+        print("9.Charge battery")
+        print("10.See menu")
+        print("11.Exit") 
+
+
 
 
 
