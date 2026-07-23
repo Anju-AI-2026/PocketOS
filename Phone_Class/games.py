@@ -3,7 +3,7 @@ import random
 class GameManager:
 
     # Method to see the game menu
-    def see_menu(self):
+    def see_game_menu(self):
         print("="*35)
         print("             GAME MENU")
         print("="*35)
@@ -163,12 +163,8 @@ class GameManager:
                 print("Invalid choice!")    
 
   # Method to demonstate the game app
-    def games(self):
-        print("1. Rock Paper Scissors")
-        print("2.Lucky Fortune")
-        print("3.Hangnam")
-        print("4.Tic Tac Toe")
-        print("5.Back")
+    def game_manager(self):
+        self.see_game_menu()
 
         if (self.battery <= 20):
             print("The battery is low please charge it")
