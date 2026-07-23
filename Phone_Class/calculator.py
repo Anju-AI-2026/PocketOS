@@ -4,7 +4,7 @@ class CalculatorManager:
         self.calculator_history = []
 
     # Method to show calculator menu
-    def see_menu(self):
+    def see_calculator_menu(self):
         print("="*35)
         print("            CALCULATOR MENU")
         print("="*35)
@@ -283,7 +283,7 @@ class CalculatorManager:
         if (self.battery <=20):
             print("Battery is low please charge it")
             return
-        self.see_menu()
+        self.see_calculator_menu()
         
         while True :
             choice = input("Enter the choice from above menu :")
