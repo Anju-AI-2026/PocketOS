@@ -1,5 +1,17 @@
 from phone_class import Phone
 
+# Interface of the main page of the phone
+print("="*70)
+print("\n                        📱 PHONE MANAGEMENT SYSTEM\n")
+print("="*70)
+
+print()
+print("                  ----------------------------")
+print("                 |                            |")
+print("                 |🔐  PASSWORD ATHENTICATION  |")
+print("                 |                            |")
+print("                  ----------------------------")
+
 # Password authentication before accessing the phone
 real_p=12345   
 
@@ -17,11 +29,7 @@ while True:
     else:
         print("\nThe password should contain digits only")
 
-# Taking phone details from the user
-name=input("Enter the phone company name : ")
-brand=input("Enter the mobile phone brand name : ")
-colour=input("Enter the mobile phone colour : ")
-memory=input("Enter the memory of the mobile phone : ")
+input("\nPress Enter to Continue...")
 
 # Creating a Phone object
 phone1=Phone(name,brand,colour,memory)
