@@ -2,12 +2,20 @@ from phone_class import Phone
 
 # Password authentication before accessing the phone
 real_p=12345   
-password=int(input("Enter the password : "))
-if(real_p==password):
-    print("The password is correct")
-else:
-    print("The password is incorrect")   
-    exit() 
+
+while True:
+    
+    password=input("\nEnter the password 🗝️  : ")
+
+    if (password.isdigit()):
+        password = int(password)
+        if(real_p==password):
+            print("\n✅ Access Granted!")
+            break
+        else:
+            print("\n❌Incorrect password")
+    else:
+        print("\nThe password should contain digits only")
 
 # Taking phone details from the user
 name=input("Enter the phone company name : ")
