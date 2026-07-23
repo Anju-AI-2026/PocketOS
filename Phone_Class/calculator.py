@@ -308,7 +308,7 @@ class CalculatorManager:
                 elif (choice == 9):
                     self.clear_calculator_history() 
                 elif (choice == 10):
-                    self.see_menu()    
+                    self.see_calculator_menu()    
                 elif (choice == 11):
                     return
                 else:
