@@ -5,7 +5,7 @@ class MusicManager:
         self.current_song = None
 
     # Method to see the music menu
-    def see_menu(self):
+    def see_music_menu(self):
         print("="*35)
         print("            MUSIC MENU")
         print("="*35)
@@ -148,16 +148,7 @@ class MusicManager:
         if self.battery <= 20 :
             print("Battery is running low!! Please charge it.  ")
             return
-        print("="*35)
-        print("            MUSIC MENU")
-        print("="*35)
-        print("1.Play music")
-        print("2.Show play list")
-        print("3.Add song")
-        print("4.Delete song")
-        print("5.Stop music")
-        print("6.See menu")
-        print("7.Back")  
+        self.see_music_menu()
 
         while True :
             choice = input("Enter a choice from the above menu :")
@@ -175,7 +166,7 @@ class MusicManager:
                 elif choice == 5:
                     self.stop_song()
                 elif choice == 6:
-                    self.see_menu()
+                    self.see_music_menu()
                 elif choice == 7 :
                     return
                 else:
