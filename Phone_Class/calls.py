@@ -4,7 +4,7 @@ class CallManager:
         self.call_list=[]
 
     # Method to create the call menu
-    def see_menu(self):
+    def see_call_menu(self):
         print("="*35)
         print("            CALL MENU")
         print("="*35)
@@ -151,14 +151,7 @@ class CallManager:
         if self.battery <= 20 :
             print("Battey is running low!! Please charge it")
             return
-        print("="*35)
-        print("            CALL MENU")
-        print("="*35)
-        print("1.Make a call")    
-        print("2.View call history")
-        print("3.Delete call history")
-        print("4.Clear call history")
-        print("5.Back")
+        self.see_call_menu()
         while True :
             choice = input("Enter the choice from above menu :")
             if choice.isdigit():
