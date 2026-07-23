@@ -4,7 +4,7 @@ class ContactManager:
         self.contacts = {}
 
     # Method to see the contact menu
-    def see_menu(self):
+    def see_contact_menu(self):
         print("="*35)
         print("            CONTACT MENU ")
         print("="*35)
@@ -147,16 +147,7 @@ class ContactManager:
         if (self.battery <= 20):
             print("Battery getting low!! Please charge it.")
             return
-        print("="*35)
-        print("            CONTACT MENU ")
-        print("="*35)
-        print("1.Add contacts")
-        print("2.View contacts")
-        print("3.Delete contacts")
-        print("4.Search contact")
-        print("5.Clear contacts")
-        print("6.See menu")
-        print("7.Back")
+        self.see_contact_menu()
 
         while True :
             choice = input("Enter a choice from the menu :")
