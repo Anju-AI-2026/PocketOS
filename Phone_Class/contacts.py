@@ -165,7 +165,7 @@ class ContactManager:
                 elif choice == 5 :
                     self.clear_contact()
                 elif choice == 6 :
-                    self.see_menu()
+                    self.see_contact_menu()
                 elif choice == 7 :
                     return
                 else:
