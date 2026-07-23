@@ -4,7 +4,7 @@ class MessageManager:
         self.message_list=[]
 
     # Method to see the message menu
-    def see_menu(self):
+    def see_message_menu(self):
         print("="*35)
         print("            MESSAGE MENU")
         print("="*35)
@@ -150,15 +150,7 @@ class MessageManager:
         if self.battery <= 20:
             print("Battery is running low!! Please charge it. ")
             return
-        print("="*35)
-        print("            MESSAGE MENU")
-        print("="*35)
-        print("1.Send a message")
-        print("2.View message history")
-        print("3.Delete message ")
-        print("4.Clear message history")
-        print("5.See menu")
-        print("6.Back")     
+        self.see_message_menu()   
         while True :
             choice = input("Enter a choice from above menu :")
             if choice.isdigit():
@@ -172,7 +164,7 @@ class MessageManager:
                 elif choice == 4 :
                     self.clear_message_history()
                 elif choice == 5 :
-                    self.see_menu()
+                    self.see_message_menu()
                 elif choice == 6 :
                     return
                 else:
