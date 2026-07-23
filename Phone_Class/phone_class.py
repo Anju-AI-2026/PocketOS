@@ -17,7 +17,7 @@ class Phone(ContactManager,
             ):
 
      # Constructor to initialize phone details and default values
-    def __init__(self,name,brand,colour,memory):
+    def __init__(self,):
 
         CalculatorManager.__init__(self, self.battery_manager)
         ContactManager.__init__(self, self.battery_manager)
@@ -26,10 +26,10 @@ class Phone(ContactManager,
         MusicManager.__init__(self, self.battery_manager)
         self.battery_manager = BatteryManager()
 
-        self.name=name
-        self.brand=brand
-        self.colour=colour
-        self.memory=memory
+        self.name = "Samsung"
+        self.brand = "Galaxy S24"
+        self.colour = "Black"
+        self.memory = "256 GB"
 
     # Method to display phone details
     def showdetails(self):
@@ -73,14 +73,8 @@ while True:
 
 input("\nPress Enter to Continue...")
 
-# Taking phone details from the user
-name=input("Enter the phone company name : ")
-brand=input("Enter the mobile phone brand name : ")
-colour=input("Enter the mobile phone colour : ")
-memory=input("Enter the memory of the mobile phone : ")
-
 # Creating a Phone object
-phone1=Phone(name,brand,colour,memory)
+phone1=Phone()
 
 # Displaying menu repeatedly until the user exits the program
 phone1.see_menu()
