@@ -12,7 +12,8 @@ class CallManager:
         print("2.View call history")
         print("3.Delete call history")
         print("4.Clear call history")
-        print("5.Back")
+        print("5.See menu")
+        print("6.Back")
 
     # Method to make a phone call and store call history
     def call(self):
@@ -164,6 +165,8 @@ class CallManager:
                 elif choice == 4 :
                     self.clear_call_history()
                 elif choice == 5 :
+                    self.see_call_menu()
+                elif choice == 6 :
                     return
                 else:
                     print("Enter a valid choice ")
