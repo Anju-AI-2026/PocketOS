@@ -188,6 +188,9 @@ class GameManager:
                         print("Still in development level")
 
                     elif (choice == 5):
+                        self.see_game_menu()
+
+                    elif choice == 6 :
                         return
 
                     else:
