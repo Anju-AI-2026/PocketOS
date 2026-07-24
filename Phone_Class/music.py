@@ -1,6 +1,7 @@
 class MusicManager:
 
-    def __init__(self):
+    def __init__(self, battery_manager):
+        self.battery_manager = battery_manager
         self.play_list = {}
         self.current_song = None
 
@@ -34,6 +35,7 @@ class MusicManager:
         else:
             for key,value in self.play_list.items():
                 print(key,". " ,value)
+            self.battery_manager.consume_battery(2)    
 
     # Method to play a music
     def play_music(self):
@@ -54,6 +56,7 @@ class MusicManager:
                     if choice in self.play_list :
                         self.current_song = self.play_list[choice]
                         print(f" 🎶 Now playing {self.current_song}")
+                        self.battery_manager.consume_battery(7)
                         return
                     else:    
                         print("Error : Song number not found")
@@ -77,6 +80,7 @@ class MusicManager:
                     current_number = max(self.play_list)
                     self.play_list[current_number+1] = song_name
                     print("Song added successfully!!")
+                    self.battery_manager.consume_battery(2)
                     return
             else:
                 print("The song should contain only alphanumeric name")   
@@ -118,6 +122,7 @@ class MusicManager:
                                 print("🎶 Music stopped ")
                                 print("🗑️ Song deleted successfully.")
                                 self.reorganize_playlist()
+                                self.battery_manager.consume_battery(2)
                                 return
                             elif (stop_music == "n"):
                                 break
@@ -145,10 +150,9 @@ class MusicManager:
 
     # Method to play music and reduce battery percentage
     def music_manager(self):
-        if self.battery <= 20 :
-            print("Battery is running low!! Please charge it.  ")
+        if not self.battery_manager.check_battery():
             return
-        self.see_music_menu()
+        self.see_music_menu() 
 
         while True :
             choice = input("Enter a choice from the above menu :")
@@ -172,4 +176,4 @@ class MusicManager:
                 else:
                     print("Enter a valid choice from the menu ")
             else:
-                print("Error :Choice should be a digit") 
+                print("Error :Choice should be a digit")                                                
