@@ -1,6 +1,7 @@
 class ContactManager:
 
-    def __init__(self):
+    def __init__(self, battery_manager):
+        self.battery_manager = battery_manager
         self.contacts = {}
 
     # Method to see the contact menu
@@ -18,20 +19,26 @@ class ContactManager:
 
     # Adds a contact after validating the name and phone number
     def add_contact(self):
-        self.battery=self.battery-2
+        self.battery_manager.consume_battery(2)
         while True:
+            print("====================================")
             name=input("Enter the contact name :")
             if (name in self.contacts):
-                print("Contact already exit")
+                print("\n======================")
+                print("Contact already exit\n")
+                print("======================\n")
                 return
             else:
                 if (name.replace(" ","").isalnum()):
                     if (name.isdigit()):
-                        print("Contact name should not be only made up of numbers!")
+                        print("\n")
+                        print("\n❌ Invalid Input")  
+                        print("Contact name should not be only made up of numbers!\n")
                     else:
                         break
                 else:
-                    print("Name only contain alphabet or alphanumeric name")
+                    print("\n❌ Invalid Input")  
+                    print("Name only contain alphabet or alphanumeric name\n")
 
         while True:
             phone_number=input("Enter phone number :")
@@ -39,6 +46,8 @@ class ContactManager:
                 if (phone_number.isdigit()):
                     self.contacts[name] = phone_number
                     print("Phone number successfully saved")
+                    print("=====================================")
+                    self.battery_manager.consume_battery(2)
                     break
                 else:
                     print("Phone number should not contain charector!!")
@@ -47,7 +56,7 @@ class ContactManager:
 
     # Displays all contacts stored in the contact book
     def view_contact(self):
-        self.battery=self.battery-2
+        self.battery_manager.consume_battery(2)
         if (not self.contacts):
             print("=================")
             print("Contact is empty")
@@ -65,9 +74,10 @@ class ContactManager:
                     print("-" * 20)  
                     count=count+1
 
+
         # Method to delete the contact from the contact
     def delete_contact(self):
-        self.battery=self.battery-2
+        self.battery_manager.consume_battery(2)
         if (not self.contacts):
             print("Contact is empty")
         else:
@@ -77,6 +87,7 @@ class ContactManager:
                     if (contact_name in self.contacts):
                         del self.contacts[contact_name]
                         print("Contact deleted successfully!")
+                        self.battery_manager.consume_battery(2)
                         break 
                     else:
                         print("Contact not found")         
@@ -93,6 +104,7 @@ class ContactManager:
                     print(f"Name :{key}")
                     print(f"Number : {value}")
                     print("="*20)
+                    self.battery_manager.consume_battery(2)
                     return
             for call in self.call_list:
                 if (search_record == call["number"]):
@@ -101,6 +113,7 @@ class ContactManager:
                     print(f"Name :",call["name"])
                     print(f"Number :",call["number"])
                     print("="*20)
+                    self.battery_manager.consume_battery(2)
                     return
 
         else:
@@ -111,6 +124,7 @@ class ContactManager:
                     print(f"Name :{search_record}")                        
                     print(f"Number : {self.contacts[search_record]}")
                     print("="*20)
+                    self.battery_manager.consume_battery(2)
                     return 
             for call in self.call_list:
                 if (search_record == call["name"]) :
@@ -119,6 +133,7 @@ class ContactManager:
                     print(f"Name :",call["name"])
                     print(f"Number :",call["number"])
                     print("="*20)
+                    self.battery_manager.consume_battery(2)
                     return
 
         if not found:
@@ -137,6 +152,7 @@ class ContactManager:
                 if (sure_thing == "y"):
                     self.contacts.clear()
                     print("Contacts deleted sucssessfully")
+                    self.battery_manager.consume_battery(2)
                     return
                 elif (sure_thing == "n"):
                     return
@@ -144,13 +160,14 @@ class ContactManager:
                     print("Enter a valid choice")                         
 
     def contact_manager(self):
-        if (self.battery <= 20):
-            print("Battery getting low!! Please charge it.")
+        if not self.battery_manager.check_battery():
             return
         self.see_contact_menu()
 
         while True :
-            choice = input("Enter a choice from the menu :")
+            choice=input("\n➡️  Enter your choice : ")
+            print()
+
             if (choice.isdigit()):
                 choice = int(choice)
                 
@@ -171,4 +188,4 @@ class ContactManager:
                 else:
                     print("Enter a valid choice")
             else:
-                print("Error : Choice should be a digit") 
+                print("Error : Choice should be a digit")        
