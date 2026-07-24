@@ -1,6 +1,7 @@
 class CallManager:
 
-    def __init__(self):
+    def __init__(self, battery_manager):
+        self.battery_manager = battery_manager
         self.call_list=[]
 
     # Method to create the call menu
@@ -30,7 +31,7 @@ class CallManager:
                                 "type" : "Outgoing" 
                             }
                             self.call_list.append(call_record)
-                            self.battery=self.battery-10
+                            self.battery_manager.consume_battery(5)
                             return
                     while True:
                         save_choice = input("Do you want to save the number? (y/n) :").lower()
@@ -53,6 +54,7 @@ class CallManager:
                                             print("Contact saved successfully!")
                                             print(f"Calling {name}")
                                             print("Dialing!!!")
+                                            self.battery_manager.consume_battery(5)
                                             return 
                                     else:
                                         print("Name only contain alphabet or alphanumeric name")       
@@ -65,7 +67,7 @@ class CallManager:
                                     "type" : "Outgoing"
                                 }
                                 self.call_list.append(call_record)
-                                self.battery=self.battery-10
+                                self.battery_manager.consume_battery(5)
                                 return
                             else:
                                 print("Please enter a valid choice!")
@@ -83,14 +85,14 @@ class CallManager:
                     "type" : "Outgoing" 
                 }
                 self.call_list.append(call_record)
-                self.battery=self.battery-10
+                self.battery_manager.consume_battery(5)
                 return
             else:
                 print("Contact not found")    
 
     # Method to display call history
     def view_call_history(self):
-        self.battery = self.battery - 2
+        self.battery_manager.consume_battery(2)
 
         if not self.call_list:
             print("==========================")
@@ -126,6 +128,7 @@ class CallManager:
                     length = len(self.call_list)
                     if (choice >= 1 and choice <= length):
                         del self.call_list[choice-1]
+                        self.battery_manager.consume_battery(2)
                         return
                     else:
                         print("Choice is out of range")
@@ -141,6 +144,7 @@ class CallManager:
                 if (sure_thing == "y"):
                     self.call_list.clear()
                     print("Call history deleted sussessfully")
+                    self.battery_manager.consume_battery(2)
                     return
                 elif (sure_thing == "n"):
                     return
@@ -149,8 +153,7 @@ class CallManager:
 
     # Method to create the contact controller
     def call_manager(self):
-        if self.battery <= 20 :
-            print("Battey is running low!! Please charge it")
+        if not self.battery_manager.check_battery():
             return
         self.see_call_menu()
         while True :
@@ -165,10 +168,10 @@ class CallManager:
                 elif choice == 4 :
                     self.clear_call_history()
                 elif choice == 5 :
-                    self.see_call_menu()
+                    self.see_call_menu()    
                 elif choice == 6 :
                     return
                 else:
                     print("Enter a valid choice ")
             else:
-                print("Error : choice should be a digit")        
+                print("Error : choice should be a digit")      
