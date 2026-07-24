@@ -7,9 +7,9 @@ print("="*70)
 
 print()
 print("                  ----------------------------")
-print("                 |                            |")
-print("                 |🔐  PASSWORD ATHENTICATION  |")
-print("                 |                            |")
+print("                 |                             |")
+print("                 |🔐  PASSWORD AUTHENTICATION  |")
+print("                 |                             |")
 print("                  ----------------------------")
 
 # Password authentication before accessing the phone
@@ -29,10 +29,10 @@ while True:
     else:
         print("\nThe password should contain digits only")
 
-input("\nPress Enter to Continue...")
+input("\nPress Enter to Continue...\n")
 
 # Creating a Phone object
-phone1=Phone(name,brand,colour,memory)
+phone1=Phone()
 
 # Displaying menu repeatedly until the user exits the program
 phone1.see_menu()
@@ -42,34 +42,43 @@ print()
 print("📱 Which application would you like to open?\n")
 # Processing user's menu choice
 while True:
-    
-    choice=int(input("➡️  Enter a choice : "))
-    print()
 
     if not phone1.battery_manager.check_battery():
-        continue
-    if choice==1:
-        phone1.showdetails()
-    elif choice==2:
-        phone1.contact_manager()
-    elif choice==3:
-        phone1.call_manager()
-    elif choice==4:
-        phone1.message_manager()
-    elif choice==5:
-        phone1.music_manager() 
-    elif choice==6:
-        phone1.calculator_manager()
-    elif choice==7:
-        phone1.game_manager()
-    elif choice == 8:
-        phone1.battery_manager.show_battery()
-    elif choice == 9:
-        phone1.battery_manager.battery_manager()
-    elif choice == 11:
-        exit()
+        break
+
+    choice=input("\n➡️  Enter your choice : ")
+    print()
+
+    if (choice.isdigit()):
+
+        choice = int(choice)
+        
+        if choice==1:
+            phone1.showdetails()
+        elif choice==2:
+            phone1.contact_manager()
+        elif choice==3:
+            phone1.call_manager()
+        elif choice==4:
+            phone1.message_manager()
+        elif choice==5:
+            phone1.music_manager() 
+        elif choice==6:
+            phone1.calculator_manager()
+        elif choice==7:
+            phone1.game_manager()
+        elif choice == 8:
+            phone1.battery_manager.show_battery()
+        elif choice == 9:
+            phone1.battery_manager.battery_manager()
+        elif choice == 10 :
+            exit()
+        else:
+            print("❌ Invalid choice!")      
+            print("Please enter a number between 1 and 10.")
+
     else:
-        print("Please enter a valid number!!!")                    
+        print(" ❌ The choice should be a digit")              
 
 if __name__ == "__main__":
     main()
