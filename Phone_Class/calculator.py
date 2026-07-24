@@ -1,13 +1,15 @@
+
 class CalculatorManager:
 
-    def __init__(self):
+    def __init__(self, battery_manager):
+        self.battery_manager = battery_manager
         self.calculator_history = []
 
     # Method to show calculator menu
     def see_calculator_menu(self):
-        print("="*35)
-        print("            CALCULATOR MENU")
-        print("="*35)
+        print("===========================================================")
+        print("                 📱 SAMSUNG GALAXY S24\n")
+        print("=============================================================")
         print("1.Addition")
         print("2.Subtraction")
         print("3.Multiplication")
@@ -19,6 +21,8 @@ class CalculatorManager:
         print("9.Clear calculator history")
         print("10.See calculator menu")
         print("11.Back")
+        print("==================================================================")
+
 
     # Method to calculate the summation of numbers
     def addition(self):
@@ -56,8 +60,9 @@ class CalculatorManager:
 
 
                 print("The sum of all numbers is:", total)
-                self.battery = self.battery - 2
+                self.battery_manager.consume_battery(10)
                 return
+        
 
     # Method to calculate the multiplication of numbers
     def multiplication(self):
@@ -97,7 +102,7 @@ class CalculatorManager:
                 self.calculator_history.append(calculator_record)                
 
                 print("The multiplication is :", total)
-                self.battery = self.battery - 2 
+                self.battery_manager.consume_battery(2)
                 return
 
     # Method to calculate the subtraction of numbers
@@ -130,7 +135,7 @@ class CalculatorManager:
                 for j in range (1,len(numbers)):
                     total = total - numbers[j]
                 print("The subtraction of numbers is :", total)   
-                self.battery = self.battery - 2
+                self.battery_manager.consume_battery(2)
                 
 
                 calculator_record = {
@@ -141,6 +146,7 @@ class CalculatorManager:
                 self.calculator_history.append(calculator_record)  
                 return              
 
+    
     # Method to calculate the division of numbers
     def division(self):
         while True:
@@ -165,12 +171,13 @@ class CalculatorManager:
                 }
                     self.calculator_history.append(calculator_record)                
 
-                    self.battery = self.battery - 2
+                    self.battery_manager.consume_battery(2)
                     return
                 else:
                     print("Error : Cannot divide by zero.")
             else:
-                print("Number should be a digit")   
+                print("Number should be a digit")                     
+
 
     # Method to find the remainder of numbers
     def modulus(self):
@@ -195,12 +202,12 @@ class CalculatorManager:
                     "answer" : total 
                 }
                     self.calculator_history.append(calculator_record)  
-                    self.battery = self.battery - 2
+                    self.battery_manager.consume_battery(2)
                     return
                 else:
                     print("Error : Number can not be zero.")
             else:
-                print("Number should be a digit")  
+                print("Number should be a digit")      
 
     # Method to find the square of a number
     def square(self):
@@ -218,7 +225,7 @@ class CalculatorManager:
                 }
                 self.calculator_history.append(calculator_record)  
 
-                self.battery = self.battery - 2
+                self.battery_manager.consume_battery(2)
                 return
             else:
                 print("Number should be a digit")     
@@ -238,7 +245,7 @@ class CalculatorManager:
                     "answer" : total 
                 }
                 self.calculator_history.append(calculator_record)  
-                self.battery = self.battery - 2
+                self.battery_manager.consume_battery(2)
                 return
             else:
                 print("Number should be a digit")  
@@ -259,7 +266,8 @@ class CalculatorManager:
                 print(f"Operation   : {calculation['operation']}")
                 print(f"Expression : {calculation['expression']}")
                 print(f"Answer      : {calculation['answer']}")
-                print("-" * 35)  
+                print("-" * 35)   
+                self.battery_manager.consume_battery(1)  
 
     # Method to clear the calculator history
     def clear_calculator_history(self):
@@ -272,16 +280,16 @@ class CalculatorManager:
                 if (sure_thing == "y"):
                     self.calculator_history.clear()
                     print("Calculator history deleted sussessfully")
+                    self.battery_manager.consume_battery(2)
                     return
                 elif (sure_thing == "n"):
                     return
                 else:
-                    print("Enter a valid choice")   
+                    print("Enter a valid choice")    
 
     # Method to take user choice for calculator
     def calculator_manager(self):
-        if (self.battery <=20):
-            print("Battery is low please charge it")
+        if not self.battery_manager.check_battery():
             return
         self.see_calculator_menu()
         
@@ -308,7 +316,7 @@ class CalculatorManager:
                 elif (choice == 9):
                     self.clear_calculator_history() 
                 elif (choice == 10):
-                    self.see_calculator_menu()    
+                    self.see_calculator_menu()   
                 elif (choice == 11):
                     return
                 else:
