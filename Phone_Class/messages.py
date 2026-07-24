@@ -1,6 +1,7 @@
 class MessageManager:
 
-    def __init__(self):
+    def __init__(self, battery_manager):
+        self.battery_manager = battery_manager
         self.message_list=[]
 
     # Method to see the message menu
@@ -31,7 +32,7 @@ class MessageManager:
                         }
                         print("Message sent!!!")
                         self.message_list.append(message_chat)
-                        self.battery=self.battery-5
+                        self.battery_manager.consume_battery(5)
                         return
                 while True:
                     save_choice=input("Do you want to save the number? (y/n) :").lower()
@@ -54,7 +55,7 @@ class MessageManager:
                                         print("Message sent!!!")
                                         self.message_list.append(message_chat) 
                                         self.contact[name] = user_choice
-                                        self.battery=self.battery-5
+                                        self.battery_manager.consume_battery(5)
                                         return
                                 else:
                                     print("Name only contain alphanumeric ")    
@@ -68,7 +69,7 @@ class MessageManager:
                             }  
                             print("Message sent!!!")
                             self.message_list.append(message_chat) 
-                            self.battery=self.battery-5
+                            self.battery_manager.consume_battery(5)
                             return
                         else:
                             print("Please enter a valid choice!")
@@ -85,14 +86,14 @@ class MessageManager:
                 }  
                 print("Message sent!!!")
                 self.message_list.append(message_chat) 
-                self.battery=self.battery-5
+                self.battery_manager.consume_battery(5)
                 return
             else:
                 print("Contact not found")    
 
     # Method to display call history
     def view_message_history(self):
-        self.battery = self.battery - 2
+        self.battery_manager.consume_battery(2)
 
         if not self.message_list:
             print("==========================")
@@ -112,7 +113,6 @@ class MessageManager:
 
     # Method to delete a individual message from history
     def delete_message(self):
-        self.battery=self.battery-2
         if (not self.message_list):
             print("Message history is empty")
         else:
@@ -123,6 +123,7 @@ class MessageManager:
                         if contact_name == message["name"]:
                             del self.message_list[i]
                             print("Message deleted successfully!")
+                            self.battery_manager.consume_battery(2)
                             return
                     print("Contact not found")    
                 else:
@@ -139,6 +140,7 @@ class MessageManager:
                 if (sure_thing == "y"):
                     self.message_list.clear()
                     print("Message history deleted sussessfully")
+                    self.battery_manager.consume_battery(2)
                     return
                 elif (sure_thing == "n"):
                     return
@@ -147,10 +149,9 @@ class MessageManager:
 
     # Method to create the message controller
     def message_manager(self):
-        if self.battery <= 20:
-            print("Battery is running low!! Please charge it. ")
+        if not self.battery_manager.check_battery():
             return
-        self.see_message_menu()   
+        self.see_message_menu()  
         while True :
             choice = input("Enter a choice from above menu :")
             if choice.isdigit():
@@ -170,4 +171,4 @@ class MessageManager:
                 else:
                     print("Enter a valid choice")
             else:
-                print("Error : Choice should be a digit")                                           
+                print("Error : Choice should be a digit")                       
