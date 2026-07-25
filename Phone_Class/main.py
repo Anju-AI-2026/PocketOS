@@ -40,6 +40,8 @@ print()
 print("-"*35)
 print()
 print("📱 Which application would you like to open?\n")
+
+
 # Processing user's menu choice
 while True:
 
@@ -57,16 +59,22 @@ while True:
             phone1.showdetails()
         elif choice==2:
             phone1.contact_manager()
+            phone1.see_menu()
         elif choice==3:
             phone1.call_manager()
+            phone1.see_menu()
         elif choice==4:
             phone1.message_manager()
+            phone1.see_menu()
         elif choice==5:
             phone1.music_manager() 
+            phone1.see_menu()
         elif choice==6:
             phone1.calculator_manager()
+            phone1.see_menu()
         elif choice==7:
             phone1.game_manager()
+            phone1.see_menu()
         elif choice == 8:
             phone1.battery_manager.show_battery()
         elif choice == 9:
@@ -78,7 +86,7 @@ while True:
             print("Please enter a number between 1 and 10.")
 
     else:
-        print(" ❌ The choice should be a digit")              
+        print(" ❌ The choice should be a digit")                       
 
 if __name__ == "__main__":
     main()
