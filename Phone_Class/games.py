@@ -10,9 +10,8 @@ class GameManager:
         print("1.Rock Paper Scissors")
         print("2.Lucky Fortune")
         print("3.Hangnam")
-        print("4.Tic Tac Toe")
-        print("5.See menu")
-        print("6.Back")
+        print("4.See menu")
+        print("5.Back")
 
     # Method to create the rock, paper, scissors game
     def rock_paper_scissors(self):
@@ -238,38 +237,32 @@ class GameManager:
                     print("Wrong Guess!")
                     lives -= 1
 
-  # Method to demonstate the game app
+    # Method to demonstate the game app
     def game_manager(self):
-        self.see_game_menu()
-
-        if (self.battery <= 20):
-            print("The battery is low please charge it")
+        if not self.battery_manager.check_battery():
             return
-        else:
-            while True:
-                choice = input("Enter a choice from the menu :")
-                if (choice.isdigit()):
-                    choice = int(choice)
+        self.see_game_menu()
+        while True:
+            choice = input("Enter a choice from the menu :")
+            if (choice.isdigit()):
+                choice = int(choice)
 
-                    if (choice == 1):
-                        self.rock_paper_scissors()
+                if (choice == 1):
+                    self.rock_paper_scissors()
 
-                    elif (choice == 2):
-                        self.lucky_fortune()
+                elif (choice == 2):
+                    self.lucky_fortune()
 
-                    elif (choice == 3):
-                        print("Still in development level")
+                elif (choice == 3):
+                    self.hangman_game()
 
-                    elif (choice == 4):
-                        print("Still in development level")
+                elif (choice == 4):
+                    self.see_game_menu()
 
-                    elif (choice == 5):
-                        self.see_game_menu()
+                elif (choice == 5):
+                    return
 
-                    elif choice == 6 :
-                        return
-
-                    else:
-                        print("Enter a valid choice from yhe menu")    
                 else:
-                    print("Choice should be a number ")
+                    print("Enter a valid choice from yhe menu")    
+            else:
+                print("Choice should be a number ")
