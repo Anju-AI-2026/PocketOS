@@ -52,31 +52,94 @@ class GameManager:
 
     # Method to create the Lucky Fortune
     def lucky_fortune(self):
+        self.battery_manager.consume_battery(5)
         print("="*30)
         print("          LUCKY FORTUNE          ")
         print("="*30)
-        lucky_personalities = ["Leader","Creative","Kind","Brave", "Wise","Hardworking","Friendly","Adventurous","Confident","Optimistic"]
-         
-        lucky_colors = ["Red","Blue","Green","Yellow","Purple","Pink","Orange","Black","White","Silver"]
-         
-        lucky_foods = ["Pizza","Burger","Ice Cream","Chocolate","Biryani","Pasta","Momos","Dosa","Sandwich","Cake"]
-         
-        lucky_moods = [ "Happy","Calm","Confident","Excited","Relaxed","Energetic","Focused","Creative","Hopeful","Cheerful"]
-         
-        lucky_activities = [ "Study something new","Practice coding","Read a book","Go for a walk","Exercise","Listen to music","Watch a movie","Draw something","Spend time with family","Call a friend"]
-         
+
+        # List of personalities
+        lucky_personalities = [
+            "Leader",
+            "Creative",
+            "Kind",
+            "Brave", 
+            "Wise",
+            "Hardworking",
+            "Friendly",
+            "Adventurous",
+            "Confident",
+            "Optimistic"
+            ]
+
+        # List of colours
+        lucky_colors = [
+            "Red",
+            "Blue",
+            "Green",
+            "Yellow",
+            "Purple",
+            "Pink",
+            "Orange",
+            "Black",
+            "White",
+            "Silver"
+            ]
+
+        # List of foods
+        lucky_foods = [
+            "Pizza",
+            "Burger",
+            "Ice Cream",
+            "Chocolate",
+            "Biryani",
+            "Pasta",
+            "Momos",
+            "Dosa",
+            "Sandwich",
+            "Cake"
+            ]
+
+        # List of moods
+        lucky_moods = [
+            "Happy",
+            "Calm",
+            "Confident",
+            "Excited",
+            "Relaxed",
+            "Energetic",
+            "Focused",
+            "Creative",
+            "Hopeful",
+            "Cheerful"
+            ]
+
+        # List of activities
+        lucky_activities = [
+            "Study something new",
+            "Practice coding",
+            "Read a book",
+            "Go for a walk",
+            "Exercise",
+            "Listen to music",
+            "Watch a movie",
+            "Draw something",
+            "Spend time with family",
+            "Call a friend"
+            ]
+
+        # List of quotes
         lucky_quotes = [
-    "Believe in yourself.",
-    "Every day is a new beginning.",
-    "Dream big and work hard.",
-    "Small steps lead to big success.",
-    "Stay positive and keep smiling.",
-    "Your effort will never be wasted.",
-    "Today's challenge is tomorrow's strength.",
-    "Great things take time.",
-    "Be fearless in chasing your dreams.",
-    "Success starts with consistency."
-]
+            "Believe in yourself.",
+            "Every day is a new beginning.",
+            "Dream big and work hard.",
+            "Small steps lead to big success.",
+            "Stay positive and keep smiling.",
+            "Your effort will never be wasted.",
+            "Today's challenge is tomorrow's strength.",
+            "Great things take time.",
+            "Be fearless in chasing your dreams.",
+            "Success starts with consistency."
+            ]
         while True:
 
             user_choice = input("Enter your lucky number from (0 to 100) :")
@@ -98,6 +161,7 @@ class GameManager:
                     print("😊 Lucky Mood :", random_moods)
                     print("🎯 Lucky Activity :", random_activities)
                     print("💭 Lucky Quote :", random_quotes)
+                    self.battery_manager.consume_battery(5)
                     break
                 else:
                     print("Number should be between o to 100")
@@ -111,7 +175,7 @@ class GameManager:
             elif should_continue == 'n':
                 return
             else:
-                print("Invalid choice!")
+                print("Invalid choice!")   
 
      # Still at development stage
      # Method to develop the hangnam game
