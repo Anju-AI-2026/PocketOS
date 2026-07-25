@@ -237,6 +237,28 @@ class GameManager:
                     print("Wrong Guess!")
                     lives -= 1
 
+                # Win
+                if "_" not in reference_list:
+                    print("\n🎉 Congratulations!")
+                    print("You guessed the word :", random_word.upper())
+                    break
+
+                # Lose
+                if lives == 0:
+                    print("\n💀 Game Over!")
+                    print("Correct Word :", random_word.upper())
+                    break
+
+            while True:
+                should_continue = input("\nContinue? (y/n) : ").lower()
+
+                if should_continue == "y":
+                    break
+                elif should_continue == "n":
+                    return
+                else:
+                    print("Invalid choice!")
+
     # Method to demonstate the game app
     def game_manager(self):
         if not self.battery_manager.check_battery():
