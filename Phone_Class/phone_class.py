@@ -33,11 +33,17 @@ class Phone(ContactManager,
 
     # Method to display phone details
     def showdetails(self):
-        self.battery=self.battery-2
-        print("Mobile Phone company name :",self.name)
-        print("The mobile phone brand i : ",self.brand)
-        print("The colour of the mobile phone",self.colour)
-        print("The memory of the mobile phone is : ",self.memory)
+        self.battery_manager.consume_battery(2)
+        print("╔" + "═"*54 + "╗\n")
+        print("                 📱 SAMSUNG GALAXY S24\n")
+        print("╠" + "═"*54 + "╣\n")
+
+        print(f"   🏢 Company    : {self.name}")
+        print(f"   📱 Model      : {self.brand}")
+        print(f"   🎨 Colour     : {self.colour}")
+        print(f"   💾 Storage    : {self.memory}\n")
+
+        print("╚" + "═"*54 + "╝")
 
     # Method to see the menu
     def see_menu(self):
