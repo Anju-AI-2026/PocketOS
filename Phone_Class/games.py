@@ -177,54 +177,66 @@ class GameManager:
             else:
                 print("Invalid choice!")   
 
-     # Still at development stage
-     # Method to develop the hangnam game
+    # Method to develop the hangman game
     def hangman_game(self):
         print("="*25)
-        print("          Hangnam Game           ")
+        print("        HANGMAN GAME")
         print("="*25)
-        words = ["apple","python","mobile","friend","coffee","camera","laptop","music","coding","future"]
-        random_word = random.choice(words)
-        reference_list = ["_"]*len(random_word)
-        lives = 6 
-        guessed_word = []
-        while True :
-            print("="*10)
-            print("❤️"*lives)
-            print("GUESSED WORD :")
-            print(reference_list)
-            while True :
-                user_guess = input("Enter a letter :")
-                while True :
-                    if (user_guess.isalpha()):  
-                        if (user_guess in guessed_word):
-                            print("The letter is already guessed")
-                            break
-                        else:     
-                            if user_guess in random_word:
-                                for i in range(len(random_word)):
-                                    if user_guess == random_word[i] :
-                                        guessed_word.append(user_guess)
-                                        reference_list[i] = user_guess
-                            else:
-                                print("Guess again ")
-                                lives -=1             
-                    else:
-                        print("The guess should be a letter ")                
-            if ("_" in reference_list):   
-                continue 
-            else:
-                print("You won !!")
-                break 
+
+        words = [
+            "apple", "python", "mobile", "friend", "coffee",
+            "camera", "laptop", "music", "coding", "future"
+        ]
 
         while True:
-            should_continue = input("Continue? (y/n) :").lower()
-            if should_continue == 'y':
-                break
-            elif should_continue == 'n':
-                return
-            else:
-                print("Invalid choice!")    
+
+            random_word = random.choice(words)
+            reference_list = ["_"] * len(random_word)
+            guessed_word = []
+            lives = 6
+
+            while True:
+
+                print("=" * 30)
+                print("❤️" * lives)
+                print()
+
+                print("WORD :")
+                print(" ".join(reference_list))
+                print()
+
+                print("GUESSED LETTERS :")
+                if guessed_word:
+                    print(" ".join(guessed_word))
+                else:
+                    print("None")
+                print()
+
+                user_guess = input("Enter a letter : ").lower()
+
+                # Validation
+                if not user_guess.isalpha():
+                    print("The guess should be a letter.")
+                    continue
+
+                if len(user_guess) != 1:
+                    print("Enter only one letter.")
+                    continue
+
+                if user_guess in guessed_word:
+                    print("The letter is already guessed.")
+                    continue
+
+                guessed_word.append(user_guess)
+
+                # Correct Guess
+                if user_guess in random_word:
+                    for i in range(len(random_word)):
+                        if random_word[i] == user_guess:
+                            reference_list[i] = user_guess
+                else:
+                    print("Wrong Guess!")
+                    lives -= 1
 
   # Method to demonstate the game app
     def game_manager(self):
