@@ -79,7 +79,7 @@ class ContactManager:
                     count=count+1
 
 
-        # Method to delete the contact from the contact
+    # Method to delete the contact from the contact
     def delete_contact(self):
         self.battery_manager.consume_battery(2)
         if (not self.contacts):
@@ -87,14 +87,17 @@ class ContactManager:
         else:
             while True:
                 contact_name = input("Enter the contact name to delete :")
-                if (contact_name.isalnum()):
+                if contact_name.replace(" ","").isalnum():
                     if (contact_name in self.contacts):
                         del self.contacts[contact_name]
                         print("Contact deleted successfully!")
                         self.battery_manager.consume_battery(2)
                         break 
                     else:
-                        print("Contact not found")         
+                        print("Contact not found")  
+                else:
+                        print("\n❌ Invalid Input")  
+                        print("Name only contain alphabet or alphanumeric name\n")                       
 
     # Method to search for contact in recent call and contact also
     def search_contact(self):
