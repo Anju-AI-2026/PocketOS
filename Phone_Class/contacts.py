@@ -19,9 +19,10 @@ class ContactManager:
 
     # Adds a contact after validating the name and phone number
     def add_contact(self):
+        print("=================➕ADD CONTACT=================")
         self.battery_manager.consume_battery(2)
         while True:
-            print("====================================")
+            print("")
             name=input("Enter the contact name :")
             if (name in self.contacts):
                 print("\n======================")
@@ -42,17 +43,20 @@ class ContactManager:
 
         while True:
             phone_number=input("Enter phone number :")
-            if (len(phone_number) == 10):
-                if (phone_number.isdigit()):
-                    self.contacts[name] = phone_number
-                    print("Phone number successfully saved")
-                    print("=====================================")
-                    self.battery_manager.consume_battery(2)
-                    break
+            if phone_number.isdigit():
+                if (len(phone_number) == 10):
+                    if phone_number in self.contacts.values() :
+                        print("The phone number already exits")
+                    else:
+                        self.contacts[name] = phone_number
+                        print("✅ Contact added successfully!")
+                        print("=====================================")
+                        self.battery_manager.consume_battery(2)
+                        break
                 else:
-                    print("Phone number should not contain charector!!")
+                    print("Phone number should contain 10 digit")  
             else:
-                print("Phone number should contain 10 digit")  
+                print("The phone number should be numbers")        
 
     # Displays all contacts stored in the contact book
     def view_contact(self):
