@@ -6,16 +6,17 @@ class ContactManager:
 
     # Method to see the contact menu
     def see_contact_menu(self):
-        print("="*35)
-        print("            CONTACT MENU ")
-        print("="*35)
-        print("1.Add contacts")
-        print("2.View contacts")
-        print("3.Delete contacts")
-        print("4.Search contact")
-        print("5.Clear contacts")
-        print("6.See menu")
-        print("7.Back")
+        print("╔" + "═"*54 + "╗\n")
+        print("                 📇 CONTACT MANAGER\n")
+        print("╠" + "═"*54 + "╣\n")
+        print("1.➕  Add contacts\n")
+        print("2.👀  View contacts\n")
+        print("3.🗑️  Delete contacts\n")
+        print("4.🔍  Search contact\n")
+        print("5.🧹  Clear contacts\n")
+        print("6.📋  See menu\n")
+        print("7.🔙  Back")
+        print("╚" + "═"*54 + "╝\n")
 
     # Adds a contact after validating the name and phone number
     def add_contact(self):
@@ -79,7 +80,7 @@ class ContactManager:
                     count=count+1
 
 
-    # Method to delete the contact from the contact
+        # Method to delete the contact from the contact
     def delete_contact(self):
         self.battery_manager.consume_battery(2)
         if (not self.contacts):
@@ -98,6 +99,7 @@ class ContactManager:
                 else:
                         print("\n❌ Invalid Input")  
                         print("Name only contain alphabet or alphanumeric name\n")                       
+               
 
     # Method to search for contact in recent call and contact also
     def search_contact(self):
@@ -107,7 +109,7 @@ class ContactManager:
             for key,value in self.contacts.items():
                 if (search_record == value):
                     print("="*20)
-                    print("Search sucssefull!!")
+                    print("Search successful!")
                     print(f"Name :{key}")
                     print(f"Number : {value}")
                     print("="*20)
@@ -116,7 +118,7 @@ class ContactManager:
             for call in self.call_list:
                 if (search_record == call["number"]):
                     print("="*20)
-                    print("Search sucssefull!!")
+                    print("Search successful!")
                     print(f"Name :",call["name"])
                     print(f"Number :",call["number"])
                     print("="*20)
