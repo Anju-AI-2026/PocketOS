@@ -6,81 +6,78 @@ class ContactManager:
 
     # Method to see the contact menu
     def see_contact_menu(self):
-        print("╔" + "═"*54 + "╗\n")
-        print("                 📇 CONTACT MANAGER\n")
-        print("╠" + "═"*54 + "╣\n")
-        print("1.➕  Add contacts\n")
-        print("2.👀  View contacts\n")
-        print("3.🗑️  Delete contacts\n")
-        print("4.🔍  Search contact\n")
-        print("5.🧹  Clear contacts\n")
-        print("6.📋  See menu\n")
-        print("7.🔙  Back")
+        print("╔" + "═"*54 + "╗")
+        print("║                  📇 CONTACT MANAGER                  ║")
+        print("╠" + "═"*54 + "╣")
+        print("║  1. ➕ Add Contact                                    ║")
+        print("║  2. 👀 View Contacts                                 ║")
+        print("║  3. 🗑️ Delete Contact                                ║")
+        print("║  4. 🔍 Search Contact                                ║")
+        print("║  5. 🧹 Clear Contacts                                ║")
+        print("║  6. 📋 Show Menu                                     ║")
+        print("║  7. 🔙 Back                                          ║")
         print("╚" + "═"*54 + "╝\n")
 
     # Adds a contact after validating the name and phone number
     def add_contact(self):
-        print("\n=================➕ADD CONTACT=================")
+        print("\n" + "═" * 18 + " ➕ ADD CONTACT " + "═" * 18)
         self.battery_manager.consume_battery(2)
+
         while True:
-            print("")
-            name=input("Enter the contact name :\n")
+            print()
+            name = input("👤 Enter contact name:\n")
+
             if (name in self.contacts):
-                print("\n======================")
-                print("Contact already exit\n")
-                print("======================\n")
+                print("\n❌ Contact already exists.\n")
                 return
             else:
-                if (name.replace(" ","").isalnum()):
+                if (name.replace(" ", "").isalnum()):
                     if (name.isdigit()):
-                        print("\n")
-                        print("\n❌ Invalid Input")  
-                        print("Contact name should not be only made up of numbers!\n")
+                        print("\n❌ Invalid input.")
+                        print("Name cannot contain only numbers.\n")
                     else:
                         break
                 else:
-                    print("\n❌ Invalid Input")  
-                    print("Name only contain alphabet or alphanumeric name\n")
+                    print("\n❌ Invalid input.")
+                    print("Name can contain only letters or alphanumeric characters.\n")
 
         while True:
-            phone_number=input("\nEnter phone number :\n")
+            phone_number = input("\n📞 Enter phone number:\n")
+
             if phone_number.isdigit():
                 if (len(phone_number) == 10):
-                    if phone_number in self.contacts.values() :
-                        print("The phone number already exits")
+                    if phone_number in self.contacts.values():
+                        print("\n❌ This phone number already exists.")
                     else:
                         self.contacts[name] = phone_number
-                        print("✅ Contact added successfully!")
-                        print("=====================================")
+                        print("\n✅ Contact added successfully!\n")
                         self.battery_manager.consume_battery(2)
                         break
                 else:
-                    print("Phone number should contain 10 digit")  
+                    print("❌ Phone number must contain exactly 10 digits.")
             else:
-                print("The phone number should be numbers")        
+                print("❌ Phone number should contain numbers only.")
 
     # Displays all contacts stored in the contact book
     def view_contact(self):
-        print("\n==================👀 VIEW CONTACT==================")
+        print("\n" + "═" * 17 + " 👀 VIEW CONTACTS " + "═" * 17)
 
         self.battery_manager.consume_battery(2)
-        if (not self.contacts):
-            print("=================")
-            print("Contact is empty")
-            print("=================")
-        else:
-            print()
-            print("==========CONTACT BOOK==========")
-            print()
-            print("\nContacts :")
-            count = 1
-            for key,value in self.contacts.items():
-                    print(count)
-                    print("Name :",key)
-                    print("Number :",value) 
-                    print("-" * 20)  
-                    count=count+1
 
+        if (not self.contacts):
+            print("\n📭 Contact book is empty.\n")
+        else:
+            print("\n" + "─" * 22)
+            print("📖 CONTACT BOOK")
+            print("─" * 22)
+
+            count = 1
+            for key, value in self.contacts.items():
+                print(f"\n📌 Contact {count}")
+                print(f"👤 Name   : {key}")
+                print(f"📞 Number : {value}")
+                print("─" * 24)
+                count = count + 1
 
     # Method to delete the contact from the contact
     def delete_contact(self):
@@ -162,51 +159,63 @@ class ContactManager:
         if not found:
             print("\n❌ Contact not found.\n")
 
-    # Method to create the clear the contact 
+    # Method to create the clear the contact
     def clear_contact(self):
+        print("\n" + "═" * 17 + " 🧹 CLEAR CONTACTS " + "═" * 17)
+
         if (not self.contacts):
-            print("Contact is empty can not clear")
+            print("\n📭 Contact book is empty. Nothing to clear.\n")
             return
         else:
             while True:
-                sure_thing = input("Are you sure (y/n) :").lower()
+                print("\n" + "─" * 28)
+                sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
+                print("─" * 28)
+
                 if (sure_thing == "y"):
                     self.contacts.clear()
-                    print("Contacts deleted sucssessfully")
+                    print("\n✅ All contacts deleted successfully!\n")
                     self.battery_manager.consume_battery(2)
                     return
+
                 elif (sure_thing == "n"):
                     return
+
                 else:
-                    print("Enter a valid choice")                         
+                    print("\n❌ Please enter a valid choice.\n")
 
     def contact_manager(self):
         if not self.battery_manager.check_battery():
             return
+
         self.see_contact_menu()
 
-        while True :
-            choice=input("\n➡️  Enter your choice : ")
+        while True:
+            print("\n" + "─" * 42)
+            print("📱 What would you like to do?")
+            print("─" * 42)
+
+            choice = input("\n➡️  Enter your choice: ")
             print()
 
             if (choice.isdigit()):
                 choice = int(choice)
-                
-                if choice == 1 :
+
+                if choice == 1:
                     self.add_contact()
-                elif choice == 2 :
+                elif choice == 2:
                     self.view_contact()
-                elif choice == 3 :
+                elif choice == 3:
                     self.delete_contact()
-                elif choice == 4 :
+                elif choice == 4:
                     self.search_contact()
-                elif choice == 5 :
+                elif choice == 5:
                     self.clear_contact()
-                elif choice == 6 :
+                elif choice == 6:
                     self.see_contact_menu()
-                elif choice == 7 :
+                elif choice == 7:
                     return
                 else:
-                    print("Enter a valid choice")
+                    print("❌ Enter a valid choice.")
             else:
-                print("Error : Choice should be a digit")        
+                print("❌ Error: Choice should be a digit.")
