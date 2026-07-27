@@ -82,75 +82,85 @@ class ContactManager:
                     count=count+1
 
 
-        # Method to delete the contact from the contact
+    # Method to delete the contact from the contact
     def delete_contact(self):
+        print("\n" + "═" * 16 + " 🗑️ DELETE CONTACT " + "═" * 16)
         self.battery_manager.consume_battery(2)
+
         if (not self.contacts):
-            print("Contact is empty")
+            print("\n📭 Contact book is empty.\n")
         else:
             while True:
-                contact_name = input("Enter the contact name to delete :")
-                if contact_name.replace(" ","").isalnum():
+                print("\n" + "─" * 45)
+                contact_name = input("👤 Enter the contact name to delete:\n")
+                print("─" * 45)
+
+                if contact_name.replace(" ", "").isalnum():
                     if (contact_name in self.contacts):
                         del self.contacts[contact_name]
-                        print("Contact deleted successfully!")
+                        print("\n✅ Contact deleted successfully!\n")
                         self.battery_manager.consume_battery(2)
-                        break 
+                        break
                     else:
-                        print("Contact not found")  
+                        print("\n❌ Contact not found.")
                 else:
-                        print("\n❌ Invalid Input")  
-                        print("Name only contain alphabet or alphanumeric name\n")                       
-               
+                    print("\n❌ Invalid input.")
+                    print("Name can contain only letters or alphanumeric characters.\n")
 
     # Method to search for contact in recent call and contact also
     def search_contact(self):
-        search_record = input("Enter the name or number to search :") 
+        print("\n" + "═" * 16 + " 🔍 SEARCH CONTACT " + "═" * 16)
+
+        print("\n" + "─" * 38)
+        search_record = input("🔎 Enter the name or number to search:\n")
+        print("─" * 38)
+
         found = False
+
         if (search_record.isdigit()):
-            for key,value in self.contacts.items():
+            for key, value in self.contacts.items():
                 if (search_record == value):
-                    print("="*20)
-                    print("Search successful!")
-                    print(f"Name :{key}")
-                    print(f"Number : {value}")
-                    print("="*20)
+                    print("\n" + "=" * 22)
+                    print("✅ Search successful!\n")
+                    print(f"👤 Name   : {key}")
+                    print(f"📞 Number : {value}")
+                    print("=" * 22 + "\n")
                     self.battery_manager.consume_battery(2)
                     return
+
             for call in self.call_list:
                 if (search_record == call["number"]):
-                    print("="*20)
-                    print("Search successful!")
-                    print(f"Name :",call["name"])
-                    print(f"Number :",call["number"])
-                    print("="*20)
+                    print("\n" + "=" * 22)
+                    print("✅ Search successful!\n")
+                    print(f"👤 Name   : {call['name']}")
+                    print(f"📞 Number : {call['number']}")
+                    print("=" * 22 + "\n")
                     self.battery_manager.consume_battery(2)
                     return
 
         else:
             for key, value in self.contacts.items():
                 if (search_record == key):
-                    print("="*20)
-                    print("Search sucssefull!!")
-                    print(f"Name :{search_record}")                        
-                    print(f"Number : {self.contacts[search_record]}")
-                    print("="*20)
+                    print("\n" + "=" * 22)
+                    print("✅ Search successful!\n")
+                    print(f"👤 Name   : {search_record}")
+                    print(f"📞 Number : {self.contacts[search_record]}")
+                    print("=" * 22 + "\n")
                     self.battery_manager.consume_battery(2)
-                    return 
+                    return
+
             for call in self.call_list:
-                if (search_record == call["name"]) :
-                    print("="*20)
-                    print("Search sucssefull!!")
-                    print(f"Name :",call["name"])
-                    print(f"Number :",call["number"])
-                    print("="*20)
+                if (search_record == call["name"]):
+                    print("\n" + "=" * 22)
+                    print("✅ Search successful!\n")
+                    print(f"👤 Name   : {call['name']}")
+                    print(f"📞 Number : {call['number']}")
+                    print("=" * 22 + "\n")
                     self.battery_manager.consume_battery(2)
                     return
 
         if not found:
-            print("====================")
-            print("Contact not found")
-            print("====================")  
+            print("\n❌ Contact not found.\n")
 
     # Method to create the clear the contact 
     def clear_contact(self):
