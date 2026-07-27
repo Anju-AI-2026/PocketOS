@@ -6,89 +6,109 @@ class CallManager:
 
     # Method to create the call menu
     def see_call_menu(self):
-        print("="*35)
-        print("            CALL MENU")
-        print("="*35)
-        print("1.Make a call")    
-        print("2.View call history")
-        print("3.Delete call history")
-        print("4.Clear call history")
-        print("5.See menu")
-        print("6.Back")
+        print("╔" + "═"*54 + "╗\n")
+        print("                    📇 CALL MANAGER\n")
+        print("╠" + "═"*54 + "╣\n")
+        print("1.📲 Make a call")    
+        print("2.👀 View call history")
+        print("3.🗑️ Delete call history")
+        print("4.🧹 Clear call history")
+        print("5.📋 See menu")
+        print("6.🔙 Back")
+        print("╚" + "═"*54 + "╝\n")
 
     # Method to make a phone call and store call history
     def call(self):
-        user_choice=(input("Enter the contact number or name:")) 
-        if (user_choice.isdigit()):   
-            if (len(user_choice)==10):
-                    for key,value in self.contacts.items():
-                        if (value == user_choice):
-                            print(f"Calling {key}")
-                            print("Dialing!!!!!")
-                            call_record = {
-                                "name" : key ,
-                                "number" : value,
-                                "type" : "Outgoing" 
-                            }
-                            self.call_list.append(call_record)
-                            self.battery_manager.consume_battery(5)
-                            return
-                    while True:
-                        save_choice = input("Do you want to save the number? (y/n) :").lower()
-                        if (save_choice.isalpha()):
-                            if save_choice == "y":
-                                while True:
-                                    name=input("Enter the contact name :")
-                                    if (name.replace(" ","").isalnum()):
-                                        if (name.isdigit()):
-                                            print("Contact name should not be only made up of numbers!")
-                                        else:
-                                            call_record = {
-                                                "name" : name,
-                                                "number" : user_choice,
-                                                "type" : "Outgoing"
-                                            }
-                                            self.call_list.append(call_record)
-                                            self.contacts[name] = user_choice
-                                            self.battery=self.battery-10
-                                            print("Contact saved successfully!")
-                                            print(f"Calling {name}")
-                                            print("Dialing!!!")
-                                            self.battery_manager.consume_battery(5)
-                                            return 
-                                    else:
-                                        print("Name only contain alphabet or alphanumeric name")       
-                            elif (save_choice == "n"):
-                                print("Calling unknown number")
-                                print("Dialing!!!!!")  
+        while True:
+            print("\n====================📲 Make a call=====================\n")
+
+            user_choice=(input("Enter the contact number or name:\n")) 
+            if (user_choice.isdigit()):   
+                if (len(user_choice)==10):
+                        for key,value in self.contacts.items():
+                            if (value == user_choice):
+                                print(f"📞 Calling {key}\n")
+                                print("☎️  Dialing!!!!!\n")
+                                print("\n✅ Call Ended Successfully")
+
                                 call_record = {
-                                    "name" : "Unknown",
-                                    "number" : user_choice,
-                                    "type" : "Outgoing"
+                                    "name" : key ,
+                                    "number" : value,
+                                    "type" : "Outgoing" 
                                 }
                                 self.call_list.append(call_record)
                                 self.battery_manager.consume_battery(5)
                                 return
+                        while True:
+                            print("\n--------------------------------------------------\n")
+                            save_choice = input("Do you want to save the number? (y/n) :").lower()
+                            print("--------------------------------------------------")
+                            if (save_choice.isalpha()):
+                                if save_choice == "y":
+                                    while True:
+                                        print("\n===========================\n")
+                                        name=input("Enter the contact name :\n")
+                                        print("===========================\n")
+                                        if (name.replace(" ","").isalnum()):
+                                            if (name.isdigit()):
+                                                print("\n❌ Invalid Input")  
+                                                print("Contact name should not be only made up of numbers!\n")
+                                            else:
+                                                call_record = {
+                                                    "name" : name,
+                                                    "number" : user_choice,
+                                                    "type" : "Outgoing"
+                                                }
+                                                self.call_list.append(call_record)
+                                                self.contacts[name] = user_choice
+                                                self.battery_manager.consume_battery(5)
+                                                print("Contact saved successfully!")
+                                                print(f"📞 Calling {name}\n")
+                                                print("☎️  Dialing!!!!!\n")
+                                                print("\n✅ Call Ended Successfully")
+                                                self.battery_manager.consume_battery(5)
+                                                return 
+                                        else:
+                                            print("\n❌ Invalid Input")  
+                                            print("Name only contain alphabet or alphanumeric name\n")
+                                elif (save_choice == "n"):
+                                    print(f"📞 Calling unknown number\n")
+                                    print("☎️  Dialing!!!!!\n")
+                                    print("\n✅ Call Ended Successfully")
+                                    call_record = {
+                                        "name" : "Unknown",
+                                        "number" : user_choice,
+                                        "type" : "Outgoing"
+                                    }
+                                    self.call_list.append(call_record)
+                                    self.battery_manager.consume_battery(5)
+                                    return
+                                else:
+                                    print("\n❌ Invalid Input\n")  
+                                    print("Please enter a valid choice!\n")
                             else:
-                                print("Please enter a valid choice!")
-                        else:
-                            print("Please enter a valid choice")
-            else:   
-                print("Please enter a 10 digit number")
-        else:
-            if (user_choice in self.contacts):
-                print(f"Calling {user_choice}")
-                print("Dialing!!!!!")
-                call_record={
-                    "name" : user_choice,
-                    "number" : self.contacts[user_choice],
-                    "type" : "Outgoing" 
-                }
-                self.call_list.append(call_record)
-                self.battery_manager.consume_battery(5)
-                return
+                                print("\n❌ Invalid Input\n")  
+                                print("Please enter a valid choice\n")
+                else: 
+                    print("\n❌ Invalid Input\n")    
+                    print("Please enter a 10 digit number\n")
             else:
-                print("Contact not found")    
+                if (user_choice in self.contacts):
+                    print(f"📞 Calling {user_choice}\n")
+                    print("☎️  Dialing!!!!!\n")
+                    print("\n✅ Call Ended Successfully")
+                    call_record={
+                        "name" : user_choice,
+                        "number" : self.contacts[user_choice],
+                        "type" : "Outgoing" 
+                    }
+                    self.call_list.append(call_record)
+                    self.battery_manager.consume_battery(5)
+                    return
+                else:
+                    print("==================\n")
+                    print("Contact not found\n")   
+                    print("==================\n") 
 
     # Method to display call history
     def view_call_history(self):
