@@ -6,25 +6,24 @@ from games import GameManager
 from battery import BatteryManager
 from music import MusicManager
 
-# Program to demonstrate a phone class 
+# Program to demonstrate a phone class
 
-class Phone(ContactManager, 
-            CallManager, 
-            MessageManager, 
-            CalculatorManager, 
-            GameManager, 
-            MusicManager
-            ):
+class Phone(ContactManager,
+            CallManager,
+            MessageManager,
+            CalculatorManager,
+            GameManager,
+            MusicManager):
 
-     # Constructor to initialize phone details and default values
-    def __init__(self,):
+    # Constructor to initialize phone details and default values
+    def __init__(self):
 
+        self.battery_manager = BatteryManager()
         CalculatorManager.__init__(self, self.battery_manager)
         ContactManager.__init__(self, self.battery_manager)
         CallManager.__init__(self, self.battery_manager)
         MessageManager.__init__(self, self.battery_manager)
         MusicManager.__init__(self, self.battery_manager)
-        self.battery_manager = BatteryManager()
 
         self.name = "Samsung"
         self.brand = "Galaxy S24"
@@ -34,28 +33,29 @@ class Phone(ContactManager,
     # Method to display phone details
     def showdetails(self):
         self.battery_manager.consume_battery(2)
-        print("╔" + "═"*54 + "╗\n")
-        print("                 📱 SAMSUNG GALAXY S24\n")
-        print("╠" + "═"*54 + "╣\n")
 
-        print(f"   🏢 Company    : {self.name}")
-        print(f"   📱 Model      : {self.brand}")
-        print(f"   🎨 Colour     : {self.colour}")
-        print(f"   💾 Storage    : {self.memory}\n")
-
+        print("╔" + "═"*54 + "╗")
+        print("║                📱 PHONE INFORMATION              ║")
+        print("╠" + "═"*54 + "╣")
+        print(f"║  🏢 Company : {self.name:<37}║")
+        print(f"║  📱 Model   : {self.brand:<37}║")
+        print(f"║  🎨 Colour  : {self.colour:<37}║")
+        print(f"║  💾 Storage : {self.memory:<37}║")
         print("╚" + "═"*54 + "╝")
 
     # Method to see the menu
     def see_menu(self):
-        print("========Menu========")
-        print("1.Show the details of the Mobile phone")
-        print("2.Contact App")
-        print("3.Message App")
-        print("4.Call App")
-        print("5.Music app")
-        print("6.Calculator")
-        print("7.Game app")
-        print("8..Show phone battery")
-        print("9.Charge battery")
-        print("10.See menu")
-        print("11.Exit") 
+        print("╔" + "═"*54 + "╗")
+        print("║                  📱 MAIN MENU                    ║")
+        print("╠" + "═"*54 + "╣")
+        print("║  1. 📄 Phone Details                             ║")
+        print("║  2. 📇 Contacts                                  ║")
+        print("║  3. 📞 Calls                                     ║")
+        print("║  4. 💬 Messages                                  ║")
+        print("║  5. 🎵 Music Player                              ║")
+        print("║  6. 🧮 Calculator                                ║")
+        print("║  7. 🎮 Games                                     ║")
+        print("║  8. 🔋 Battery Status                            ║")
+        print("║  9. ⚙️ Battery Manager                           ║")
+        print("║ 10. 🚪 Exit                                      ║")
+        print("╚" + "═"*54 + "╝")
