@@ -25,277 +25,358 @@ class CalculatorManager:
 
     # Method to calculate the summation of numbers
     def addition(self):
-        while True :
-            expression = input("Enter the expression :")
+        while True:
+            expression = input("➕ Enter the addition expression:\n")
+
             if (not expression):
-                print("The expression is empty")
+                print("\n❌ Expression cannot be empty.\n")
                 return None
-            elif (expression.startswith("+") ):
-                print("The expression should not starts with "+" ")     
-                return None   
+
+            elif (expression.startswith("+")):
+                print("\n❌ Expression should not start with '+'.\n")
+                return None
+
             elif (expression.endswith("+")):
-                print("The expression should not ends with "+" ")     
-                return None       
+                print("\n❌ Expression should not end with '+'.\n")
+                return None
+
             elif ("++" in expression):
-                print("The expression should not contain "++"")
-                return None        
+                print("\n❌ Expression should not contain '++'.\n")
+                return None
+
             else:
                 numbers = expression.split("+")
 
                 for num in numbers:
                     if not num.isdigit():
-                        print("Expression should contain only numbers.")
+                        print("\n❌ Expression should contain numbers only.\n")
                         return
 
                 numbers = [int(num) for num in numbers]
 
                 total = sum(numbers)
+
                 calculator_record = {
-                    "operation" : "Addition",
-                    "expression" : expression,
-                    "answer" : total 
+                    "operation": "Addition",
+                    "expression": expression,
+                    "answer": total
                 }
+
                 self.calculator_history.append(calculator_record)
 
+                print("\n✅ Calculation completed successfully!")
+                print(f"🧮 Answer : {total}\n")
 
-                print("The sum of all numbers is:", total)
                 self.battery_manager.consume_battery(10)
                 return
-        
+
 
     # Method to calculate the multiplication of numbers
     def multiplication(self):
-        while True :
-            expression = input("Enter the expression :")
+        while True:
+            expression = input("✖️ Enter the multiplication expression:\n")
+
             if (not expression):
-                print("The expression is empty")
+                print("\n❌ Expression cannot be empty.\n")
                 return None
-            elif (expression.startswith("*") ):
-                print("The expression should not starts with "*" ")     
-                return None   
+
+            elif (expression.startswith("*")):
+                print("\n❌ Expression should not start with '*'.\n")
+                return None
+
             elif (expression.endswith("*")):
-                print("The expression should not ends with "*" ")     
-                return None       
+                print("\n❌ Expression should not end with '*'.\n")
+                return None
+
             elif ("**" in expression):
-                print("The expression should not contain "**"")
-                return None        
+                print("\n❌ Expression should not contain '**'.\n")
+                return None
+
             else:
                 numbers = expression.split("*")
 
                 for num in numbers:
                     if not num.isdigit():
-                        print("Expression should contain only numbers.")
+                        print("\n❌ Expression should contain numbers only.\n")
                         return
 
                 numbers = [int(num) for num in numbers]
 
                 total = 1
-                for number in numbers :
+                for number in numbers:
                     total = total * number
 
                 calculator_record = {
-                    "operation" : "Multiplication",
-                    "expression" : expression,
-                    "answer" : total 
+                    "operation": "Multiplication",
+                    "expression": expression,
+                    "answer": total
                 }
-                self.calculator_history.append(calculator_record)                
 
-                print("The multiplication is :", total)
+                self.calculator_history.append(calculator_record)
+
+                print("\n✅ Calculation completed successfully!")
+                print(f"🧮 Answer : {total}\n")
+
                 self.battery_manager.consume_battery(2)
                 return
 
     # Method to calculate the subtraction of numbers
     def subtraction(self):
-        while True :
-            expression = input("Enter the expression :")
+        while True:
+            expression = input("➖ Enter the subtraction expression:\n")
+
             if (not expression):
-                print("The expression is empty")
+                print("\n❌ Expression cannot be empty.\n")
                 return None
-            elif (expression.startswith("-") ):
-                print("The expression should not starts with "-" ")     
-                return None   
+
+            elif (expression.startswith("-")):
+                print("\n❌ Expression should not start with '-'.\n")
+                return None
+
             elif (expression.endswith("-")):
-                print("The expression should not ends with "-" ")     
-                return None       
+                print("\n❌ Expression should not end with '-'.\n")
+                return None
+
             elif ("--" in expression):
-                print("The expression should not contain "--"")
-                return None        
+                print("\n❌ Expression should not contain '--'.\n")
+                return None
+
             else:
                 numbers = expression.split("-")
 
                 for num in numbers:
                     if not num.isdigit():
-                        print("Expression should contain only numbers.")
+                        print("\n❌ Expression should contain numbers only.\n")
                         return
 
                 numbers = [int(num) for num in numbers]
 
-                total = numbers[0]                
-                for j in range (1,len(numbers)):
+                total = numbers[0]
+                for j in range(1, len(numbers)):
                     total = total - numbers[j]
-                print("The subtraction of numbers is :", total)   
+
+                print("\n✅ Calculation completed successfully!")
+                print(f"🧮 Answer : {total}\n")
+
                 self.battery_manager.consume_battery(2)
-                
 
                 calculator_record = {
-                    "operation" : "Subtraction",
-                    "expression" : expression,
-                    "answer" : total 
+                    "operation": "Subtraction",
+                    "expression": expression,
+                    "answer": total
                 }
-                self.calculator_history.append(calculator_record)  
-                return              
 
-    
+                self.calculator_history.append(calculator_record)
+                return
+
+
     # Method to calculate the division of numbers
     def division(self):
         while True:
-            num1=input("Enter the first number :")
-            if(num1.isdigit()):
+            num1 = input("➗ Enter the first number:\n")
+
+            if (num1.isdigit()):
                 num1 = int(num1)
                 break
             else:
-                print("Number should be a digit")
+                print("\n❌ Number should contain digits only.\n")
+
         while True:
-            num2 = input("Enter the second number :")
-            if(num2.isdigit()):
-                num2=int(num2)
+            num2 = input("➗ Enter the second number:\n")
+
+            if (num2.isdigit()):
+                num2 = int(num2)
+
                 if (num2 != 0):
                     total = (num1 / num2)
-                    print("The division of numbers is :" , total)
+
+                    print("\n✅ Calculation completed successfully!")
+                    print(f"🧮 Answer : {total}\n")
+
                     expression = f"{num1}/{num2}"
+
                     calculator_record = {
-                    "operation" : "Division",
-                    "expression" : expression,
-                    "answer" : total 
-                }
-                    self.calculator_history.append(calculator_record)                
+                        "operation": "Division",
+                        "expression": expression,
+                        "answer": total
+                    }
+
+                    self.calculator_history.append(calculator_record)
 
                     self.battery_manager.consume_battery(2)
                     return
+
                 else:
-                    print("Error : Cannot divide by zero.")
+                    print("\n❌ Error: Cannot divide by zero.\n")
+
             else:
-                print("Number should be a digit")                     
+                print("\n❌ Number should contain digits only.\n")
 
 
     # Method to find the remainder of numbers
     def modulus(self):
         while True:
-            num1=input("Enter the first number :")
-            if(num1.isdigit()):
+            num1 = input("📊 Enter the first number:\n")
+
+            if (num1.isdigit()):
                 num1 = int(num1)
                 break
             else:
-                print("Number should be a digit")
+                print("\n❌ Number should contain digits only.\n")
+
         while True:
-            num2 = input("Enter the second number :")
-            if(num2.isdigit()):
-                num2=int(num2)
+            num2 = input("📊 Enter the second number:\n")
+
+            if (num2.isdigit()):
+                num2 = int(num2)
+
                 if (num2 != 0):
                     total = (num1 % num2)
-                    print("The modulus of numbers is :" , total)
+
+                    print("\n✅ Calculation completed successfully!")
+                    print(f"🧮 Answer : {total}\n")
+
                     expression = f"{num1}%{num2}"
+
                     calculator_record = {
-                    "operation" : "Modulus",
-                    "expression" : expression,
-                    "answer" : total 
-                }
-                    self.calculator_history.append(calculator_record)  
+                        "operation": "Modulus",
+                        "expression": expression,
+                        "answer": total
+                    }
+
+                    self.calculator_history.append(calculator_record)
+
                     self.battery_manager.consume_battery(2)
                     return
+
                 else:
-                    print("Error : Number can not be zero.")
+                    print("\n❌ Error: Second number cannot be zero.\n")
+
             else:
-                print("Number should be a digit")      
+                print("\n❌ Number should contain digits only.\n")
+
 
     # Method to find the square of a number
     def square(self):
         while True:
-            number = input("Enter the number to find square :")
+            number = input("🔲 Enter a number to find its square:\n")
+
             if (number.isdigit()):
                 number = int(number)
+
                 total = (number * number)
-                print("The square is :" , total)
+
+                print("\n✅ Calculation completed successfully!")
+                print(f"🧮 Answer : {total}\n")
+
                 expression = f"{number}*{number}"
+
                 calculator_record = {
-                    "operation" : "Square",
-                    "expression" : expression,
-                    "answer" : total 
+                    "operation": "Square",
+                    "expression": expression,
+                    "answer": total
                 }
-                self.calculator_history.append(calculator_record)  
+
+                self.calculator_history.append(calculator_record)
 
                 self.battery_manager.consume_battery(2)
                 return
+
             else:
-                print("Number should be a digit")     
+                print("\n❌ Number should contain digits only.\n")
 
     # Method to find the cube of a number
     def cube(self):
         while True:
-            number = input("Enter the number to find cube :")
+            number = input("🧊 Enter a number to find its cube:\n")
+
             if (number.isdigit()):
                 number = int(number)
+
                 total = (number * number * number)
-                print("The cube is :" , total)
+
+                print("\n✅ Calculation completed successfully!")
+                print(f"🧮 Answer : {total}\n")
+
                 expression = f"{number}*{number}*{number}"
+
                 calculator_record = {
                     "operation" : "Cube",
                     "expression" : expression,
-                    "answer" : total 
+                    "answer" : total
                 }
-                self.calculator_history.append(calculator_record)  
+
+                self.calculator_history.append(calculator_record)
                 self.battery_manager.consume_battery(2)
                 return
-            else:
-                print("Number should be a digit")  
 
-    # Method to view the calculator history    
+            else:
+                print("\n❌ Number should contain digits only.\n")
+
+    # Method to view the calculator history
     def view_calculator_history(self):
-        if ( not self.calculator_history):
-            print("=============================")
-            print("Calculator history is empty")
-            print("=============================")
+        print("\n" + "═"*14 + " 📜 CALCULATOR HISTORY " + "═"*14 + "\n")
+
+        if (not self.calculator_history):
+            print("╔════════════════════════════════════╗")
+            print("║   📭 Calculator History is Empty   ║")
+            print("╚════════════════════════════════════╝\n")
+
         else:
-            print()
-            print("="*35)   
-            print("            CALCULATOR HISTORY") 
-            print("="*35)
-            for index , calculation in enumerate(self.calculator_history, start=1):
-                print(f"Calculation {index}")
-                print(f"Operation   : {calculation['operation']}")
-                print(f"Expression : {calculation['expression']}")
-                print(f"Answer      : {calculation['answer']}")
-                print("-" * 35)   
-                self.battery_manager.consume_battery(1)  
+            for index, calculation in enumerate(self.calculator_history, start=1):
+                print(f"🧮 Calculation #{index}")
+                print(f"⚙️  Operation  : {calculation['operation']}")
+                print(f"📝 Expression : {calculation['expression']}")
+                print(f"✅ Answer     : {calculation['answer']}")
+                print("─" * 35)
+
+                self.battery_manager.consume_battery(1)
 
     # Method to clear the calculator history
     def clear_calculator_history(self):
+        print("\n" + "═"*12 + " 🗑️ CLEAR CALCULATOR HISTORY " + "═"*12 + "\n")
+
         if (not self.calculator_history):
-            print("The calculator history is empty can not clear")
+            print("╔════════════════════════════════════════════╗")
+            print("║   📭 No Calculator History To Clear        ║")
+            print("╚════════════════════════════════════════════╝\n")
             return
+
         else:
             while True:
-                sure_thing = input("Are you sure (y/n) :").lower()
+                sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
+
                 if (sure_thing == "y"):
                     self.calculator_history.clear()
-                    print("Calculator history deleted sussessfully")
+
+                    print("\n✅ Calculator history cleared successfully.\n")
+
                     self.battery_manager.consume_battery(2)
                     return
+
                 elif (sure_thing == "n"):
                     return
+
                 else:
-                    print("Enter a valid choice")    
+                    print("\n❌ Please enter a valid choice (y/n).\n")
 
     # Method to take user choice for calculator
     def calculator_manager(self):
         if not self.battery_manager.check_battery():
             return
+
         self.see_calculator_menu()
-        
-        while True :
-            choice = input("Enter the choice from above menu :")
+
+        while True:
+            print("\n" + "─"*42)
+            print("🧮 What would you like to calculate?")
+            print("─"*42)
+
+            choice = input("\n➡️  Enter your choice: ")
+
             if choice.isdigit():
                 choice = int(choice)
+
                 if (choice == 1):
                     self.addition()
                 elif (choice == 2):
@@ -310,15 +391,16 @@ class CalculatorManager:
                     self.square()
                 elif (choice == 7):
                     self.cube()
-                elif (choice == 8 ):  
-                    self.view_calculator_history() 
+                elif (choice == 8):
+                    self.view_calculator_history()
                 elif (choice == 9):
-                    self.clear_calculator_history() 
+                    self.clear_calculator_history()
                 elif (choice == 10):
-                    self.see_calculator_menu()   
+                    self.see_calculator_menu()
                 elif (choice == 11):
                     return
                 else:
-                    print("Please enter a valid choice") 
+                    print("\n❌ Please enter a valid menu choice.\n")
+
             else:
-                print("Error : choice should be a digit")                                                                        
+                print("\n❌ Error: Choice must be a digit.\n")
