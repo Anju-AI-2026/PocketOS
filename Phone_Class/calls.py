@@ -7,14 +7,14 @@ class CallManager:
     # Method to create the call menu
     def see_call_menu(self):
         print("╔" + "═"*54 + "╗")
-        print("║                    📞 CALL MANAGER                  ║")
+        print("║                    📞 CALL MANAGER                   ║")
         print("╠" + "═"*54 + "╣")
-        print("║  1. 📲 Make a Call                                  ║")
-        print("║  2. 👀 View Call History                            ║")
-        print("║  3. 🗑️ Delete Call History                          ║")
-        print("║  4. 🧹 Clear Call History                           ║")
-        print("║  5. 📋 Show Menu                                    ║")
-        print("║  6. 🔙 Back                                         ║")
+        print("║  1. 📲 Make a Call                                   ║")
+        print("║  2. 👀 View Call History                             ║")
+        print("║  3. 🗑️  Delete Call History                           ║")
+        print("║  4. 🧹 Clear Call History                            ║")
+        print("║  5. 📋 Show Menu                                     ║")
+        print("║  6. 🔙 Back                                          ║")
         print("╚" + "═"*54 + "╝\n")
 
     # Method to make a phone call and store call history
@@ -169,46 +169,66 @@ class CallManager:
                     else:
                         print("\n❌ Invalid Input")
                         print("Call number is out of range.\n")
-                        
+
     # Method to clear the call history
     def clear_call_history(self):
+        print("\n" + "═"*15 + " 🧹 CLEAR CALL HISTORY " + "═"*15 + "\n")
+
         if (not self.call_list):
-            print("The call history is empty can not delete")
+            print("╔════════════════════════════════════╗")
+            print("║   📭 No Call History To Clear      ║")
+            print("╚════════════════════════════════════╝\n")
             return
+
         else:
             while True:
-                sure_thing = input("Are you sure (y/n) :").lower()
+                print("─" * 35)
+                sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
+                print("─" * 35)
+
                 if (sure_thing == "y"):
                     self.call_list.clear()
-                    print("Call history deleted sussessfully")
+                    print("\n✅ Call history cleared successfully.\n")
                     self.battery_manager.consume_battery(2)
                     return
+
                 elif (sure_thing == "n"):
                     return
+
                 else:
-                    print("Enter a valid choice")    
+                    print("\n❌ Invalid Input")
+                    print("Please enter a valid choice.\n")
 
     # Method to create the contact controller
     def call_manager(self):
         if not self.battery_manager.check_battery():
             return
+
         self.see_call_menu()
-        while True :
-            choice = input("Enter the choice from above menu :")
+
+        while True:
+            print("\n" + "─"*42)
+            print("📱 What would you like to do?")
+            print("─"*42)
+
+            choice = input("\n➡️  Enter your choice: ")
+
             if choice.isdigit():
-                if choice == 1 :
+                choice = int(choice)
+
+                if choice == 1:
                     self.call()
-                elif choice == 2 :
+                elif choice == 2:
                     self.view_call_history()
-                elif choice == 3 :
+                elif choice == 3:
                     self.delete_call_history()
-                elif choice == 4 :
+                elif choice == 4:
                     self.clear_call_history()
-                elif choice == 5 :
-                    self.see_call_menu()    
-                elif choice == 6 :
+                elif choice == 5:
+                    self.see_call_menu()
+                elif choice == 6:
                     return
                 else:
-                    print("Enter a valid choice ")
+                    print("\n❌ Please enter a valid menu choice.\n")
             else:
-                print("Error : choice should be a digit")      
+                print("\n❌ Error: Choice must be a digit.\n")
