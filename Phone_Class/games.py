@@ -56,16 +56,17 @@ class GameManager:
     # Method to create the Lucky Fortune
     def lucky_fortune(self):
         self.battery_manager.consume_battery(5)
-        print("="*30)
-        print("          LUCKY FORTUNE          ")
-        print("="*30)
+
+        print("╔" + "═"*54 + "╗")
+        print("║                  🍀 LUCKY FORTUNE                    ║")
+        print("╚" + "═"*54 + "╝\n")
 
         # List of personalities
         lucky_personalities = [
             "Leader",
             "Creative",
             "Kind",
-            "Brave", 
+            "Brave",
             "Wise",
             "Hardworking",
             "Friendly",
@@ -143,12 +144,16 @@ class GameManager:
             "Be fearless in chasing your dreams.",
             "Success starts with consistency."
             ]
+
         while True:
 
-            user_choice = input("Enter your lucky number from (0 to 100) :")
+            user_choice = input("🎲 Enter your lucky number (0-100): ")
+
             if (user_choice.isdigit()):
                 user_choice = int(user_choice)
-                if (user_choice >= 0 and user_choice <= 100 ):
+
+                if (user_choice >= 0 and user_choice <= 100):
+
                     random_personalities = random.choice(lucky_personalities)
                     random_colours = random.choice(lucky_colors)
                     random_foods = random.choice(lucky_foods)
@@ -156,29 +161,36 @@ class GameManager:
                     random_activities = random.choice(lucky_activities)
                     random_quotes = random.choice(lucky_quotes)
 
-                    print("🎲 Lucky number :",user_choice)
-                    print()
-                    print("✨ Lucky Personality :", random_personalities)
-                    print("🎨 Lucky Colour :", random_colours)
-                    print("🍜 Lucky Food :", random_foods)
-                    print("😊 Lucky Mood :", random_moods)
-                    print("🎯 Lucky Activity :", random_activities)
-                    print("💭 Lucky Quote :", random_quotes)
+                    print("\n" + "═"*20 + " 🌟 YOUR LUCKY FORTUNE 🌟 " + "═"*20)
+                    print(f"\n🎲 Lucky Number      : {user_choice}")
+                    print(f"✨ Personality       : {random_personalities}")
+                    print(f"🎨 Lucky Colour      : {random_colours}")
+                    print(f"🍜 Lucky Food        : {random_foods}")
+                    print(f"😊 Lucky Mood        : {random_moods}")
+                    print(f"🎯 Lucky Activity    : {random_activities}")
+                    print(f"💭 Lucky Quote       : {random_quotes}")
+                    print("\n" + "═"*60)
+
                     self.battery_manager.consume_battery(5)
                     break
+
                 else:
-                    print("Number should be between o to 100")
+                    print("\n❌ Please enter a number between 0 and 100.\n")
+
             else:
-                print("Enter the number from 0 to 100 onlt !!!")  
+                print("\n❌ Invalid input. Enter a number between 0 and 100.\n")
 
         while True:
-            should_continue = input("Continue? (y/n) :").lower()
+            should_continue = input("\n🔄 Try another lucky fortune? (y/n): ").lower()
+
             if should_continue == 'y':
                 break
+
             elif should_continue == 'n':
                 return
+
             else:
-                print("Invalid choice!")   
+                print("\n❌ Please enter a valid choice (y/n).\n")
 
     # Method to develop the hangman game
     def hangman_game(self):
