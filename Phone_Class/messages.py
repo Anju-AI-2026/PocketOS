@@ -6,15 +6,16 @@ class MessageManager:
 
     # Method to see the message menu
     def see_message_menu(self):
-        print("="*35)
-        print("            MESSAGE MENU")
-        print("="*35)
-        print("1.Send a message")
-        print("2.View message history")
-        print("3.Delete message ")
-        print("4.Clear message history")
-        print("5.See menu")
-        print("6.Back")    
+        print("╔" + "═"*54 + "╗")
+        print("║                  ✉️ MESSAGE MANAGER                   ║")
+        print("╠" + "═"*54 + "╣") 
+        print("║  1. ✉️  Send a Message                                ║")
+        print("║  2. 📥 Inbox                                         ║")
+        print("║  3. 🗑️  Delete Message                                ║")
+        print("║  4. 🧹 Clear Messages                                ║")
+        print("║  5. 📋 Show Menu                                     ║")
+        print("║  6. 🔙 Back                                          ║")
+        print("╚" + "═"*54 + "╝\n")
 
         # Method to send messages and store message history
     def message(self):
