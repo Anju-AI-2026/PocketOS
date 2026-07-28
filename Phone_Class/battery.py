@@ -1,72 +1,98 @@
+
 class BatteryManager:
 
     def __init__(self):
         self.battery = 100
 
+    # Method to see the battery menu
     def see_battery_menu(self):
-        print("="*35)
-        print("            BATTERY MENU")
-        print("="*35)
-        print("1.Charge battery")
-        print("2.Show battery")    
-        print("3.Back")
+        print("╔" + "═"*54 + "╗")
+        print("║                 🔋 BATTERY MANAGER                   ║")
+        print("╠" + "═"*54 + "╣")
+        print("║  1. ⚡ Charge Battery                                ║")
+        print("║  2. 🔋 Show Battery Status                           ║")
+        print("║  3. 🔙 Back                                          ║")
+        print("╚" + "═"*54 + "╝\n")
 
+    # Method to show current battery
     def show_battery(self):
-        print("Current Battery :",self.battery)
+        print("\n🔋 Current Battery :", self.battery, "%\n")
 
     # Method to recharge the battery
     def charge_battery(self):
         if (self.battery == 100):
-            print("Battery is already full !!")
+            print("\n🔋 Battery is already fully charged.\n")
             return
+
         if (self.battery < 100):
-            charge = int(input("Enter the battery parcentage to charge below 100 :"))
+            charge = int(input("⚡ Enter the battery percentage to charge (below 100): "))
+
             if (charge > 100):
-                print("Please enter battery below 100")    
+                print("\n❌ Please enter a value below 100.\n")
+
             else:
-                print("Current battery :",self.battery)
-                print("Charge amount :", charge)
-                self.battery = self.battery+charge   
+                print(f"\n🔋 Current Battery : {self.battery}%")
+                print(f"⚡ Charge Amount   : {charge}%")
+
+                self.battery = self.battery + charge
+
                 if (self.battery > 100):
-                    self.battery = 100 
-                print("\nBattery charged successfully.")
-                print("Current battery :", self.battery)   
+                    self.battery = 100
 
-    # Method to protect the battery 
+                print("\n✅ Battery charged successfully.")
+                print(f"🔋 Current Battery : {self.battery}%\n")
+
+    # Method to protect the battery
     def protect_battery(self):
-        if self.battery < 0 :
+        if self.battery < 0:
             self.battery = 0
-            return      
+            return
 
+    # Method to consume battery power
     def consume_battery(self, amount):
         self.battery -= amount
-        self.protect_battery()     
+        self.protect_battery()
 
+    # Method to check battery status
     def check_battery(self):
         if self.battery == 0:
-            print("Phone is switched off.")
-            print("Please charge the battery.")
+            print("\n📴 Phone is switched off.")
+            print("⚡ Please charge the battery.\n")
             return False
-        if self.battery <= 20:
-            print("Battery is getting low! Please charge your phone.")
-        return True 
 
+        if self.battery <= 20:
+            print("\n⚠️ Battery is getting low! Please charge your phone.\n")
+
+        return True
+
+    # Method to manage battery options
     def battery_manager(self):
-        if not self.battery_manager.check_battery():
+        if not self.check_battery():
             return
+
         self.see_battery_menu()
+
         while True:
-            choice = input("Enter your choice :")
+            print("\n" + "─"*42)
+            print("🔋 What would you like to do?")
+            print("─"*42)
+
+            choice = input("\n➡️  Enter your choice: ")
 
             if choice.isdigit():
                 choice = int(choice)
+
                 if choice == 1:
                     self.charge_battery()
+
                 elif choice == 2:
                     self.show_battery()
+
                 elif choice == 3:
                     return
+
                 else:
-                    print("Enter a valid choice") 
+                    print("\n❌ Please enter a valid menu choice.\n")
+
             else:
-                print("Choice should be a number")               
+                print("\n❌ Error: Choice must be a digit.\n")
