@@ -146,43 +146,54 @@ class MessageManager:
                     print("❌ Contact not found.")
                     print("="*22 + "\n")
 
-    # Method to display call history
+    # Method to display message history
     def view_message_history(self):
+        print("\n" + "═"*17 + " 📥 MESSAGE INBOX " + "═"*17 + "\n")
         self.battery_manager.consume_battery(2)
 
         if not self.message_list:
-            print("==========================")
-            print("No message history available.")
-            print("==========================")
+            print("╔══════════════════════════════╗")
+            print("║    📭 No Messages Found      ║")
+            print("╚══════════════════════════════╝\n")
             return
 
-        print("\n========== MESSAGE HISTORY ==========\n")
+        print("╔════════════════════════════════════╗")
+        print("║          📨 MESSAGE INBOX          ║")
+        print("╚════════════════════════════════════╝\n")
 
         for index, message in enumerate(self.message_list, start=1):
-            print(f"Message {index}")
-            print(f"Name   : {message['name']}")
-            print(f"Number : {message['number']}")
-            print(f"Messgae : {message['message']}")
-            print(f"Type   : {message['type']}")
-            print("-" * 35)             
+            print(f"📩 Message #{index}")
+            print(f"👤 Name    : {message['name']}")
+            print(f"📞 Number  : {message['number']}")
+            print(f"💬 Message : {message['message']}")
+            print(f"📤 Type    : {message['type']}")
+            print("─" * 35)
 
     # Method to delete a individual message from history
     def delete_message(self):
+        print("\n" + "═"*15 + " 🗑️ DELETE MESSAGE " + "═"*15 + "\n")
+
         if (not self.message_list):
-            print("Message history is empty")
+            print("╔══════════════════════════════╗")
+            print("║   📭 Message History Empty   ║")
+            print("╚══════════════════════════════╝\n")
         else:
             while True:
-                contact_name = input("Enter the contact name to delete :")
+                contact_name = input("👤 Enter the contact name to delete:\n")
+
                 if (contact_name.isalnum()):
                     for i, message in enumerate(self.message_list):
                         if contact_name == message["name"]:
                             del self.message_list[i]
-                            print("Message deleted successfully!")
+                            print("\n✅ Message deleted successfully!\n")
                             self.battery_manager.consume_battery(2)
                             return
-                    print("Contact not found")    
+
+                    print("\n❌ Contact not found.\n")
+
                 else:
-                    print("Name should be alphanumeric only")     
+                    print("\n❌ Invalid Input")
+                    print("Name should contain only alphanumeric characters.\n")
 
     # Method to clear the message history
     def clear_message_history(self):
