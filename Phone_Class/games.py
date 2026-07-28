@@ -194,9 +194,9 @@ class GameManager:
 
     # Method to develop the hangman game
     def hangman_game(self):
-        print("="*25)
-        print("        HANGMAN GAME")
-        print("="*25)
+        print("╔" + "═"*54 + "╗")
+        print("║                    🔤 HANGMAN GAME                   ║")
+        print("╚" + "═"*54 + "╝\n")
 
         words = [
             "apple", "python", "mobile", "friend", "coffee",
@@ -212,34 +212,33 @@ class GameManager:
 
             while True:
 
-                print("=" * 30)
-                print("❤️" * lives)
-                print()
+                print("═" * 35)
+                print(f"❤️ Lives : {'❤️  ' * lives}\n")
 
-                print("WORD :")
+                print("🔤 WORD")
                 print(" ".join(reference_list))
                 print()
 
-                print("GUESSED LETTERS :")
+                print("📝 GUESSED LETTERS")
                 if guessed_word:
                     print(" ".join(guessed_word))
                 else:
                     print("None")
                 print()
 
-                user_guess = input("Enter a letter : ").lower()
+                user_guess = input("🔠 Enter a letter: ").lower()
 
                 # Validation
                 if not user_guess.isalpha():
-                    print("The guess should be a letter.")
+                    print("\n❌ The guess should be a letter.\n")
                     continue
 
                 if len(user_guess) != 1:
-                    print("Enter only one letter.")
+                    print("\n❌ Enter only one letter.\n")
                     continue
 
                 if user_guess in guessed_word:
-                    print("The letter is already guessed.")
+                    print("\n❌ This letter has already been guessed.\n")
                     continue
 
                 guessed_word.append(user_guess)
@@ -250,30 +249,30 @@ class GameManager:
                         if random_word[i] == user_guess:
                             reference_list[i] = user_guess
                 else:
-                    print("Wrong Guess!")
+                    print("\n❌ Wrong guess!")
                     lives -= 1
 
                 # Win
                 if "_" not in reference_list:
                     print("\n🎉 Congratulations!")
-                    print("You guessed the word :", random_word.upper())
+                    print(f"🏆 You guessed the word: {random_word.upper()}")
                     break
 
                 # Lose
                 if lives == 0:
                     print("\n💀 Game Over!")
-                    print("Correct Word :", random_word.upper())
+                    print(f"📖 Correct Word: {random_word.upper()}")
                     break
 
             while True:
-                should_continue = input("\nContinue? (y/n) : ").lower()
+                should_continue = input("\n🔄 Play again? (y/n): ").lower()
 
                 if should_continue == "y":
                     break
                 elif should_continue == "n":
                     return
                 else:
-                    print("Invalid choice!")
+                    print("\n❌ Please enter a valid choice (y/n).\n")
 
     # Method to demonstate the game app
     def game_manager(self):
