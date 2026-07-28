@@ -1,4 +1,3 @@
-
 class CalculatorManager:
 
     def __init__(self, battery_manager):
@@ -7,21 +6,21 @@ class CalculatorManager:
 
     # Method to show calculator menu
     def see_calculator_menu(self):
-        print("===========================================================")
-        print("                 📱 SAMSUNG GALAXY S24\n")
-        print("=============================================================")
-        print("1.Addition")
-        print("2.Subtraction")
-        print("3.Multiplication")
-        print("4.Division")
-        print("5.Modulus")
-        print("6.Find Square")
-        print("7.Find Cube")
-        print("8.View calculator history")
-        print("9.Clear calculator history")
-        print("10.See calculator menu")
-        print("11.Back")
-        print("==================================================================")
+        print("╔" + "═"*54 + "╗")
+        print("║                 🧮 CALCULATOR                        ║")
+        print("╠" + "═"*54 + "╣")
+        print("║  1. ➕ Addition                                      ║")
+        print("║  2. ➖ Subtraction                                   ║")
+        print("║  3. ✖️  Multiplication                                ║")
+        print("║  4. ➗ Division                                      ║")
+        print("║  5. 📊 Modulus                                       ║")
+        print("║  6. 🔲 Find Square                                   ║")
+        print("║  7. 🧊 Find Cube                                     ║")
+        print("║  8. 📜 View Calculator History                       ║")
+        print("║  9. 🗑️  Clear Calculator History                      ║")
+        print("║ 10. 📋 Show Menu                                     ║")
+        print("║ 11. 🔙 Back                                          ║")
+        print("╚" + "═"*54 + "╝\n")
 
 
     # Method to calculate the summation of numbers
