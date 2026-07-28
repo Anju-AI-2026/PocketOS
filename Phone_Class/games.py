@@ -1,17 +1,21 @@
-import random 
+import random
 
 class GameManager:
 
+    def __init__(self, battery_manager):
+        self.battery_manager = battery_manager
+
     # Method to see the game menu
     def see_game_menu(self):
-        print("="*35)
-        print("             GAME MENU")
-        print("="*35)
-        print("1.Rock Paper Scissors")
-        print("2.Lucky Fortune")
-        print("3.Hangnam")
-        print("4.See menu")
-        print("5.Back")
+        print("╔" + "═"*54 + "╗")
+        print("║                    🎮 GAME CENTER                    ║")
+        print("╠" + "═"*54 + "╣")
+        print("║  1. ✊ Rock Paper Scissors                           ║")
+        print("║  2. 🍀 Lucky Fortune                                 ║")
+        print("║  3. 🔤 Hangman                                       ║")
+        print("║  4. 📋 Show Menu                                     ║")
+        print("║  5. 🔙 Back                                          ║")
+        print("╚" + "═"*54 + "╝\n")
 
     # Method to create the rock, paper, scissors game
     def rock_paper_scissors(self):
