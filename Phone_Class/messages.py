@@ -17,83 +17,134 @@ class MessageManager:
         print("║  6. 🔙 Back                                          ║")
         print("╚" + "═"*54 + "╝\n")
 
-        # Method to send messages and store message history
+    # Method to send messages and store message history
     def message(self):
+        print("\n" + "═"*16 + " ✉️ SEND A MESSAGE " + "═"*16 + "\n")
+
         while True:
-            user_choice=(input("Enter the phone number or name to send message : "))
+            print("─"*50)
+            user_choice = (input("📞 Enter the contact name or phone number:\n"))
+            print("─"*50)
+
             if (user_choice.isdigit()):
                 if (len(user_choice)==10):
                     for key,value in self.contacts.items():
                         if (value == user_choice):
-                            msg=input(f"Enter the message to send {key} : ")    
-                            message_chat={
+                            print("\n" + "═"*35)
+                            msg = input(f"💬 Enter the message for {key}:\n")
+                            print("═"*35 + "\n")
+
+                            message_chat = {
                                 "name" : key,
                                 "number" : value,
                                 "message" : msg,
                                 "type" : "Sent"
                             }
-                            print("Message sent!!!")
+
+                            print("─"*35)
+                            print("✅ Message sent successfully!\n")
+                            print(f"👤 Contact : \n{user_choice}\n")
+                            print(f"💬 Message :\n{msg}")
+                            print("─"*35)
+
                             self.message_list.append(message_chat)
                             self.battery_manager.consume_battery(5)
                             return
+
                     while True:
-                        save_choice=input("Do you want to save the number? (y/n) :").lower()
+                        save_choice = input("💾 Save this number to contacts? (y/n): ").lower()
+
                         if (save_choice.isalpha()):
                             if save_choice == "y":
-                                
+
                                 while True:
-                                    name = input("Enter the name to save contact :")
+                                    name = input("👤 Enter contact name:\n")
+
                                     if (name.replace(" ","").isalnum()):
                                         if(name.isdigit()):
-                                            print("Name should not be only made up of number :")
+                                            print("\n❌ Invalid Input")
+                                            print("Contact name cannot contain only numbers.\n")
                                         else:
-                                            msg=input("Enter the message to send :")
-                                            message_chat={
+                                            msg = input("💬 Enter your message:\n")
+
+                                            message_chat = {
                                                 "name" : name,
                                                 "number" : user_choice,
                                                 "message" : msg,
                                                 "type" : "Sent"
-                                            }  
-                                            print("Message sent!!!")
-                                            self.message_list.append(message_chat) 
+                                            }
+
+                                            print("─"*35)
+                                            print("✅ Message sent successfully!\n")
+                                            print(f"👤 Contact : \n{name}\n")
+                                            print(f"💬 Message :\n{msg}")
+                                            print("─"*35)
+
+                                            self.message_list.append(message_chat)
                                             self.contacts[name] = user_choice
                                             self.battery_manager.consume_battery(5)
                                             return
                                     else:
-                                        print("Name only contain alphanumeric ")    
+                                        print("\n❌ Invalid Input")
+                                        print("Name should contain only letters or alphanumeric characters.\n")
+
                             elif (save_choice == "n"):
-                                msg=input("Enter the message to send unknown number :")
-                                message_chat= {
+                                msg = input("💬 Enter the message for the unknown number:\n")
+
+                                message_chat = {
                                     "name" : "Unknown",
                                     "number" : user_choice,
                                     "message" : msg,
                                     "type" : "Sent"
-                                }  
-                                print("Message sent!!!")
-                                self.message_list.append(message_chat) 
+                                }
+
+                                print("─"*35)
+                                print("✅ Message sent successfully!\n")
+                                print("👤 Contact : \nUnknown Number\n")
+                                print(f"💬 Message :\n{msg}")
+                                print("─"*35)
+
+                                self.message_list.append(message_chat)
                                 self.battery_manager.consume_battery(5)
                                 return
+
                             else:
-                                print("Please enter a valid choice!")
+                                print("\n❌ Invalid Input")
+                                print("Please enter a valid choice.\n")
+
                         else:
-                            print("Please enter a valid choice!")   
+                            print("\n❌ Invalid Input")
+                            print("Please enter a valid choice.\n")
+
                 else:
-                    print("Please enter a 10 digit number")                 
+                    print("\n❌ Invalid Input")
+                    print("Phone number must contain exactly 10 digits.\n")
+
             else:
                 if(user_choice in self.contacts):
-                    msg=input(f"Enter the message to send {user_choice}: ")
-                    message_chat= {
+                    msg = input(f"💬 Enter the message for {user_choice}: ")
+
+                    message_chat = {
                         "name" : user_choice,
                         "number" : self.contacts[user_choice],
                         "message" : msg,
                         "type" : "Sent"
-                    }  
-                    print("Message sent!!!")
-                    self.message_list.append(message_chat) 
+                    }
+
+                    print("─"*35)
+                    print("✅ Message sent successfully!\n")
+                    print(f"👤 Contact :\n {user_choice}\n")
+                    print(f"💬 Message :\n{msg}")
+                    print("─"*35)
+
+                    self.message_list.append(message_chat)
                     self.battery_manager.consume_battery(5)
                     return
+
                 else:
-                    print("Contact not found")    
+                    print("\n" + "="*22)
+                    print("❌ Contact not found.")
+                    print("="*22 + "\n")
 
     # Method to display call history
     def view_message_history(self):
