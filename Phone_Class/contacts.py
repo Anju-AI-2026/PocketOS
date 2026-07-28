@@ -9,9 +9,9 @@ class ContactManager:
         print("╔" + "═"*54 + "╗")
         print("║                  📇 CONTACT MANAGER                  ║")
         print("╠" + "═"*54 + "╣")
-        print("║  1. ➕ Add Contact                                    ║")
+        print("║  1. ➕ Add Contact                                   ║")
         print("║  2. 👀 View Contacts                                 ║")
-        print("║  3. 🗑️ Delete Contact                                ║")
+        print("║  3. 🗑️  Delete Contact                                ║")
         print("║  4. 🔍 Search Contact                                ║")
         print("║  5. 🧹 Clear Contacts                                ║")
         print("║  6. 📋 Show Menu                                     ║")
@@ -81,7 +81,7 @@ class ContactManager:
 
     # Method to delete the contact from the contact
     def delete_contact(self):
-        print("\n" + "═" * 16 + " 🗑️ DELETE CONTACT " + "═" * 16)
+        print("\n" + "═" * 16 + " 🗑️  DELETE CONTACT " + "═" * 16)
         self.battery_manager.consume_battery(2)
 
         if (not self.contacts):
@@ -111,6 +111,10 @@ class ContactManager:
         print("\n" + "─" * 38)
         search_record = input("🔎 Enter the name or number to search:\n")
         print("─" * 38)
+
+        if (not self.contacts):
+            print("\n📭 Contact book is empty.\n")
+            return
 
         found = False
 
@@ -191,9 +195,9 @@ class ContactManager:
         self.see_contact_menu()
 
         while True:
-            print("\n" + "─" * 42)
+            print("\n" + "─" * 35)
             print("📱 What would you like to do?")
-            print("─" * 42)
+            print("─" * 35)
 
             choice = input("\n➡️  Enter your choice: ")
             print()
