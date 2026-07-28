@@ -197,44 +197,60 @@ class MessageManager:
 
     # Method to clear the message history
     def clear_message_history(self):
+        print("\n" + "═"*14 + " 🧹 CLEAR MESSAGES " + "═"*14 + "\n")
+
         if (not self.message_list):
-            print("Message history is empty. Nothing to clear.")
+            print("╔════════════════════════════════════╗")
+            print("║   📭 No Messages To Clear          ║")
+            print("╚════════════════════════════════════╝\n")
             return
+
         else:
             while True:
-                sure_thing = input("Are you sure (y/n) :").lower()
+                sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
+
                 if (sure_thing == "y"):
                     self.message_list.clear()
-                    print("Message history deleted sussessfully")
+                    print("\n✅ Message history cleared successfully.\n")
                     self.battery_manager.consume_battery(2)
                     return
+
                 elif (sure_thing == "n"):
                     return
+
                 else:
-                    print("Enter a valid choice")                        
+                    print("\n❌ Please enter a valid choice.\n")
 
     # Method to create the message controller
     def message_manager(self):
         if not self.battery_manager.check_battery():
             return
-        self.see_message_menu()  
-        while True :
-            choice = input("Enter a choice from above menu :")
+
+        self.see_message_menu()
+
+        while True:
+            print("\n" + "─"*42)
+            print("📱 What would you like to do?")
+            print("─"*42)
+
+            choice = input("\n➡️  Enter your choice: ")
+
             if choice.isdigit():
                 choice = int(choice)
-                if choice == 1 :
+
+                if choice == 1:
                     self.message()
-                elif choice == 2 :
+                elif choice == 2:
                     self.view_message_history()
-                elif choice == 3 :
+                elif choice == 3:
                     self.delete_message()
-                elif choice == 4 :
+                elif choice == 4:
                     self.clear_message_history()
-                elif choice == 5 :
+                elif choice == 5:
                     self.see_message_menu()
-                elif choice == 6 :
+                elif choice == 6:
                     return
                 else:
-                    print("Enter a valid choice")
+                    print("\n❌ Please enter a valid menu choice.\n")
             else:
-                print("Error : Choice should be a digit")                       
+                print("\n❌ Error: Choice must be a digit.\n")
