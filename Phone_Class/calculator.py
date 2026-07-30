@@ -1,5 +1,8 @@
+# Calculator manager class to perform arithmetic operations
+
 class CalculatorManager:
 
+    # Constructor to initialize calculator history and battery manager
     def __init__(self, battery_manager):
         self.battery_manager = battery_manager
         self.calculator_history = []
@@ -47,6 +50,7 @@ class CalculatorManager:
             else:
                 numbers = expression.split("+")
 
+                # Validate user input
                 for num in numbers:
                     if not num.isdigit():
                         print("\n❌ Expression should contain numbers only.\n")
@@ -56,6 +60,7 @@ class CalculatorManager:
 
                 total = sum(numbers)
 
+                # Save the operation in history
                 calculator_record = {
                     "operation": "Addition",
                     "expression": expression,
@@ -95,6 +100,7 @@ class CalculatorManager:
             else:
                 numbers = expression.split("*")
 
+                # Validate user input
                 for num in numbers:
                     if not num.isdigit():
                         print("\n❌ Expression should contain numbers only.\n")
@@ -106,6 +112,7 @@ class CalculatorManager:
                 for number in numbers:
                     total = total * number
 
+                # Save the operation in history
                 calculator_record = {
                     "operation": "Multiplication",
                     "expression": expression,
@@ -144,6 +151,7 @@ class CalculatorManager:
             else:
                 numbers = expression.split("-")
 
+                # Validate user input
                 for num in numbers:
                     if not num.isdigit():
                         print("\n❌ Expression should contain numbers only.\n")
@@ -160,6 +168,7 @@ class CalculatorManager:
 
                 self.battery_manager.consume_battery(2)
 
+                # Save the operation in history
                 calculator_record = {
                     "operation": "Subtraction",
                     "expression": expression,
@@ -175,6 +184,7 @@ class CalculatorManager:
         while True:
             num1 = input("➗ Enter the first number:\n")
 
+            # Validate user input
             if (num1.isdigit()):
                 num1 = int(num1)
                 break
@@ -184,6 +194,7 @@ class CalculatorManager:
         while True:
             num2 = input("➗ Enter the second number:\n")
 
+            # Validate user input
             if (num2.isdigit()):
                 num2 = int(num2)
 
@@ -195,6 +206,7 @@ class CalculatorManager:
 
                     expression = f"{num1}/{num2}"
 
+                    # Save the operation in history
                     calculator_record = {
                         "operation": "Division",
                         "expression": expression,
@@ -218,6 +230,7 @@ class CalculatorManager:
         while True:
             num1 = input("📊 Enter the first number:\n")
 
+            # Validate user input
             if (num1.isdigit()):
                 num1 = int(num1)
                 break
@@ -227,6 +240,7 @@ class CalculatorManager:
         while True:
             num2 = input("📊 Enter the second number:\n")
 
+            # Validate user input
             if (num2.isdigit()):
                 num2 = int(num2)
 
@@ -238,6 +252,7 @@ class CalculatorManager:
 
                     expression = f"{num1}%{num2}"
 
+                    # Save the operation in history
                     calculator_record = {
                         "operation": "Modulus",
                         "expression": expression,
@@ -261,6 +276,7 @@ class CalculatorManager:
         while True:
             number = input("🔲 Enter a number to find its square:\n")
 
+            # Validate user input
             if (number.isdigit()):
                 number = int(number)
 
@@ -271,6 +287,7 @@ class CalculatorManager:
 
                 expression = f"{number}*{number}"
 
+                # Save the operation in history
                 calculator_record = {
                     "operation": "Square",
                     "expression": expression,
@@ -290,6 +307,7 @@ class CalculatorManager:
         while True:
             number = input("🧊 Enter a number to find its cube:\n")
 
+            # Validate user input
             if (number.isdigit()):
                 number = int(number)
 
@@ -300,6 +318,7 @@ class CalculatorManager:
 
                 expression = f"{number}*{number}*{number}"
 
+                # Save the operation in history
                 calculator_record = {
                     "operation" : "Cube",
                     "expression" : expression,
@@ -323,6 +342,7 @@ class CalculatorManager:
             print("╚════════════════════════════════════╝\n")
 
         else:
+            # Display stored records
             for index, calculation in enumerate(self.calculator_history, start=1):
                 print(f"🧮 Calculation #{index}")
                 print(f"⚙️  Operation  : {calculation['operation']}")
@@ -344,6 +364,8 @@ class CalculatorManager:
 
         else:
             while True:
+                
+                # Confirm before deleting all records
                 sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
 
                 if (sure_thing == "y"):
