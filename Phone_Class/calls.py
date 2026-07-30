@@ -1,5 +1,8 @@
+# Call manager class to handle calling features
+
 class CallManager:
 
+    # Constructor to initialize call history and battery manager
     def __init__(self, battery_manager):
         self.battery_manager = battery_manager
         self.call_list=[]
@@ -23,6 +26,7 @@ class CallManager:
             print("\n" + "═"*18 + " 📲 MAKE A CALL " + "═"*18 + "\n")
 
             user_choice=(input("📞 Enter the contact name or phone number:\n"))
+            # Validate user input
             if (user_choice.isdigit()):
                 if (len(user_choice)==10):
                         for key,value in self.contacts.items():
@@ -31,6 +35,7 @@ class CallManager:
                                 print("☎️  Dialing...\n")
                                 print("✅ Call ended successfully.\n")
 
+                                # Save the operation in history
                                 call_record = {
                                     "name" : key ,
                                     "number" : value,
@@ -43,6 +48,7 @@ class CallManager:
                             print("\n" + "─"*50)
                             save_choice = input("💾 Save this number to contacts? (y/n): ").lower()
                             print("─"*50)
+                            # Validate user input
                             if (save_choice.isalpha()):
                                 if save_choice == "y":
                                     while True:
@@ -54,6 +60,8 @@ class CallManager:
                                                 print("\n❌ Invalid Input")
                                                 print("Contact name cannot contain only numbers.\n")
                                             else:
+
+                                                # Save the operation in history
                                                 call_record = {
                                                     "name" : name,
                                                     "number" : user_choice,
@@ -75,6 +83,8 @@ class CallManager:
                                     print("\n📞 Calling Unknown Number...")
                                     print("☎️  Dialing...\n")
                                     print("✅ Call ended successfully.\n")
+
+                                    # Save the operation in history
                                     call_record = {
                                         "name" : "Unknown",
                                         "number" : user_choice,
@@ -97,6 +107,8 @@ class CallManager:
                     print(f"\n📞 Calling {user_choice}...")
                     print("☎️  Dialing...\n")
                     print("✅ Call ended successfully.\n")
+
+                    # Save the operation in history
                     call_record={
                         "name" : user_choice,
                         "number" : self.contacts[user_choice],
@@ -125,6 +137,7 @@ class CallManager:
         print("║          📜 CALL HISTORY           ║")
         print("╚════════════════════════════════════╝\n")
 
+        # Display stored records
         for index, call in enumerate(self.call_list, start=1):
             print(f"📌 Call #{index}")
             print(f"👤 Name   : {call['name']}")
@@ -157,6 +170,7 @@ class CallManager:
             while True:
                 choice = input("🗑️ Enter the call number to delete: ")
 
+                # Validate user input
                 if (choice.isdigit()):
                     choice = int(choice)
                     length = len(self.call_list)
@@ -182,6 +196,8 @@ class CallManager:
 
         else:
             while True:
+
+                # Confirm before deleting all records
                 print("─" * 35)
                 sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
                 print("─" * 35)
