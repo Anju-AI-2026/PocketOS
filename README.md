@@ -83,8 +83,16 @@ The project focuses on writing clean, modular, reusable, and maintainable code w
 
 ## 🎮 Game Manager
 
-* 🎲 Game Menu
-* *(Games will be added in future versions.)*
+### 🎲 Available Games
+
+* ✊ Rock Paper Scissors
+* 🍀 Lucky Fortune
+* 🎯 Hangman
+
+### 📋 Game Menu
+
+* Start Games
+* Return to Main Menu
 
 ---
 
@@ -103,15 +111,17 @@ The project focuses on writing clean, modular, reusable, and maintainable code w
 # 🏗️ Project Structure
 
 ```text
-Phone
+Phone-Management-System/
 │
-├── ContactManager
-├── CallManager
-├── MessageManager
-├── MusicManager
-├── CalculatorManager
-├── GameManager
-└── BatteryManager
+├── Phone_class.py
+├── contacts.py
+├── calls.py
+├── messages.py
+├── music.py
+├── calculator.py
+├── games.py
+├── battery.py
+└── README.md
 ```
 
 Each manager is responsible for a single module, making the project modular, maintainable, and easy to expand.
@@ -185,7 +195,6 @@ It is responsible for:
 * 🗂️ Persistent Data Storage
 * 🔑 Password Change Feature
 * 🎵 Advanced Music Library Management
-* 🎮 Games
 * ❤️ Battery Health Monitoring
 * 🌙 Power Saving Mode
 * ⚠️ Exception Handling
@@ -204,4 +213,17 @@ The goal is to build the project incrementally while following clean coding prac
 ## 📌 Current Version
 
 **✅ Version 1 — Core Console Application**
+
+### Included in Version 1
+
+* 📱 Phone Navigation
+* 📇 Contacts
+* 📞 Calls
+* 💬 Messages
+* 🎵 Music
+* 🧮 Calculator
+* 🎮 Games
+* 🔋 Basic Battery Management
+* 🎨 Professional Console UI
+
 
