@@ -1,6 +1,8 @@
+# Battery manager class to simulate battery behavior
 
 class BatteryManager:
 
+    # Constructor to initialize battery percentage
     def __init__(self):
         self.battery = 100
 
