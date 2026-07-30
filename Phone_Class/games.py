@@ -1,7 +1,10 @@
+# Game manager class to provide entertainment features
+
 import random
 
 class GameManager:
 
+    # Constructor to initialize the battery manager
     def __init__(self, battery_manager):
         self.battery_manager = battery_manager
 
@@ -19,39 +22,51 @@ class GameManager:
 
     # Method to create the rock, paper, scissors game
     def rock_paper_scissors(self):
+        self.battery_manager.consume_battery(5)
 
-        emojis = {'r' : '👊' , 's' : '✂️' , 'p' : '📃'}
-        choice= ('r' , 'p' , 's')
+        emojis = {'r': '👊', 's': '✂️', 'p': '📃'}
+        choice = ('r', 'p', 's')
+
+        print("\n" + "═"*13 + " ✊ ROCK • PAPER • SCISSORS ✂️ " + "═"*13 + "\n")
 
         while True:
-            user_choice = input("Rock, Paper, Scissors? (r/p/s) :").lower()
+            user_choice = input("🎯 Choose Rock, Paper or Scissors (r/p/s): ").lower()
+
             if user_choice not in choice:
-                print("Invalid choice!")
+                print("\n❌ Invalid choice. Please enter r, p, or s.\n")
                 continue
 
-            computer_choice = random.choice(choice) 
+            computer_choice = random.choice(choice)
 
-            print(f"You chose {emojis[user_choice]}")
-            print(f"Computer chose {emojis[computer_choice]}")  
+            print(f"\n🙋 You chose      : {emojis[user_choice]}")
+            print(f"🤖 Computer chose : {emojis[computer_choice]}\n")
 
-            if  (user_choice == computer_choice) :
-                print("Tie!")
+            if (user_choice == computer_choice):
+                print("🤝 It's a tie!")
+
             elif (
-                (user_choice == 'r' and computer_choice == 's')or
+                (user_choice == 'r' and computer_choice == 's') or
                 (user_choice == 's' and computer_choice == 'p') or
-                (user_choice == 'p' and computer_choice == 'r')):
-                print("You won!")
+                (user_choice == 'p' and computer_choice == 'r')
+            ):
+                print("🎉 Congratulations! You won!")
+                self.battery_manager.consume_battery(2)
+
             else:
-                print("You lose!")        
+                print("😔 You lost. Better luck next time!")
 
             while True:
-                should_continue = input("Continue? (y/n) :").lower()
+                should_continue = input("\n🔄 Play another round? (y/n): ").lower()
+
                 if should_continue == 'y':
+                    print()
                     break
+
                 elif should_continue == 'n':
                     return
+
                 else:
-                    print("Invalid choice!")
+                    print("\n❌ Please enter a valid choice (y/n).\n")
 
     # Method to create the Lucky Fortune
     def lucky_fortune(self):
@@ -278,9 +293,16 @@ class GameManager:
     def game_manager(self):
         if not self.battery_manager.check_battery():
             return
+
         self.see_game_menu()
+
         while True:
-            choice = input("Enter a choice from the menu :")
+            print("\n" + "─"*42)
+            print("🎮 What would you like to play?")
+            print("─"*42)
+
+            choice = input("\n➡️  Enter your choice: ")
+
             if (choice.isdigit()):
                 choice = int(choice)
 
@@ -300,6 +322,7 @@ class GameManager:
                     return
 
                 else:
-                    print("Enter a valid choice from yhe menu")    
+                    print("\n❌ Please enter a valid menu choice.\n")
+
             else:
-                print("Choice should be a number ")
+                print("\n❌ Error: Choice must be a digit.\n")
