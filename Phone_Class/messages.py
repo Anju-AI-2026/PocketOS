@@ -1,5 +1,8 @@
+# Message manager class to handle messaging features
+
 class MessageManager:
 
+    # Constructor to initialize message storage and battery manager
     def __init__(self, battery_manager):
         self.battery_manager = battery_manager
         self.message_list=[]
@@ -26,6 +29,7 @@ class MessageManager:
             user_choice = (input("📞 Enter the contact name or phone number:\n"))
             print("─"*50)
 
+            # Validate user input
             if (user_choice.isdigit()):
                 if (len(user_choice)==10):
                     for key,value in self.contacts.items():
@@ -34,6 +38,7 @@ class MessageManager:
                             msg = input(f"💬 Enter the message for {key}:\n")
                             print("═"*35 + "\n")
 
+                            # Save the operation in history
                             message_chat = {
                                 "name" : key,
                                 "number" : value,
@@ -60,6 +65,7 @@ class MessageManager:
                                 while True:
                                     name = input("👤 Enter contact name:\n")
 
+                                    # Validate user input
                                     if (name.replace(" ","").isalnum()):
                                         if(name.isdigit()):
                                             print("\n❌ Invalid Input")
@@ -67,6 +73,7 @@ class MessageManager:
                                         else:
                                             msg = input("💬 Enter your message:\n")
 
+                                            # Save the operation in history
                                             message_chat = {
                                                 "name" : name,
                                                 "number" : user_choice,
@@ -91,6 +98,7 @@ class MessageManager:
                             elif (save_choice == "n"):
                                 msg = input("💬 Enter the message for the unknown number:\n")
 
+                                # Save the operation in history
                                 message_chat = {
                                     "name" : "Unknown",
                                     "number" : user_choice,
@@ -124,6 +132,7 @@ class MessageManager:
                 if(user_choice in self.contacts):
                     msg = input(f"💬 Enter the message for {user_choice}: ")
 
+                    # Save the operation in history
                     message_chat = {
                         "name" : user_choice,
                         "number" : self.contacts[user_choice],
@@ -161,6 +170,7 @@ class MessageManager:
         print("║          📨 MESSAGE INBOX          ║")
         print("╚════════════════════════════════════╝\n")
 
+        # Display stored records
         for index, message in enumerate(self.message_list, start=1):
             print(f"📩 Message #{index}")
             print(f"👤 Name    : {message['name']}")
@@ -181,6 +191,7 @@ class MessageManager:
             while True:
                 contact_name = input("👤 Enter the contact name to delete:\n")
 
+                # Validate user input
                 if (contact_name.isalnum()):
                     for i, message in enumerate(self.message_list):
                         if contact_name == message["name"]:
@@ -207,6 +218,8 @@ class MessageManager:
 
         else:
             while True:
+
+                # Confirm before deleting all records
                 sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
 
                 if (sure_thing == "y"):
