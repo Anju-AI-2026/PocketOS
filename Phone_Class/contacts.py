@@ -1,10 +1,13 @@
+# Contact manager class to store and manage contacts
+
 class ContactManager:
 
+    # Constructor to initialize contact storage and battery manager
     def __init__(self, battery_manager):
         self.battery_manager = battery_manager
         self.contacts = {}
 
-    # Method to see the contact menu
+    # Method to display the contact menu
     def see_contact_menu(self):
         print("╔" + "═"*54 + "╗")
         print("║                  📇 CONTACT MANAGER                  ║")
@@ -31,6 +34,7 @@ class ContactManager:
                 print("\n❌ Contact already exists.\n")
                 return
             else:
+                # Validate user input
                 if (name.replace(" ", "").isalnum()):
                     if (name.isdigit()):
                         print("\n❌ Invalid input.")
@@ -44,11 +48,13 @@ class ContactManager:
         while True:
             phone_number = input("\n📞 Enter phone number:\n")
 
+            # Validate user input
             if phone_number.isdigit():
                 if (len(phone_number) == 10):
                     if phone_number in self.contacts.values():
                         print("\n❌ This phone number already exists.")
                     else:
+                        # Save the operation in history
                         self.contacts[name] = phone_number
                         print("\n✅ Contact added successfully!\n")
                         self.battery_manager.consume_battery(2)
@@ -71,6 +77,7 @@ class ContactManager:
             print("📖 CONTACT BOOK")
             print("─" * 22)
 
+            # Display stored records
             count = 1
             for key, value in self.contacts.items():
                 print(f"\n📌 Contact {count}")
@@ -92,6 +99,7 @@ class ContactManager:
                 contact_name = input("👤 Enter the contact name to delete:\n")
                 print("─" * 45)
 
+                # Validate user input
                 if contact_name.replace(" ", "").isalnum():
                     if (contact_name in self.contacts):
                         del self.contacts[contact_name]
@@ -172,6 +180,8 @@ class ContactManager:
             return
         else:
             while True:
+
+                # Confirm before deleting all records
                 print("\n" + "─" * 28)
                 sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
                 print("─" * 28)
@@ -188,6 +198,7 @@ class ContactManager:
                 else:
                     print("\n❌ Please enter a valid choice.\n")
 
+    # Method to control all contact operations
     def contact_manager(self):
         if not self.battery_manager.check_battery():
             return
