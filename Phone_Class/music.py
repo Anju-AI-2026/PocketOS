@@ -2,21 +2,29 @@ class MusicManager:
 
     def __init__(self, battery_manager):
         self.battery_manager = battery_manager
-        self.play_list = {}
         self.current_song = None
+
+        # Playlist is created only once
+        self.play_list = {
+            1: "Perfect",
+            2: "Love me like you do",
+            3: "Living hell",
+            4: "Unholy"
+        }
 
     # Method to see the music menu
     def see_music_menu(self):
-        print("="*35)
-        print("            MUSIC MENU")
-        print("="*35)
-        print("1.Play music")
-        print("2.Show play list")
-        print("3.Add song")
-        print("4.Delete song")
-        print("5.Stop music")
-        print("6.See menu")
-        print("7.Back")  
+        print("╔" + "═"*54 + "╗")
+        print("║                   🎵 MUSIC PLAYER                    ║")
+        print("╠" + "═"*54 + "╣")
+        print("║  1. ▶️  Play Music                                    ║")
+        print("║  2. 🎼 Show Playlist                                 ║")
+        print("║  3. ➕ Add Song                                      ║")
+        print("║  4. 🗑️  Delete Song                                   ║")
+        print("║  5. ⏹️  Stop Music                                    ║")
+        print("║  6. 📋 Show Menu                                     ║")
+        print("║  7. 🔙 Back                                          ║")
+        print("╚" + "═"*54 + "╝\n")
 
     #Method to show the playlist
     def show_play_list(self):
