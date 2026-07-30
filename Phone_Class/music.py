@@ -26,50 +26,46 @@ class MusicManager:
         print("║  7. 🔙 Back                                          ║")
         print("╚" + "═"*54 + "╝\n")
 
-    #Method to show the playlist
+    # Method to show the playlist
     def show_play_list(self):
-        self.play_list = {
-            1 : "Perfect",
-            2 : "Love me like you do",
-            3 : "Living hell",
-            4 : "Unholy"
-        }
-        print("="*25)
-        print("           PLAY LIST           ")
-        print("="*25)
 
-        if (not self.play_list):
-            print("The playlist is empty")
+        print("\n" + "═"*16 + " 🎼 PLAYLIST " + "═"*16 + "\n")
+
+        if not self.play_list:
+            print("📭 Playlist is empty.\n")
         else:
-            for key,value in self.play_list.items():
-                print(key,". " ,value)
-            self.battery_manager.consume_battery(2)    
+            for key, value in self.play_list.items():
+                print(f"🎵 {key}. {value}")
 
-    # Method to play a music
+            self.battery_manager.consume_battery(2)
+
+    # Method to play music
     def play_music(self):
         if (not self.play_list):
-            print("The play list is empty")
+            print("\n📭 Playlist is empty.\n")
         else:
-            print("="*25)
-            print("           PLAY LIST           ")
-            print("="*25)
-            for key,value in self.play_list.items():
-                print(key,". " ,value)
+            print("\n" + "═"*16 + " 🎼 PLAYLIST " + "═"*16 + "\n")
 
-            while True :
-                choice = input("Enter any song number from the playlist")
+            for key, value in self.play_list.items():
+                print(f"🎵 {key}. {value}")
+
+            while True:
+                choice = input("\n▶️ Enter a song number from the playlist: ")
 
                 if (choice.isdigit()):
                     choice = int(choice)
-                    if choice in self.play_list :
+
+                    if choice in self.play_list:
                         self.current_song = self.play_list[choice]
-                        print(f" 🎶 Now playing {self.current_song}")
+
+                        print(f"\n🎶 Now Playing: {self.current_song}\n")
+
                         self.battery_manager.consume_battery(7)
                         return
-                    else:    
-                        print("Error : Song number not found")
+                    else:
+                        print("\n❌ Song number not found.\n")
                 else:
-                    print("The choice should be a number")   
+                    print("\n❌ Choice should be a number.\n")
 
     # Method to add a new song to the play list
     def add_song(self):
