@@ -70,12 +70,15 @@ This module supports **arithmetic operations and calculator history tracking**.
 
 This module contains **mini-games integrated into the phone system**.
 
+| Game Menu                                 | Lucky Fortune                                      |
+| ----------------------------------------- | -------------------------------------------------- |
+| <img src="13_game_menu.png" width="350"/> | <img src="14_lucky_fortune_game.png" width="350"/> |
+
 
 
 ---
 
 ## 🔋 Battery Manager
-
 
 
 ---
@@ -109,6 +112,7 @@ These screenshots provide a visual overview of the **Phone Management System v1.
 * 📊 Runtime history management
 
 This gallery serves as the **visual documentation** for the released **Phone Management System v1.0** project.
+
 
 
 
