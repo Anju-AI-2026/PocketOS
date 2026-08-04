@@ -74,7 +74,9 @@ This module contains **mini-games integrated into the phone system**.
 | ----------------------------------------- | -------------------------------------------------- |
 | <img src="13_game_menu.png" width="350"/> | <img src="14_lucky_fortune_game.png" width="350"/> |
 
-
+| Hangman — Part 1                               | Hangman — Part 2                               |
+| ---------------------------------------------- | ---------------------------------------------- |
+| <img src="15_hangman_game_1.png" width="350"/> | <img src="16_hangman_game_2.png" width="350"/> |
 
 ---
 
@@ -112,14 +114,4 @@ These screenshots provide a visual overview of the **Phone Management System v1.
 * 📊 Runtime history management
 
 This gallery serves as the **visual documentation** for the released **Phone Management System v1.0** project.
-
-
-
-
-
-
-
-
-
-
 
