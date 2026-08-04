@@ -1,106 +1,60 @@
 # 📸 Phone Management System — Screenshot Gallery
 
-This folder contains screenshots of the **Phone Management System v1.0** demonstrating the different modules and features of the application.
+This gallery contains screenshots demonstrating the major modules and features of the **Phone Management System v1.0**.
 
 ---
 
-# 📱 Main Menu
+## 📱 Main Menu
 
-## 🖥️ Main Interface
-
-![Main Menu](01_main_menu.png)
-
----
-
-# 📇 Contact Manager
-
-## 📋 Contact Menu
-
-
-
-## 👀 View Contacts
-
-
+| Main Interface                 |
+| ------------------------------ |
+| ![Main Menu](01_main_menu.png) |
 
 ---
 
-# 📞 Call Manager
+## 📇 Contact Manager
 
-## 📞 Call Menu
+| Contact Menu                           | View Contacts                          |
+| -------------------------------------- | -------------------------------------- |
+| ![Contacts Menu](02_contacts_menu.png) | ![View Contacts](03_view_contacts.png) |
+
+---
+
+## 📞 Call Manager
 
 
+---
 
-## 📲 Calling Unknown Number
-
-
-
-## 📜 Call History
+## 💬 Message Manager
 
 
 
 ---
 
-# 💬 Message Manager
-
-## 💬 Message Menu
+## 🎵 Music Manager
 
 
+---
 
-## 📨 Message History
+## 🧮 Calculator Manager
 
 
 
 ---
 
-# 🎵 Music Manager
-
-## 🎶 Music Menu
-
-
-
-## ▶️ Playlist / Music Screen
+## 🎮 Game Manager
 
 
 
 ---
 
-# 🧮 Calculator Manager
-
-## 🧮 Calculator Menu
-
-
-
-## ➗ Calculator Working
+## 🔋 Battery Manager
 
 
 
 ---
 
-# 🎮 Game Manager
-
-## 🎲 Game Menu
-
-
-
-## 🍀 Lucky Fortune Game
-
-
-
-## 🎯 Hangman Game
-
-
-
----
-
-# 🔋 Battery Manager
-
-## 🔋 Battery Status
-
-
-
----
-
-# 📌 Screenshot Summary
+## 📌 Screenshot Summary
 
 | Module        | Screenshots |
 | ------------- | ----------- |
@@ -108,12 +62,13 @@ This folder contains screenshots of the **Phone Management System v1.0** demonst
 | 📇 Contacts   | 2           |
 | 📞 Calls      | 3           |
 | 💬 Messages   | 2           |
-| 🎵 Music      | 2           |
+| 🎵 Music      | 1           |
 | 🧮 Calculator | 2           |
-| 🎮 Games      | 3           |
+| 🎮 Games      | 4           |
 | 🔋 Battery    | 1           |
 
 **Total Screenshots: 16**
 
 This gallery provides a complete visual overview of the **Phone Management System v1.0** console application and its major features.
+
 
