@@ -58,6 +58,11 @@ This module provides **playlist management and song operations**.
 
 ## 🧮 Calculator Manager
 
+This module supports **arithmetic operations and calculator history tracking**.
+
+| Calculator Menu                                 | Calculator History                                      |
+| ----------------------------------------------- | ------------------------------------------------------- |
+| <img src="11_calculator_menu.png" width="350"/> | <img src="12_view_calculator_history.png" width="350"/> |
 
 ---
 
@@ -104,6 +109,7 @@ These screenshots provide a visual overview of the **Phone Management System v1.
 * 📊 Runtime history management
 
 This gallery serves as the **visual documentation** for the released **Phone Management System v1.0** project.
+
 
 
 
