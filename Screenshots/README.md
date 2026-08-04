@@ -82,6 +82,9 @@ This module contains **mini-games integrated into the phone system**.
 
 ## 🔋 Battery Manager
 
+This module demonstrates **battery charging, battery status monitoring, and battery management features**.
+
+<img src="17_battery_charging.png" width="500"/>
 
 ---
 
@@ -114,4 +117,5 @@ These screenshots provide a visual overview of the **Phone Management System v1.
 * 📊 Runtime history management
 
 This gallery serves as the **visual documentation** for the released **Phone Management System v1.0** project.
+
 
