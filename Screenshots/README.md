@@ -22,6 +22,11 @@ This gallery contains screenshots demonstrating the major modules and features o
 
 ## 📞 Call Manager
 
+| Call Menu                      | Calling Unknown                            |
+| ------------------------------ | ------------------------------------------ |
+| ![Call Menu](04_call_menu.png) | ![Calling Unknown](05_calling_unknown.png) |
+
+
 
 ---
 
@@ -70,5 +75,6 @@ This gallery contains screenshots demonstrating the major modules and features o
 **Total Screenshots: 16**
 
 This gallery provides a complete visual overview of the **Phone Management System v1.0** console application and its major features.
+
 
 
