@@ -34,11 +34,14 @@ This gallery contains screenshots demonstrating the major modules and features o
 
 ## 💬 Message Manager
 
-
+| Message Menu                         | Message History                                 |
+| ------------------------------------ | ----------------------------------------------- |
+| ![Message Menu](07_message_menu.png) | ![Message History](08_view_message_history.png) |
 
 ---
 
 ## 🎵 Music Manager
+
 
 
 ---
@@ -52,11 +55,9 @@ This gallery contains screenshots demonstrating the major modules and features o
 ## 🎮 Game Manager
 
 
-
 ---
 
 ## 🔋 Battery Manager
-
 
 
 ---
@@ -69,14 +70,15 @@ This gallery contains screenshots demonstrating the major modules and features o
 | 📇 Contacts   | 2           |
 | 📞 Calls      | 3           |
 | 💬 Messages   | 2           |
-| 🎵 Music      | 1           |
+| 🎵 Music      | 2           |
 | 🧮 Calculator | 2           |
 | 🎮 Games      | 4           |
 | 🔋 Battery    | 1           |
 
-**Total Screenshots: 16**
+**Total Screenshots: 17**
 
 This gallery provides a complete visual overview of the **Phone Management System v1.0** console application and its major features.
+
 
 
 
