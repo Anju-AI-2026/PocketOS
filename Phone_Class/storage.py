@@ -4,11 +4,10 @@ import json
 
 # storage.py
 
+# Save contacts permanently
 def save_contacts(contacts):
-    # 1. Open contacts.json
-    # 2. Convert the dictionary into JSON format
-    # 3. Write the JSON data into the file
-    # 4. Close the file
+    with open("data/contacts.json", "w") as file:
+        json.dump(contacts, file, indent=4)
 
 def load_contacts():
     # 1. Open contacts.json
