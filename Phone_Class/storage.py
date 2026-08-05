@@ -6,11 +6,17 @@ import json
 
 # Save contacts permanently
 def save_contacts(contacts):
+    
     with open("data/contacts.json", "w") as file:
+        
         json.dump(contacts, file, indent=4)
 
+
+# Load contacts when program starts
 def load_contacts():
-    # 1. Open contacts.json
-    # 2. Read the JSON data
-    # 3. Convert it back into a Python dictionary
-    # 4. Return the dictionary
+    
+    with open("data/contacts.json", "r") as file:
+        
+        contacts = json.load(file)
+        
+    return contacts
