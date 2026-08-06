@@ -5,8 +5,8 @@ class ContactManager:
 
     # Constructor to initialize contact storage and battery manager
     def __init__(self, battery_manager):
+        self.contacts = load_contacts()
         self.battery_manager = battery_manager
-        self.contacts = {}
 
     # Method to display the contact menu
     def see_contact_menu(self):
