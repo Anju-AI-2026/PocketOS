@@ -1,4 +1,5 @@
 # Contact manager class to store and manage contacts
+from storage import save_contacts, load_contacts
 
 class ContactManager:
 
