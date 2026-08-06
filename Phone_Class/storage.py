@@ -10,17 +10,16 @@ CONTACTS_FILE = os.path.join(BASE_DIR, "data", "contacts.json")
 
 # Save contacts permanently
 def save_contacts(contacts):
-    
-    with open("data/contacts.json", "w") as file:
-        
-        json.dump(contacts, file, indent=4)
 
+    with open(CONTACTS_FILE, "w") as file:
+
+        json.dump(contacts, file, indent=4)
 
 # Load contacts when program starts
 def load_contacts():
-    
-    with open("data/contacts.json", "r") as file:
-        
+
+    with open(CONTACTS_FILE, "r") as file:
+
         contacts = json.load(file)
         
     return contacts
