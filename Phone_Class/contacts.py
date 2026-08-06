@@ -57,6 +57,7 @@ class ContactManager:
                     else:
                         # Save the operation in history
                         self.contacts[name] = phone_number
+                        save_contacts(self.contacts) 
                         print("\n✅ Contact added successfully!\n")
                         self.battery_manager.consume_battery(2)
                         break
