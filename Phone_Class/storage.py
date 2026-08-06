@@ -1,6 +1,10 @@
 # 📁 Storage Manager for Phone Management System v2.0
 
 import json
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CONTACTS_FILE = os.path.join(BASE_DIR, "data", "contacts.json")
 
 # storage.py
 
