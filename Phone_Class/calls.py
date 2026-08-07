@@ -1,5 +1,7 @@
 # Call manager class to handle calling features
 
+from storage import save_calls, load_calls
+
 class CallManager:
 
     # Constructor to initialize call history and battery manager
