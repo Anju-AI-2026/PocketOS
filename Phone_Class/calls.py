@@ -45,6 +45,7 @@ class CallManager:
                                     "type" : "Outgoing"
                                 }
                                 self.call_list.append(call_record)
+                                save_calls(self.call_list)
                                 self.battery_manager.consume_battery(5)
                                 return
                         while True:
@@ -71,6 +72,7 @@ class CallManager:
                                                     "type" : "Outgoing"
                                                 }
                                                 self.call_list.append(call_record)
+                                                save_calls(self.call_list)
                                                 self.contacts[name] = user_choice
                                                 self.battery_manager.consume_battery(5)
                                                 print("\n✅ Contact saved successfully!")
@@ -94,6 +96,7 @@ class CallManager:
                                         "type" : "Outgoing"
                                     }
                                     self.call_list.append(call_record)
+                                    save_calls(self.call_list)
                                     self.battery_manager.consume_battery(5)
                                     return
                                 else:
@@ -118,6 +121,7 @@ class CallManager:
                         "type" : "Outgoing"
                     }
                     self.call_list.append(call_record)
+                    save_calls(self.call_list)
                     self.battery_manager.consume_battery(5)
                     return
                 else:
