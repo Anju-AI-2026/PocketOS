@@ -32,3 +32,12 @@ def save_calls(call_list):
     with open(CALLS_FILE, "w") as file:
         
         json.dump(call_list, file, indent=4)
+
+# Load call history when program starts
+def load_calls():
+    
+    with open(CALLS_FILE, "r") as file:
+        
+        calls = json.load(file)
+        
+    return calls
