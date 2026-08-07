@@ -25,3 +25,10 @@ def load_contacts():
         contacts = json.load(file)
         
     return contacts
+
+# Save call history permanently
+def save_calls(call_list):
+    
+    with open(CALLS_FILE, "w") as file:
+        
+        json.dump(call_list, file, indent=4)
