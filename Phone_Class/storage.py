@@ -49,3 +49,12 @@ def save_messages(message_list):
     with open(MESSAGES_FILE, "w") as file:
 
         json.dump(message_list , file, indent=4)
+
+# Load message history when program starts   
+def load_messages():
+
+    with open(MESSAGES_FILE, "r") as file:
+
+        messages = json.load(file)
+
+    return messages    
