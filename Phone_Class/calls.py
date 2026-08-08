@@ -5,8 +5,7 @@ from storage import save_calls, load_calls
 class CallManager:
 
     # Constructor to initialize call history and battery manager
-    def __init__(self, contacts, battery_manager):
-        self.contacts = contacts
+    def __init__(self, battery_manager):
         self.call_list = load_calls()
         self.battery_manager = battery_manager
 
