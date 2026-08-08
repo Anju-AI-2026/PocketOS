@@ -105,6 +105,7 @@ class ContactManager:
                 if contact_name.replace(" ", "").isalnum():
                     if (contact_name in self.contacts):
                         del self.contacts[contact_name]
+                        save_contacts(self.contacts)
                         print("\n✅ Contact deleted successfully!\n")
                         self.battery_manager.consume_battery(2)
                         break
@@ -190,6 +191,7 @@ class ContactManager:
 
                 if (sure_thing == "y"):
                     self.contacts.clear()
+                    save_contacts(self.contacts)
                     print("\n✅ All contacts deleted successfully!\n")
                     self.battery_manager.consume_battery(2)
                     return
