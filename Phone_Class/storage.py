@@ -42,3 +42,10 @@ def load_calls():
         calls = json.load(file)
         
     return calls
+
+# Save message history permanently
+def save_messages(message_list):
+
+    with open(MESSAGES_FILE, "w") as file:
+
+        json.dump(message_list , file, indent=4)
