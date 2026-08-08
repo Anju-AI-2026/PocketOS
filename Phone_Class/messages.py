@@ -7,7 +7,7 @@ class MessageManager:
     # Constructor to initialize message storage and battery manager
     def __init__(self, battery_manager):
         self.battery_manager = battery_manager
-        self.message_list=[]
+        self.message_list = load_messages()
 
     # Method to see the message menu
     def see_message_menu(self):
