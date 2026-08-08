@@ -183,6 +183,7 @@ class CallManager:
 
                     if (choice >= 1 and choice <= length):
                         del self.call_list[choice-1]
+                        save_calls(self.call_list)
                         print("\n✅ Call history deleted successfully.\n")
                         self.battery_manager.consume_battery(2)
                         return
@@ -210,6 +211,7 @@ class CallManager:
 
                 if (sure_thing == "y"):
                     self.call_list.clear()
+                    save_calls(self.call_list)
                     print("\n✅ Call history cleared successfully.\n")
                     self.battery_manager.consume_battery(2)
                     return
