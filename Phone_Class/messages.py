@@ -55,6 +55,7 @@ class MessageManager:
                             print("─"*35)
 
                             self.message_list.append(message_chat)
+                            save_messages(self.message_list)
                             self.battery_manager.consume_battery(5)
                             return
 
@@ -91,6 +92,7 @@ class MessageManager:
 
                                             self.message_list.append(message_chat)
                                             self.contacts[name] = user_choice
+                                            save_messages(self.message_list)
                                             self.battery_manager.consume_battery(5)
                                             return
                                     else:
@@ -115,6 +117,7 @@ class MessageManager:
                                 print("─"*35)
 
                                 self.message_list.append(message_chat)
+                                save_messages(self.message_list)
                                 self.battery_manager.consume_battery(5)
                                 return
 
@@ -149,6 +152,7 @@ class MessageManager:
                     print("─"*35)
 
                     self.message_list.append(message_chat)
+                    save_messages(self.message_list)
                     self.battery_manager.consume_battery(5)
                     return
 
