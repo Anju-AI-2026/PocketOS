@@ -231,6 +231,7 @@ class MessageManager:
 
                 if (sure_thing == "y"):
                     self.message_list.clear()
+                    save_messages(self.message_list)
                     print("\n✅ Message history cleared successfully.\n")
                     self.battery_manager.consume_battery(2)
                     return
