@@ -58,4 +58,11 @@ def load_messages():
 
         messages = json.load(file)
 
-    return messages    
+    return messages   
+
+# Save calculation history permanently
+def save_calculations(calculator_history):
+
+    with open(CALCULATOR_FILE, "w") as file:
+
+        json.dump(calculator_history, file, indent=4)
