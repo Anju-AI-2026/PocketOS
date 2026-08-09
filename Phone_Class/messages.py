@@ -202,6 +202,7 @@ class MessageManager:
                     for i, message in enumerate(self.message_list):
                         if contact_name == message["name"]:
                             del self.message_list[i]
+                            save_messages(self.message_list)
                             print("\n✅ Message deleted successfully!\n")
                             self.battery_manager.consume_battery(2)
                             return
