@@ -8,6 +8,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CONTACTS_FILE = os.path.join(BASE_DIR, "data", "contacts.json")
 CALLS_FILE = os.path.join(BASE_DIR, "data", "calls.json")
 MESSAGES_FILE = os.path.join(BASE_DIR, "data", "messages.json")
+CALCULATOR_FILE = os.path.join(BASE_DIR, "data", "calculator.json")
 
 # storage.py
 
