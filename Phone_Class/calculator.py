@@ -7,7 +7,7 @@ class CalculatorManager:
     # Constructor to initialize calculator history and battery manager
     def __init__(self, battery_manager):
         self.battery_manager = battery_manager
-        self.calculator_history = []
+        self.calculation_history = load_calculations()
 
     # Method to show calculator menu
     def see_calculator_menu(self):
