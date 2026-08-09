@@ -70,6 +70,7 @@ class CalculatorManager:
                 }
 
                 self.calculator_history.append(calculator_record)
+                save_calculations(self.calculation_history)
 
                 print("\n✅ Calculation completed successfully!")
                 print(f"🧮 Answer : {total}\n")
@@ -122,6 +123,7 @@ class CalculatorManager:
                 }
 
                 self.calculator_history.append(calculator_record)
+                save_calculations(self.calculation_history)
 
                 print("\n✅ Calculation completed successfully!")
                 print(f"🧮 Answer : {total}\n")
@@ -178,6 +180,7 @@ class CalculatorManager:
                 }
 
                 self.calculator_history.append(calculator_record)
+                save_calculations(self.calculation_history)
                 return
 
 
@@ -216,6 +219,7 @@ class CalculatorManager:
                     }
 
                     self.calculator_history.append(calculator_record)
+                    save_calculations(self.calculation_history)
 
                     self.battery_manager.consume_battery(2)
                     return
@@ -262,6 +266,7 @@ class CalculatorManager:
                     }
 
                     self.calculator_history.append(calculator_record)
+                    save_calculations(self.calculation_history)
 
                     self.battery_manager.consume_battery(2)
                     return
@@ -297,6 +302,7 @@ class CalculatorManager:
                 }
 
                 self.calculator_history.append(calculator_record)
+                save_calculations(self.calculation_history)
 
                 self.battery_manager.consume_battery(2)
                 return
@@ -328,6 +334,8 @@ class CalculatorManager:
                 }
 
                 self.calculator_history.append(calculator_record)
+                save_calculations(self.calculation_history)
+                
                 self.battery_manager.consume_battery(2)
                 return
 
