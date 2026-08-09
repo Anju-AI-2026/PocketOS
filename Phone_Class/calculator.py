@@ -1,5 +1,7 @@
 # Calculator manager class to perform arithmetic operations
 
+from storage import save_calculations, load_calculations
+
 class CalculatorManager:
 
     # Constructor to initialize calculator history and battery manager
