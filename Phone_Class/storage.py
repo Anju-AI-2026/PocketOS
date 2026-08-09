@@ -66,3 +66,12 @@ def save_calculations(calculator_history):
     with open(CALCULATOR_FILE, "w") as file:
 
         json.dump(calculator_history, file, indent=4)
+
+# Load calculation history when program starts
+def load_calculations():
+
+    with open(CALCULATOR_FILE, "r") as file:
+        
+        calculations = json.load(file)
+
+    return calculations        
