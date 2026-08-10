@@ -1,5 +1,7 @@
 # Battery manager class to simulate battery behavior
 
+from storage import save_battery, load_battery
+
 class BatteryManager:
 
     # Constructor to initialize battery percentage
