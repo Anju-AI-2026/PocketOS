@@ -76,6 +76,7 @@ class CalculatorManager:
                 print(f"🧮 Answer : {total}\n")
 
                 self.battery_manager.consume_battery(10)
+                save_battery(self.battery)
                 return
 
 
