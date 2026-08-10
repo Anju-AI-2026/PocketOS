@@ -42,6 +42,7 @@ class BatteryManager:
 
                 if (self.battery > 100):
                     self.battery = 100
+                    save_battery(self.battery)
 
                 print("\n✅ Battery charged successfully.")
                 print(f"🔋 Current Battery : {self.battery}%\n")
