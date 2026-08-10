@@ -1,6 +1,6 @@
 # Calculator manager class to perform arithmetic operations
 
-from storage import save_calculations, load_calculations
+from storage import save_calculations, load_calculations, save_battery
 
 class CalculatorManager:
 
