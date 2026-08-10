@@ -380,6 +380,7 @@ class CalculatorManager:
 
                 if (sure_thing == "y"):
                     self.calculator_history.clear()
+                    save_calculations(self.calculation_history)
 
                     print("\n✅ Calculator history cleared successfully.\n")
 
