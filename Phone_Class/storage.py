@@ -83,3 +83,12 @@ def save_battery(level):
     with open(BATTERY_FILE, "w") as file:
 
         json.dump({"level": level}, file, indent=4)  
+
+# Load battery level when program starts
+def load_battery():
+
+    with open(BATTERY_FILE, "r") as file:
+        
+        battery_data = json.load(file)
+
+    return battery_data["level"]
