@@ -130,6 +130,7 @@ class CalculatorManager:
                 print(f"🧮 Answer : {total}\n")
 
                 self.battery_manager.consume_battery(2)
+                save_battery(self.battery)
                 return
 
     # Method to calculate the subtraction of numbers
@@ -172,6 +173,7 @@ class CalculatorManager:
                 print(f"🧮 Answer : {total}\n")
 
                 self.battery_manager.consume_battery(2)
+                save_battery(self.battery)
 
                 # Save the operation in history
                 calculator_record = {
@@ -183,7 +185,6 @@ class CalculatorManager:
                 self.calculator_history.append(calculator_record)
                 save_calculations(self.calculation_history)
                 return
-
 
     # Method to calculate the division of numbers
     def division(self):
