@@ -75,4 +75,11 @@ def load_calculations():
         
         calculations = json.load(file)
 
-    return calculations        
+    return calculations    
+
+# Save battery level permanently
+def save_battery(level):
+
+    with open(BATTERY_FILE, "w") as file:
+
+        json.dump({"level": level}, file, indent=4)  
