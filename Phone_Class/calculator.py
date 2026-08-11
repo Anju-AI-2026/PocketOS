@@ -269,10 +269,11 @@ class CalculatorManager:
                         "answer": total
                     }
 
-                    self.calculator_history.append(calculator_record)
+                    self.calculation_history.append(calculator_record)
                     save_calculations(self.calculation_history)
 
                     self.battery_manager.consume_battery(2)
+                    save_battery(self.battery_manager.battery)
                     return
 
                 else:
@@ -305,10 +306,11 @@ class CalculatorManager:
                     "answer": total
                 }
 
-                self.calculator_history.append(calculator_record)
+                self.calculation_history.append(calculator_record)
                 save_calculations(self.calculation_history)
 
                 self.battery_manager.consume_battery(2)
+                save_battery(self.battery_manager.battery)
                 return
 
             else:
@@ -337,10 +339,11 @@ class CalculatorManager:
                     "answer" : total
                 }
 
-                self.calculator_history.append(calculator_record)
+                self.calculation_history.append(calculator_record)
                 save_calculations(self.calculation_history)
-                
+
                 self.battery_manager.consume_battery(2)
+                save_battery(self.battery_manager.battery)
                 return
 
             else:
@@ -350,14 +353,14 @@ class CalculatorManager:
     def view_calculator_history(self):
         print("\n" + "═"*14 + " 📜 CALCULATOR HISTORY " + "═"*14 + "\n")
 
-        if (not self.calculator_history):
+        if (not self.calculation_history):
             print("╔════════════════════════════════════╗")
             print("║   📭 Calculator History is Empty   ║")
             print("╚════════════════════════════════════╝\n")
 
         else:
             # Display stored records
-            for index, calculation in enumerate(self.calculator_history, start=1):
+            for index, calculation in enumerate(self.calculation_history, start=1):
                 print(f"🧮 Calculation #{index}")
                 print(f"⚙️  Operation  : {calculation['operation']}")
                 print(f"📝 Expression : {calculation['expression']}")
@@ -365,12 +368,13 @@ class CalculatorManager:
                 print("─" * 35)
 
                 self.battery_manager.consume_battery(1)
+                save_battery(self.battery_manager.battery)
 
     # Method to clear the calculator history
     def clear_calculator_history(self):
         print("\n" + "═"*12 + " 🗑️ CLEAR CALCULATOR HISTORY " + "═"*12 + "\n")
 
-        if (not self.calculator_history):
+        if (not self.calculation_history):
             print("╔════════════════════════════════════════════╗")
             print("║   📭 No Calculator History To Clear        ║")
             print("╚════════════════════════════════════════════╝\n")
@@ -383,12 +387,13 @@ class CalculatorManager:
                 sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
 
                 if (sure_thing == "y"):
-                    self.calculator_history.clear()
+                    self.calculation_history.clear()
                     save_calculations(self.calculation_history)
 
                     print("\n✅ Calculator history cleared successfully.\n")
 
                     self.battery_manager.consume_battery(2)
+                    save_battery(self.battery_manager.battery)
                     return
 
                 elif (sure_thing == "n"):
