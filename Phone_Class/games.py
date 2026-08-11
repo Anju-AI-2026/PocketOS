@@ -24,6 +24,7 @@ class GameManager:
     # Method to create the rock, paper, scissors game
     def rock_paper_scissors(self):
         self.battery_manager.consume_battery(5)
+        save_battery(self.battery_manager.battery)
 
         emojis = {'r': '👊', 's': '✂️', 'p': '📃'}
         choice = ('r', 'p', 's')
@@ -52,6 +53,7 @@ class GameManager:
             ):
                 print("🎉 Congratulations! You won!")
                 self.battery_manager.consume_battery(2)
+                save_battery(self.battery_manager.battery)
 
             else:
                 print("😔 You lost. Better luck next time!")
@@ -72,6 +74,7 @@ class GameManager:
     # Method to create the Lucky Fortune
     def lucky_fortune(self):
         self.battery_manager.consume_battery(5)
+        save_battery(self.battery_manager.battery)
 
         print("╔" + "═"*54 + "╗")
         print("║                  🍀 LUCKY FORTUNE                    ║")
@@ -188,6 +191,7 @@ class GameManager:
                     print("\n" + "═"*60)
 
                     self.battery_manager.consume_battery(5)
+                    save_battery(self.battery_manager.battery)
                     break
 
                 else:
@@ -210,13 +214,14 @@ class GameManager:
 
     # Method to develop the hangman game
     def hangman_game(self):
+        self.battery_manager.consume_battery(10)
+        save_battery(self.battery_manager.battery)
         print("╔" + "═"*54 + "╗")
         print("║                    🔤 HANGMAN GAME                   ║")
         print("╚" + "═"*54 + "╝\n")
 
         words = [
-            "apple", "python", "mobile", "friend", "coffee",
-            "camera", "laptop", "music", "coding", "future"
+            "python"
         ]
 
         while True:
