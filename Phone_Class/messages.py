@@ -1,6 +1,6 @@
 # Message manager class to handle messaging features
 
-from storage import save_messages, load_messages
+from storage import save_messages, load_messages, save_battery
 
 class MessageManager:
 
