@@ -92,6 +92,7 @@ while True:
         elif choice == 8:
             phone1.clear_screen()
             phone1.battery_manager.show_battery()
+            phone1.see_menu()
 
         elif choice == 9:
             phone1.clear_screen()
