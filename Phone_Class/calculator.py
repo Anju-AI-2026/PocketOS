@@ -76,7 +76,7 @@ class CalculatorManager:
                 print(f"🧮 Answer : {total}\n")
 
                 self.battery_manager.consume_battery(10)
-                save_battery(self.battery)
+                save_battery(self.battery_manager.battery)
                 return
 
 
@@ -130,7 +130,7 @@ class CalculatorManager:
                 print(f"🧮 Answer : {total}\n")
 
                 self.battery_manager.consume_battery(2)
-                save_battery(self.battery)
+                save_battery(self.battery_manager.battery)
                 return
 
     # Method to calculate the subtraction of numbers
@@ -173,7 +173,7 @@ class CalculatorManager:
                 print(f"🧮 Answer : {total}\n")
 
                 self.battery_manager.consume_battery(2)
-                save_battery(self.battery)
+                save_battery(self.battery_manager.battery)
 
                 # Save the operation in history
                 calculator_record = {
@@ -224,6 +224,7 @@ class CalculatorManager:
                     save_calculations(self.calculation_history)
 
                     self.battery_manager.consume_battery(2)
+                    save_battery(self.battery_manager.battery)
                     return
 
                 else:
