@@ -69,7 +69,7 @@ class CalculatorManager:
                     "answer": total
                 }
 
-                self.calculator_history.append(calculator_record)
+                self.calculation_history.append(calculator_record)
                 save_calculations(self.calculation_history)
 
                 print("\n✅ Calculation completed successfully!")
@@ -123,7 +123,7 @@ class CalculatorManager:
                     "answer": total
                 }
 
-                self.calculator_history.append(calculator_record)
+                self.calculation_history.append(calculator_record)
                 save_calculations(self.calculation_history)
 
                 print("\n✅ Calculation completed successfully!")
@@ -182,9 +182,10 @@ class CalculatorManager:
                     "answer": total
                 }
 
-                self.calculator_history.append(calculator_record)
+                self.calculation_history.append(calculator_record)
                 save_calculations(self.calculation_history)
                 return
+
 
     # Method to calculate the division of numbers
     def division(self):
@@ -220,7 +221,7 @@ class CalculatorManager:
                         "answer": total
                     }
 
-                    self.calculator_history.append(calculator_record)
+                    self.calculation_history.append(calculator_record)
                     save_calculations(self.calculation_history)
 
                     self.battery_manager.consume_battery(2)
