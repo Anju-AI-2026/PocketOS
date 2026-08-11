@@ -1,5 +1,7 @@
 # Music manager class to handle playlist and music playback
 
+from storage import save_battery
+
 class MusicManager:
 
     # Constructor to initialize playlist and current song
