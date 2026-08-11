@@ -44,6 +44,7 @@ class MusicManager:
                 print(f"🎵 {key}. {value}")
 
             self.battery_manager.consume_battery(2)
+            save_battery(self.battery_manager.battery)
 
     # Method to play music
     def play_music(self):
@@ -96,6 +97,7 @@ class MusicManager:
                     print("\n✅ Song added successfully!\n")
 
                     self.battery_manager.consume_battery(2)
+                    save_battery(self.battery_manager.battery)
                     return
 
             else:
@@ -145,6 +147,7 @@ class MusicManager:
 
                                 self.reorganize_playlist()
                                 self.battery_manager.consume_battery(2)
+                                save_battery(self.battery_manager.battery)
                                 return
 
                             elif (stop_music == "n"):
