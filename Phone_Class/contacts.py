@@ -1,9 +1,11 @@
 # Contact manager class to store and manage contacts
-from storage import save_contacts, load_contacts
+
+from storage import save_contacts, load_contacts, save_battery
 
 class ContactManager:
 
     # Constructor to initialize contact storage and battery manager
+
     def __init__(self, battery_manager):
         self.contacts = load_contacts()
         self.battery_manager = battery_manager
@@ -26,6 +28,7 @@ class ContactManager:
     def add_contact(self):
         print("\n" + "═" * 18 + " ➕ ADD CONTACT " + "═" * 18)
         self.battery_manager.consume_battery(2)
+        save_battery(self.battery_manager.battery)
 
         while True:
             print()
@@ -60,6 +63,7 @@ class ContactManager:
                         save_contacts(self.contacts) 
                         print("\n✅ Contact added successfully!\n")
                         self.battery_manager.consume_battery(2)
+                        save_battery(self.battery_manager.battery)
                         break
                 else:
                     print("❌ Phone number must contain exactly 10 digits.")
@@ -71,6 +75,7 @@ class ContactManager:
         print("\n" + "═" * 17 + " 👀 VIEW CONTACTS " + "═" * 17)
 
         self.battery_manager.consume_battery(2)
+        save_battery(self.battery_manager.battery)
 
         if (not self.contacts):
             print("\n📭 Contact book is empty.\n")
@@ -92,6 +97,7 @@ class ContactManager:
     def delete_contact(self):
         print("\n" + "═" * 16 + " 🗑️  DELETE CONTACT " + "═" * 16)
         self.battery_manager.consume_battery(2)
+        save_battery(self.battery_manager.battery)
 
         if (not self.contacts):
             print("\n📭 Contact book is empty.\n")
@@ -108,6 +114,7 @@ class ContactManager:
                         save_contacts(self.contacts)
                         print("\n✅ Contact deleted successfully!\n")
                         self.battery_manager.consume_battery(2)
+                        save_battery(self.battery_manager.battery)
                         break
                     else:
                         print("\n❌ Contact not found.")
@@ -138,6 +145,7 @@ class ContactManager:
                     print(f"📞 Number : {value}")
                     print("=" * 22 + "\n")
                     self.battery_manager.consume_battery(2)
+                    save_battery(self.battery_manager.battery)
                     return
 
             for call in self.call_list:
@@ -148,6 +156,7 @@ class ContactManager:
                     print(f"📞 Number : {call['number']}")
                     print("=" * 22 + "\n")
                     self.battery_manager.consume_battery(2)
+                    save_battery(self.battery_manager.battery)
                     return
 
         else:
@@ -159,6 +168,7 @@ class ContactManager:
                     print(f"📞 Number : {self.contacts[search_record]}")
                     print("=" * 22 + "\n")
                     self.battery_manager.consume_battery(2)
+                    save_battery(self.battery_manager.battery)
                     return
 
             for call in self.call_list:
@@ -169,6 +179,7 @@ class ContactManager:
                     print(f"📞 Number : {call['number']}")
                     print("=" * 22 + "\n")
                     self.battery_manager.consume_battery(2)
+                    save_battery(self.battery_manager.battery)
                     return
 
         if not found:
@@ -194,6 +205,7 @@ class ContactManager:
                     save_contacts(self.contacts)
                     print("\n✅ All contacts deleted successfully!\n")
                     self.battery_manager.consume_battery(2)
+                    save_battery(self.battery_manager.battery)
                     return
 
                 elif (sure_thing == "n"):
