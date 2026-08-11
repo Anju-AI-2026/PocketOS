@@ -37,7 +37,7 @@ class MessageManager:
                     for key,value in self.contacts.items():
                         if (value == user_choice):
                             print("\n" + "═"*35)
-                            msg = input(f"💬 Enter the message for {key}:\n")
+                            msg = input(f"/n💬 Enter the message for {key}:\n")
                             print("═"*35 + "\n")
 
                             # Save the operation in history
@@ -57,6 +57,7 @@ class MessageManager:
                             self.message_list.append(message_chat)
                             save_messages(self.message_list)
                             self.battery_manager.consume_battery(5)
+                            save_battery(self.battery_manager.battery)
                             return
 
                     while True:
@@ -74,7 +75,7 @@ class MessageManager:
                                             print("\n❌ Invalid Input")
                                             print("Contact name cannot contain only numbers.\n")
                                         else:
-                                            msg = input("💬 Enter your message:\n")
+                                            msg = input("/n💬 Enter your message:\n")
 
                                             # Save the operation in history
                                             message_chat = {
@@ -94,6 +95,7 @@ class MessageManager:
                                             self.contacts[name] = user_choice
                                             save_messages(self.message_list)
                                             self.battery_manager.consume_battery(5)
+                                            save_battery(self.battery_manager.battery)
                                             return
                                     else:
                                         print("\n❌ Invalid Input")
@@ -119,6 +121,7 @@ class MessageManager:
                                 self.message_list.append(message_chat)
                                 save_messages(self.message_list)
                                 self.battery_manager.consume_battery(5)
+                                save_battery(self.battery_manager.battery)
                                 return
 
                             else:
@@ -154,6 +157,7 @@ class MessageManager:
                     self.message_list.append(message_chat)
                     save_messages(self.message_list)
                     self.battery_manager.consume_battery(5)
+                    save_battery(self.battery_manager.battery)
                     return
 
                 else:
@@ -165,6 +169,7 @@ class MessageManager:
     def view_message_history(self):
         print("\n" + "═"*17 + " 📥 MESSAGE INBOX " + "═"*17 + "\n")
         self.battery_manager.consume_battery(2)
+        save_battery(self.battery_manager.battery)
 
         if not self.message_list:
             print("╔══════════════════════════════╗")
@@ -205,6 +210,7 @@ class MessageManager:
                             save_messages(self.message_list)
                             print("\n✅ Message deleted successfully!\n")
                             self.battery_manager.consume_battery(2)
+                            save_battery(self.battery_manager.battery)
                             return
 
                     print("\n❌ Contact not found.\n")
@@ -234,6 +240,7 @@ class MessageManager:
                     save_messages(self.message_list)
                     print("\n✅ Message history cleared successfully.\n")
                     self.battery_manager.consume_battery(2)
+                    save_battery(self.battery_manager.battery)
                     return
 
                 elif (sure_thing == "n"):
