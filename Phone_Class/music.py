@@ -60,6 +60,7 @@ class MusicManager:
 
                     if choice in self.play_list:
                         self.current_song = self.play_list[choice]
+                        save_music(self.play_list, self.current_song)
 
                         print(f"\n🎶 Now Playing: {self.current_song}\n")
 
