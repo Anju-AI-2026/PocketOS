@@ -7,15 +7,11 @@ class MusicManager:
     # Constructor to initialize playlist and current song
     def __init__(self, battery_manager):
         self.battery_manager = battery_manager
-        self.current_song = None
 
-        # Playlist is created only once
-        self.play_list = {
-            1: "Perfect",
-            2: "Love me like you do",
-            3: "Living hell",
-            4: "Unholy"
-        }
+        music_data = load_music()
+
+        self.play_list = music_data["playlist"]
+        self.current_song = music_data["current_song"]
 
     # Method to see the music menu
     def see_music_menu(self):
