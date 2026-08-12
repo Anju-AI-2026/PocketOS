@@ -175,6 +175,7 @@ class MusicManager:
 
         else:
             self.current_song = None
+            save_music(self.play_list, self.current_song)
             print("\n⏹️ Music stopped successfully.\n")
 
     # Method to play music and reduce battery percentage
