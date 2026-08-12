@@ -1,6 +1,6 @@
 # Music manager class to handle playlist and music playback
 
-from storage import save_battery
+from storage import save_music, load_music, save_battery
 
 class MusicManager:
 
