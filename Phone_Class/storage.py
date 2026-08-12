@@ -10,6 +10,7 @@ CALLS_FILE = os.path.join(BASE_DIR, "data", "calls.json")
 MESSAGES_FILE = os.path.join(BASE_DIR, "data", "messages.json")
 CALCULATOR_FILE = os.path.join(BASE_DIR, "data", "calculator.json")
 BATTERY_FILE = os.path.join(BASE_DIR, "data", "battery.json")
+MUSIC_FILE = os.path.join(BASE_DIR, "data", "music.json")
 
 # storage.py
 
