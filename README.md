@@ -1,4 +1,4 @@
-# 📱 Phone Management System (Python OOP)
+# 📱 Phone Management System 
 
 # 📖 Overview
 
@@ -225,5 +225,23 @@ The goal is to build the project incrementally while following clean coding prac
 * 🎮 Games
 * 🔋 Basic Battery Management
 * 🎨 Professional Console UI
+
+## 💾 JSON Persistence Added
+
+### Persistent Data Storage
+
+* 📇 **Contacts** are saved automatically.
+* 📞 **Call history** is stored permanently.
+* 💬 **Message history** is restored after restarting the program.
+* 🧮 **Calculator history** is preserved between sessions.
+* 🔋 **Battery level** is saved and loaded automatically.
+* 🎵 **Music playlist and current song** are stored using JSON files.
+
+### Benefits
+
+* Data is **not lost after closing the application**.
+* The simulator behaves more like a **real smartphone**.
+* JSON files provide a **simple and lightweight storage system**.
+* Easy to **extend with new features in future versions**.
 
 
