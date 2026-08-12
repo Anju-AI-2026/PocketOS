@@ -88,14 +88,14 @@ class MusicManager:
                     print("\n❌ Song already exists.\n")
 
                 else:
-                    current_number = max(self.play_list)
-                    self.play_list[current_number + 1] = song_name
+                    current_number = max(map(int, self.play_list.keys()))
+                    self.play_list[str(current_number + 1)] = song_name
+                    save_music(self.play_list, self.current_song)
 
                     print("\n✅ Song added successfully!\n")
 
-                    self.battery_manager.consume_battery(2)
-                    save_battery(self.battery_manager.battery)
-                    return
+                    if not self.battery_manager.consume_battery(2):
+                        return
 
             else:
                 print("\n❌ Song name should contain only letters or alphanumeric characters.\n")
