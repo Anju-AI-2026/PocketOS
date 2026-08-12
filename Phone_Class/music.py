@@ -128,8 +128,6 @@ class MusicManager:
                 choice = input("\n🗑️ Enter the song number to delete: ")
 
                 if (choice.isdigit()):
-                    choice = int(choice)
-
                     if (choice in self.play_list):
 
                         if (self.play_list[choice] == self.current_song):
@@ -139,13 +137,14 @@ class MusicManager:
                                 del self.play_list[choice]
                                 self.current_song = None
 
+                                self.reorganize_playlist()
+                                save_music(self.play_list, self.current_song)
+
                                 print("\n⏹️ Music stopped.")
                                 print("✅ Song deleted successfully.\n")
 
-                                self.reorganize_playlist()
-                                self.battery_manager.consume_battery(2)
-                                save_battery(self.battery_manager.battery)
-                                return
+                                if not self.battery_manager.consume_battery(2):
+                                    return
 
                             elif (stop_music == "n"):
                                 break
@@ -156,9 +155,10 @@ class MusicManager:
                         else:
                             del self.play_list[choice]
 
-                            print("\n✅ Song deleted successfully.\n")
-
                             self.reorganize_playlist()
+                            save_music(self.play_list, self.current_song)
+
+                            print("\n✅ Song deleted successfully.\n")
                             return
 
                     else:
