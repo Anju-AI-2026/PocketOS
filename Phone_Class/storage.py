@@ -93,3 +93,14 @@ def load_battery():
         battery_data = json.load(file)
 
     return battery_data["level"]
+
+# Save music playlist and last played song permanently
+def save_music(play_list, current_song):
+
+    with open(MUSIC_FILE, "w") as file:
+
+        json.dump({
+            "playlist": play_list,
+            "current_song": current_song
+            
+        }, file, indent=4)
