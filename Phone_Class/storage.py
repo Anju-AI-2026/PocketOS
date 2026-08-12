@@ -104,3 +104,12 @@ def save_music(play_list, current_song):
             "current_song": current_song
             
         }, file, indent=4)
+
+# Load music data when program starts
+def load_music():
+
+    with open(MUSIC_FILE, "r") as file:
+
+        music_data = json.load(file)
+
+    return music_data
