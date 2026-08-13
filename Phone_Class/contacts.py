@@ -216,25 +216,79 @@ class ContactManager:
 
     # Method to edit an existing contact
     def edit_contact(self):
-        if not self.contact_list:
+        if not self.contacts:
             print("\n📭 Contact list is empty.\n")
             return
 
         print("\n" + "═" * 16 + " 📇 CONTACTS " + "═" * 16 + "\n")
 
-        for name, number in self.contact_list.items():
+        for name, number in self.contacts.items():
             print(f"👤 {name} - {number}")
 
         contact_name = input("\n✏️ Enter the contact name to edit: ").strip()
 
-        if contact_name not in self.contact_list:
+        if contact_name not in self.contacts:
             print("\n❌ Contact not found.\n")
             return
 
+        old_number = self.contacts[contact_name]
+
+        # Get new name
+        while True:
+            new_name = input("New name (leave empty to keep same): ").strip()
+
+            if new_name == "":
+                new_name = contact_name
+                break
+
+            elif new_name in self.contacts and new_name != contact_name:
+                print("\n❌ Contact already exists.\n")
+
+            elif new_name.replace(" ", "").isalnum():
+                if new_name.isdigit():
+                    print("\n❌ Invalid input.")
+                    print("Name cannot contain only numbers.\n")
+                else:
+                    break
+
+            else:
+                print("\n❌ Invalid input.")
+                print("Name can contain only letters or alphanumeric characters.\n")
+
+        # Get new number
+        while True:
+            new_number = input("New number (leave empty to keep same): ").strip()
+
+            if new_number == "":
+                new_number = old_number
+                break
+
+            elif new_number.isdigit():
+                if len(new_number) == 10:
+                    if new_number in self.contacts.values() and new_number != old_number:
+                        print("\n❌ This phone number already exists.")
+                    else:
+                        break
+                else:
+                    print("\n❌ Phone number must contain exactly 10 digits.")
+
+            else:
+                print("\n❌ Phone number should contain numbers only.")
+
+        # Update contact
+        del self.contacts[contact_name]
+        self.contacts[new_name] = new_number
+
+        save_contacts(self.contacts)
+
+        print("\n✅ Contact updated successfully!\n")
+
+        self.battery_manager.consume_battery(2)
+
     # Method to control all contact operations
     def contact_manager(self):
-        if not self.battery_manager.check_battery():
-            return
+        self.battery_manager.check_battery():
+        
 
         self.see_contact_menu()
 
