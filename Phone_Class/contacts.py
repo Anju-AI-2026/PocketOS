@@ -214,6 +214,9 @@ class ContactManager:
                 else:
                     print("\n❌ Please enter a valid choice.\n")
 
+    def edit_contact(self):
+        pass
+
     # Method to control all contact operations
     def contact_manager(self):
         if not self.battery_manager.check_battery():
