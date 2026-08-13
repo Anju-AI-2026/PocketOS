@@ -65,8 +65,9 @@ class BatteryManager:
             print("⚡ Please charge the battery.\n")
             return False
 
-        if self.battery <= 20:
-            print("\n⚠️ Battery is getting low! Please charge your phone.\n")
+        if self.battery <= 10:
+            print(f"\n🔋 Battery Level: {self.battery}%")
+            print("⚠️ Low battery! Please charge your phone.\n")
 
         return True
 
