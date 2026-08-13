@@ -214,8 +214,22 @@ class ContactManager:
                 else:
                     print("\n❌ Please enter a valid choice.\n")
 
+    # Method to edit an existing contact
     def edit_contact(self):
-        pass
+        if not self.contact_list:
+            print("\n📭 Contact list is empty.\n")
+            return
+
+        print("\n" + "═" * 16 + " 📇 CONTACTS " + "═" * 16 + "\n")
+
+        for name, number in self.contact_list.items():
+            print(f"👤 {name} - {number}")
+
+        contact_name = input("\n✏️ Enter the contact name to edit: ").strip()
+
+        if contact_name not in self.contact_list:
+            print("\n❌ Contact not found.\n")
+            return
 
     # Method to control all contact operations
     def contact_manager(self):
