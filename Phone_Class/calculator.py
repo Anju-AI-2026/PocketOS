@@ -78,7 +78,6 @@ class CalculatorManager:
                 if not self.battery_manager.consume_battery(1):
                     return
 
-
     # Method to calculate the multiplication of numbers
     def multiplication(self):
         while True:
@@ -128,9 +127,8 @@ class CalculatorManager:
                 print("\n✅ Calculation completed successfully!")
                 print(f"🧮 Answer : {total}\n")
 
-                self.battery_manager.consume_battery(2)
-                save_battery(self.battery_manager.battery)
-                return
+                if not self.battery_manager.consume_battery(1):
+                    return
 
     # Method to calculate the subtraction of numbers
     def subtraction(self):
@@ -171,8 +169,8 @@ class CalculatorManager:
                 print("\n✅ Calculation completed successfully!")
                 print(f"🧮 Answer : {total}\n")
 
-                self.battery_manager.consume_battery(2)
-                save_battery(self.battery_manager.battery)
+                if not self.battery_manager.consume_battery(1):
+                    return
 
                 # Save the operation in history
                 calculator_record = {
@@ -223,9 +221,8 @@ class CalculatorManager:
                     self.calculation_history.append(calculator_record)
                     save_calculations(self.calculation_history)
 
-                    self.battery_manager.consume_battery(2)
-                    save_battery(self.battery_manager.battery)
-                    return
+                    if not self.battery_manager.consume_battery(1):
+                        return
 
                 else:
                     print("\n❌ Error: Cannot divide by zero.\n")
@@ -271,9 +268,8 @@ class CalculatorManager:
                     self.calculation_history.append(calculator_record)
                     save_calculations(self.calculation_history)
 
-                    self.battery_manager.consume_battery(2)
-                    save_battery(self.battery_manager.battery)
-                    return
+                    if not self.battery_manager.consume_battery(1):
+                        return
 
                 else:
                     print("\n❌ Error: Second number cannot be zero.\n")
@@ -308,9 +304,8 @@ class CalculatorManager:
                 self.calculation_history.append(calculator_record)
                 save_calculations(self.calculation_history)
 
-                self.battery_manager.consume_battery(2)
-                save_battery(self.battery_manager.battery)
-                return
+                if not self.battery_manager.consume_battery(1):
+                    return
 
             else:
                 print("\n❌ Number should contain digits only.\n")
@@ -341,9 +336,8 @@ class CalculatorManager:
                 self.calculation_history.append(calculator_record)
                 save_calculations(self.calculation_history)
 
-                self.battery_manager.consume_battery(2)
-                save_battery(self.battery_manager.battery)
-                return
+                if not self.battery_manager.consume_battery(1):
+                    return
 
             else:
                 print("\n❌ Number should contain digits only.\n")
@@ -366,8 +360,8 @@ class CalculatorManager:
                 print(f"✅ Answer     : {calculation['answer']}")
                 print("─" * 35)
 
-                self.battery_manager.consume_battery(1)
-                save_battery(self.battery_manager.battery)
+                if not self.battery_manager.consume_battery(1):
+                    return
 
     # Method to clear the calculator history
     def clear_calculator_history(self):
@@ -391,9 +385,8 @@ class CalculatorManager:
 
                     print("\n✅ Calculator history cleared successfully.\n")
 
-                    self.battery_manager.consume_battery(2)
-                    save_battery(self.battery_manager.battery)
-                    return
+                    if not self.battery_manager.consume_battery(2):
+                        return
 
                 elif (sure_thing == "n"):
                     return
