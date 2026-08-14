@@ -1,6 +1,6 @@
 # Contact manager class to store and manage contacts
 
-from storage import save_contacts, load_contacts, save_battery
+from storage import save_contacts, load_contacts
 
 class ContactManager:
 
@@ -27,8 +27,8 @@ class ContactManager:
     # Adds a contact after validating the name and phone number
     def add_contact(self):
         print("\n" + "═" * 18 + " ➕ ADD CONTACT " + "═" * 18)
-        self.battery_manager.consume_battery(2)
-        save_battery(self.battery_manager.battery)
+        if not self.battery_manager.consume_battery(1):
+            return
 
         while True:
             print()
@@ -62,8 +62,8 @@ class ContactManager:
                         self.contacts[name] = phone_number
                         save_contacts(self.contacts) 
                         print("\n✅ Contact added successfully!\n")
-                        self.battery_manager.consume_battery(2)
-                        save_battery(self.battery_manager.battery)
+                        if not self.battery_manager.consume_battery(1):
+                            return
                         break
                 else:
                     print("❌ Phone number must contain exactly 10 digits.")
