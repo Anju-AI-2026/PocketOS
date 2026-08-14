@@ -6,7 +6,7 @@ class BatteryManager:
 
     # Constructor to initialize battery percentage
     def __init__(self):
-        self.battery = 100
+        self.battery = load_battery()
 
     # Method to see the battery menu
     def see_battery_menu(self):
@@ -53,10 +53,27 @@ class BatteryManager:
             self.battery = 0
             return
 
-    # Method to consume battery power
+    # Method to reduce battery percentage
     def consume_battery(self, amount):
         self.battery -= amount
-        self.protect_battery()
+
+        if self.battery < 0:
+            self.battery = 0
+
+        save_battery(self.battery)
+
+        # If battery became 0, stop the operation
+        if self.battery == 0:
+            print("\n📴 Phone is switched off.")
+            print("⚡ Please charge the battery.\n")
+            return False
+
+        # Show low battery warning
+        if self.battery <= 10:
+            print(f"\n🔋 Battery Level: {self.battery}%")
+            print("⚠️ Low battery! Please charge your phone.\n")
+
+        return True
 
     # Method to check battery status
     def check_battery(self):
