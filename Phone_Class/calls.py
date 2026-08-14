@@ -1,6 +1,6 @@
 # Call manager class to handle calling features
 
-from storage import save_calls, load_calls, save_battery
+from storage import save_calls, load_calls
 
 class CallManager:
 
@@ -46,9 +46,8 @@ class CallManager:
                                 self.call_list.append(call_record)
                                 save_calls(self.call_list)
 
-                                self.battery_manager.consume_battery(5)
-                                save_battery(self.battery_manager.battery)
-                                return
+                                if not self.battery_manager.consume_battery(1):
+                                    return
                         while True:
                             print("\n" + "─"*50)
                             save_choice = input("💾 Save this number to contacts? (y/n): ").lower()
@@ -75,15 +74,14 @@ class CallManager:
                                                 self.call_list.append(call_record)
                                                 save_calls(self.call_list)
                                                 self.contacts[name] = user_choice
-                                                self.battery_manager.consume_battery(5)
-                                                save_battery(self.battery_manager.battery)
+                                                if not self.battery_manager.consume_battery(1):
+                                                    return
                                                 print("\n✅ Contact saved successfully!")
                                                 print(f"\n📞 Calling {name}...")
                                                 print("☎️  Dialing...\n")
                                                 print("✅ Call ended successfully.\n")
-                                                self.battery_manager.consume_battery(5)
-                                                save_battery(self.battery_manager.battery)
-                                                return
+                                                if not self.battery_manager.consume_battery(1):
+                                                    return
                                         else:
                                             print("\n❌ Invalid Input")
                                             print("Name should contain only letters or alphanumeric characters.\n")
@@ -100,9 +98,8 @@ class CallManager:
                                     }
                                     self.call_list.append(call_record)
                                     save_calls(self.call_list)
-                                    self.battery_manager.consume_battery(5)
-                                    save_battery(self.battery_manager.battery)
-                                    return
+                                    if not self.battery_manager.consume_battery(1):
+                                        return
                                 else:
                                     print("\n❌ Invalid Input")
                                     print("Please enter a valid choice.\n")
@@ -126,9 +123,8 @@ class CallManager:
                     }
                     self.call_list.append(call_record)
                     save_calls(self.call_list)
-                    self.battery_manager.consume_battery(5)
-                    save_battery(self.battery_manager.battery)
-                    return
+                    if not self.battery_manager.consume_battery(1):
+                        return
                 else:
                     print("\n" + "="*22)
                     print("❌ Contact not found.")
