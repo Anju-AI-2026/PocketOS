@@ -46,7 +46,7 @@ class CallManager:
                                 self.call_list.append(call_record)
                                 save_calls(self.call_list)
 
-                                if not self.battery_manager.consume_battery(1):
+                                if not self.battery_manager.consume_battery(2):
                                     return
                         while True:
                             print("\n" + "─"*50)
@@ -74,13 +74,13 @@ class CallManager:
                                                 self.call_list.append(call_record)
                                                 save_calls(self.call_list)
                                                 self.contacts[name] = user_choice
-                                                if not self.battery_manager.consume_battery(1):
+                                                if not self.battery_manager.consume_battery(2):
                                                     return
                                                 print("\n✅ Contact saved successfully!")
                                                 print(f"\n📞 Calling {name}...")
                                                 print("☎️  Dialing...\n")
                                                 print("✅ Call ended successfully.\n")
-                                                if not self.battery_manager.consume_battery(1):
+                                                if not self.battery_manager.consume_battery(2):
                                                     return
                                         else:
                                             print("\n❌ Invalid Input")
@@ -98,7 +98,7 @@ class CallManager:
                                     }
                                     self.call_list.append(call_record)
                                     save_calls(self.call_list)
-                                    if not self.battery_manager.consume_battery(1):
+                                    if not self.battery_manager.consume_battery(2):
                                         return
                                 else:
                                     print("\n❌ Invalid Input")
@@ -123,7 +123,7 @@ class CallManager:
                     }
                     self.call_list.append(call_record)
                     save_calls(self.call_list)
-                    if not self.battery_manager.consume_battery(1):
+                    if not self.battery_manager.consume_battery(2):
                         return
                 else:
                     print("\n" + "="*22)
@@ -133,8 +133,6 @@ class CallManager:
     # Method to display call history
     def view_call_history(self):
         print("\n" + "═"*15 + " 👀 CALL HISTORY " + "═"*15 + "\n")
-        self.battery_manager.consume_battery(2)
-        save_battery(self.battery_manager.battery)
 
         if not self.call_list:
             print("╔══════════════════════════════╗")
@@ -153,6 +151,9 @@ class CallManager:
             print(f"📞 Number : {call['number']}")
             print(f"📤 Type   : {call['type']}")
             print("─" * 35)
+
+        if not self.battery_manager.consume_battery(1):
+            return    
 
     # Method to delete a call history
     def delete_call_history(self):
@@ -188,9 +189,8 @@ class CallManager:
                         del self.call_list[choice-1]
                         save_calls(self.call_list)
                         print("\n✅ Call history deleted successfully.\n")
-                        self.battery_manager.consume_battery(2)
-                        save_battery(self.battery_manager.battery)
-                        return
+                        if not self.battery_manager.consume_battery(2):
+                            return
                     else:
                         print("\n❌ Invalid Input")
                         print("Call number is out of range.\n")
@@ -217,9 +217,8 @@ class CallManager:
                     self.call_list.clear()
                     save_calls(self.call_list)
                     print("\n✅ Call history cleared successfully.\n")
-                    self.battery_manager.consume_battery(2)
-                    save_battery(self.battery_manager.battery)
-                    return
+                    if not self.battery_manager.consume_battery(2):
+                        return
 
                 elif (sure_thing == "n"):
                     return
