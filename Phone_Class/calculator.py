@@ -1,6 +1,6 @@
 # Calculator manager class to perform arithmetic operations
 
-from storage import save_calculations, load_calculations, save_battery
+from storage import save_calculations, load_calculations
 
 class CalculatorManager:
 
@@ -75,9 +75,8 @@ class CalculatorManager:
                 print("\n✅ Calculation completed successfully!")
                 print(f"🧮 Answer : {total}\n")
 
-                self.battery_manager.consume_battery(10)
-                save_battery(self.battery_manager.battery)
-                return
+                if not self.battery_manager.consume_battery(1):
+                    return
 
 
     # Method to calculate the multiplication of numbers
