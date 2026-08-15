@@ -11,6 +11,7 @@ class CallManager:
 
     # Method to create the call menu
     def see_call_menu(self):
+        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
         print("╔" + "═"*54 + "╗")
         print("║                    📞 CALL MANAGER                   ║")
         print("╠" + "═"*54 + "╣")
@@ -48,6 +49,7 @@ class CallManager:
 
                                 if not self.battery_manager.consume_battery(2):
                                     return
+                                return
                         while True:
                             print("\n" + "─"*50)
                             save_choice = input("💾 Save this number to contacts? (y/n): ").lower()
@@ -80,8 +82,7 @@ class CallManager:
                                                 print(f"\n📞 Calling {name}...")
                                                 print("☎️  Dialing...\n")
                                                 print("✅ Call ended successfully.\n")
-                                                if not self.battery_manager.consume_battery(2):
-                                                    return
+                                                return
                                         else:
                                             print("\n❌ Invalid Input")
                                             print("Name should contain only letters or alphanumeric characters.\n")
@@ -100,6 +101,7 @@ class CallManager:
                                     save_calls(self.call_list)
                                     if not self.battery_manager.consume_battery(2):
                                         return
+                                    return
                                 else:
                                     print("\n❌ Invalid Input")
                                     print("Please enter a valid choice.\n")
@@ -125,6 +127,7 @@ class CallManager:
                     save_calls(self.call_list)
                     if not self.battery_manager.consume_battery(2):
                         return
+                    return
                 else:
                     print("\n" + "="*22)
                     print("❌ Contact not found.")
@@ -132,6 +135,7 @@ class CallManager:
 
     # Method to display call history
     def view_call_history(self):
+
         print("\n" + "═"*15 + " 👀 CALL HISTORY " + "═"*15 + "\n")
 
         if not self.call_list:
@@ -229,12 +233,12 @@ class CallManager:
 
     # Method to create the contact controller
     def call_manager(self):
-        if not self.battery_manager.check_battery():
-            return
 
         self.see_call_menu()
 
         while True:
+            if not self.battery_manager.check_battery():
+                return
             print("\n" + "─"*42)
             print("📱 What would you like to do?")
             print("─"*42)
