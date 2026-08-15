@@ -11,6 +11,7 @@ class CalculatorManager:
 
     # Method to show calculator menu
     def see_calculator_menu(self):
+        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
         print("╔" + "═"*54 + "╗")
         print("║                 🧮 CALCULATOR                        ║")
         print("╠" + "═"*54 + "╣")
@@ -396,12 +397,12 @@ class CalculatorManager:
 
     # Method to take user choice for calculator
     def calculator_manager(self):
-        if not self.battery_manager.check_battery():
-            return
 
         self.see_calculator_menu()
 
         while True:
+            if not self.battery_manager.check_battery():
+                return
             print("\n" + "─"*42)
             print("🧮 What would you like to calculate?")
             print("─"*42)
