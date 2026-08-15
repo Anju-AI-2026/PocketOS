@@ -56,9 +56,8 @@ class MessageManager:
 
                             self.message_list.append(message_chat)
                             save_messages(self.message_list)
-                            self.battery_manager.consume_battery(5)
-                            save_battery(self.battery_manager.battery)
-                            return
+                            if not self.battery_manager.consume_battery(5):
+                                return
 
                     while True:
                         save_choice = input("💾 Save this number to contacts? (y/n): ").lower()
@@ -94,9 +93,8 @@ class MessageManager:
                                             self.message_list.append(message_chat)
                                             self.contacts[name] = user_choice
                                             save_messages(self.message_list)
-                                            self.battery_manager.consume_battery(5)
-                                            save_battery(self.battery_manager.battery)
-                                            return
+                                            if not self.battery_manager.consume_battery(5):
+                                                return
                                     else:
                                         print("\n❌ Invalid Input")
                                         print("Name should contain only letters or alphanumeric characters.\n")
@@ -120,9 +118,8 @@ class MessageManager:
 
                                 self.message_list.append(message_chat)
                                 save_messages(self.message_list)
-                                self.battery_manager.consume_battery(5)
-                                save_battery(self.battery_manager.battery)
-                                return
+                                if not self.battery_manager.consume_battery(5):
+                                    return
 
                             else:
                                 print("\n❌ Invalid Input")
@@ -156,9 +153,8 @@ class MessageManager:
 
                     self.message_list.append(message_chat)
                     save_messages(self.message_list)
-                    self.battery_manager.consume_battery(5)
-                    save_battery(self.battery_manager.battery)
-                    return
+                    if not self.battery_manager.consume_battery(5):
+                        return
 
                 else:
                     print("\n" + "="*22)
@@ -168,8 +164,8 @@ class MessageManager:
     # Method to display message history
     def view_message_history(self):
         print("\n" + "═"*17 + " 📥 MESSAGE INBOX " + "═"*17 + "\n")
-        self.battery_manager.consume_battery(2)
-        save_battery(self.battery_manager.battery)
+        if not self.battery_manager.consume_battery(2):
+            return
 
         if not self.message_list:
             print("╔══════════════════════════════╗")
@@ -209,9 +205,8 @@ class MessageManager:
                             del self.message_list[i]
                             save_messages(self.message_list)
                             print("\n✅ Message deleted successfully!\n")
-                            self.battery_manager.consume_battery(2)
-                            save_battery(self.battery_manager.battery)
-                            return
+                            if not self.battery_manager.consume_battery(2):
+                                return
 
                     print("\n❌ Contact not found.\n")
 
@@ -239,9 +234,8 @@ class MessageManager:
                     self.message_list.clear()
                     save_messages(self.message_list)
                     print("\n✅ Message history cleared successfully.\n")
-                    self.battery_manager.consume_battery(2)
-                    save_battery(self.battery_manager.battery)
-                    return
+                    if not self.battery_manager.consume_battery(2):
+                        return
 
                 elif (sure_thing == "n"):
                     return
