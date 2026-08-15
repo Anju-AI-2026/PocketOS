@@ -22,8 +22,8 @@ class GameManager:
 
     # Method to create the rock, paper, scissors game
     def rock_paper_scissors(self):
-        self.battery_manager.consume_battery(5)
-        save_battery(self.battery_manager.battery)
+        if not self.battery_manager.consume_battery(5):
+            return
 
         emojis = {'r': '👊', 's': '✂️', 'p': '📃'}
         choice = ('r', 'p', 's')
@@ -51,8 +51,8 @@ class GameManager:
                 (user_choice == 'p' and computer_choice == 'r')
             ):
                 print("🎉 Congratulations! You won!")
-                self.battery_manager.consume_battery(2)
-                save_battery(self.battery_manager.battery)
+                if not self.battery_manager.consume_battery(2):
+                    return
 
             else:
                 print("😔 You lost. Better luck next time!")
@@ -72,8 +72,8 @@ class GameManager:
 
     # Method to create the Lucky Fortune
     def lucky_fortune(self):
-        self.battery_manager.consume_battery(5)
-        save_battery(self.battery_manager.battery)
+        if not self.battery_manager.consume_battery(5):
+            return
 
         print("╔" + "═"*54 + "╗")
         print("║                  🍀 LUCKY FORTUNE                    ║")
@@ -189,8 +189,8 @@ class GameManager:
                     print(f"💭 Lucky Quote       : {random_quotes}")
                     print("\n" + "═"*60)
 
-                    self.battery_manager.consume_battery(5)
-                    save_battery(self.battery_manager.battery)
+                    if not self.battery_manager.consume_battery(2):
+                        return
                     break
 
                 else:
@@ -213,8 +213,8 @@ class GameManager:
 
     # Method to develop the hangman game
     def hangman_game(self):
-        self.battery_manager.consume_battery(10)
-        save_battery(self.battery_manager.battery)
+        if not self.battery_manager.consume_battery(10):
+            return
         print("╔" + "═"*54 + "╗")
         print("║                    🔤 HANGMAN GAME                   ║")
         print("╚" + "═"*54 + "╝\n")
@@ -276,6 +276,8 @@ class GameManager:
                 if "_" not in reference_list:
                     print("\n🎉 Congratulations!")
                     print(f"🏆 You guessed the word: {random_word.upper()}")
+                    if not self.battery_manager.consume_battery(2):
+                        return
                     break
 
                 # Lose
