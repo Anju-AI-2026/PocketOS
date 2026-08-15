@@ -12,6 +12,7 @@ class ContactManager:
 
     # Method to display the contact menu
     def see_contact_menu(self):
+        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
         print("╔" + "═"*54 + "╗")
         print("║                  📇 CONTACT MANAGER                  ║")
         print("╠" + "═"*54 + "╣")
@@ -285,12 +286,12 @@ class ContactManager:
 
     # Method to control all contact operations
     def contact_manager(self):
-        if not self.battery_manager.check_battery():
-            return
 
         self.see_contact_menu()
 
         while True:
+            if not self.battery_manager.check_battery():
+                return
             print("\n" + "─" * 35)
             print("📱 What would you like to do?")
             print("─" * 35)
