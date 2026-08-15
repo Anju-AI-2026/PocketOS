@@ -11,6 +11,7 @@ class MessageManager:
 
     # Method to see the message menu
     def see_message_menu(self):
+        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
         print("╔" + "═"*54 + "╗")
         print("║                  ✉️ MESSAGE MANAGER                   ║")
         print("╠" + "═"*54 + "╣") 
@@ -37,7 +38,7 @@ class MessageManager:
                     for key,value in self.contacts.items():
                         if (value == user_choice):
                             print("\n" + "═"*35)
-                            msg = input(f"/n💬 Enter the message for {key}:\n")
+                            msg = input(f"\n💬 Enter the message for {key}:\n")
                             print("═"*35 + "\n")
 
                             # Save the operation in history
@@ -58,6 +59,7 @@ class MessageManager:
                             save_messages(self.message_list)
                             if not self.battery_manager.consume_battery(5):
                                 return
+                            return
 
                     while True:
                         save_choice = input("💾 Save this number to contacts? (y/n): ").lower()
@@ -66,7 +68,7 @@ class MessageManager:
                             if save_choice == "y":
 
                                 while True:
-                                    name = input("👤 Enter contact name:\n")
+                                    name = input("\n👤 Enter contact name:\n")
 
                                     # Validate user input
                                     if (name.replace(" ","").isalnum()):
@@ -74,7 +76,7 @@ class MessageManager:
                                             print("\n❌ Invalid Input")
                                             print("Contact name cannot contain only numbers.\n")
                                         else:
-                                            msg = input("/n💬 Enter your message:\n")
+                                            msg = input("\n💬 Enter your message:\n")
 
                                             # Save the operation in history
                                             message_chat = {
@@ -95,6 +97,7 @@ class MessageManager:
                                             save_messages(self.message_list)
                                             if not self.battery_manager.consume_battery(5):
                                                 return
+                                            return
                                     else:
                                         print("\n❌ Invalid Input")
                                         print("Name should contain only letters or alphanumeric characters.\n")
@@ -120,6 +123,7 @@ class MessageManager:
                                 save_messages(self.message_list)
                                 if not self.battery_manager.consume_battery(5):
                                     return
+                                return
 
                             else:
                                 print("\n❌ Invalid Input")
@@ -155,6 +159,7 @@ class MessageManager:
                     save_messages(self.message_list)
                     if not self.battery_manager.consume_battery(5):
                         return
+                    return
 
                 else:
                     print("\n" + "="*22)
@@ -245,12 +250,12 @@ class MessageManager:
 
     # Method to create the message controller
     def message_manager(self):
-        if not self.battery_manager.check_battery():
-            return
 
         self.see_message_menu()
 
         while True:
+            if not self.battery_manager.check_battery():
+                return
             print("\n" + "─"*42)
             print("📱 What would you like to do?")
             print("─"*42)
