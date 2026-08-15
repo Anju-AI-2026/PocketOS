@@ -15,6 +15,7 @@ class MusicManager:
 
     # Method to see the music menu
     def see_music_menu(self):
+        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
         print("╔" + "═"*54 + "╗")
         print("║                   🎵 MUSIC PLAYER                    ║")
         print("╠" + "═"*54 + "╣")
@@ -39,8 +40,8 @@ class MusicManager:
             for key, value in self.play_list.items():
                 print(f"🎵 {key}. {value}")
 
-            self.battery_manager.consume_battery(2)
-            save_battery(self.battery_manager.battery)
+            if not self.battery_manager.consume_battery(2):
+                return
 
     # Method to play music
     def play_music(self):
@@ -64,8 +65,8 @@ class MusicManager:
 
                         print(f"\n🎶 Now Playing: {self.current_song}\n")
 
-                        self.battery_manager.consume_battery(7)
-                        return
+                        if not self.battery_manager.consume_battery(7):
+                            return
                     else:
                         print("\n❌ Song number not found.\n")
                 else:
@@ -104,11 +105,11 @@ class MusicManager:
     def reorganize_playlist(self):
         new_play_list = {}
 
-        if (not self.play_list):
+        if not self.play_list:
             return False
         else:
             for number, value in enumerate(self.play_list.values(), start=1):
-                new_play_list[number] = value
+                new_play_list[str(number)] = value
 
             self.play_list = new_play_list
             return
@@ -167,6 +168,7 @@ class MusicManager:
                 else:
                     print("\n❌ Choice should be a number.\n")
 
+
     # Method to stop the song
     def stop_song(self):
         if self.current_song is None:
@@ -180,12 +182,12 @@ class MusicManager:
 
     # Method to play music and reduce battery percentage
     def music_manager(self):
-        if not self.battery_manager.check_battery():
-            return
 
         self.see_music_menu()
 
         while True:
+            if not self.battery_manager.check_battery():
+                return
             print("\n" + "─"*42)
             print("🎵 What would you like to do?")
             print("─"*42)
