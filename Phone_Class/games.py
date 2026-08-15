@@ -1,6 +1,5 @@
 # Game manager class to provide entertainment features
 
-from storage import save_battery
 import random
 
 class GameManager:
