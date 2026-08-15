@@ -10,6 +10,7 @@ class GameManager:
 
     # Method to see the game menu
     def see_game_menu(self):
+        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
         print("╔" + "═"*54 + "╗")
         print("║                    🎮 GAME CENTER                    ║")
         print("╠" + "═"*54 + "╣")
@@ -298,12 +299,12 @@ class GameManager:
 
     # Method to demonstate the game app
     def game_manager(self):
-        if not self.battery_manager.check_battery():
-            return
 
         self.see_game_menu()
 
         while True:
+            if not self.battery_manager.check_battery():
+                return
             print("\n" + "─"*42)
             print("🎮 What would you like to play?")
             print("─"*42)
