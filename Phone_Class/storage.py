@@ -125,3 +125,12 @@ def save_password(password):
             "password": password
 
         }, file, indent=4)
+
+# Load password when program starts
+def load_password():
+
+    with open(PASSWORD_FILE, "r") as file:
+
+        data = json.load(file)
+
+    return data["password"] 
