@@ -114,3 +114,14 @@ def load_music():
         music_data = json.load(file)
 
     return music_data
+
+# Save password permanently
+def save_password(password):
+
+    with open(PASSWORD_FILE, "w") as file:
+
+        json.dump({
+
+            "password": password
+
+        }, file, indent=4)
