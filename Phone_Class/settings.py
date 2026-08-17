@@ -30,3 +30,7 @@ class SettingsManager:
 
             else:
                 print("\n🚧 Feature coming soon...\n")   
+
+    # Method to change the password
+    def change_password(self):
+        pass
