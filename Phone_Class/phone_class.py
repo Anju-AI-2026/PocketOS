@@ -18,7 +18,9 @@ class Phone(ContactManager,
             MessageManager,
             CalculatorManager,
             GameManager,
-            MusicManager):
+            MusicManager,
+            SettingsManager
+            ):
 
     # Constructor to initialize phone details and manager classes
     def __init__(self):
