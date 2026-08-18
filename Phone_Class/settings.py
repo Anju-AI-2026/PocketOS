@@ -1,5 +1,7 @@
 # Settings manager class
 
+from storage import save_password, load_password
+
 class SettingsManager:
 
     # Constructor to initialize battery manager
