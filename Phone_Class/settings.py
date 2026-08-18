@@ -53,11 +53,27 @@ class SettingsManager:
                         if (new_password.isdigit()):
 
                             new_password = int(new_password)
-                            save_password(new_password)
-                            self.real_password = new_password
-                            print("Password changed sucessefully !")
-                            return
+
+                            while True :
+                                confirm_password = input("\nEnter the password again :")
+
+                                if (confirm_password.isdigit()):
+
+                                    confirm_password = int(confirm_password)
+
+                                    if (confirm_password == new_password):
+                                        save_password(new_password)
+                                        self.real_password = new_password
+                                        print("Password changed sucessefully !")
+                                        return
+                                    else:
+                                        print("\n❌The password is not same. Please enter again!")
+                                        break
+                                else:
+                                    print("\n❌ Password is incorrect. Only enter digit!")        
                         else:
-                            print("\n❌ Password is incorrect. Only enter digit!")       
+                            print("\n❌ Password is incorrect. Only enter digit!")
                 else:
                     print("\n❌ Password is incorrect.")
+            else:
+                print("\n❌ Password is incorrect. Only enter digit!")
