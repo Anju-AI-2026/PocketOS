@@ -27,11 +27,14 @@ class SettingsManager:
 
             choice = input("\n👉 Enter your choice: ")
 
-            if choice == "5":
+            if choice == "1":
+                self.change_password()   
+
+            elif choice == "5":
                 break
 
             else:
-                print("\n🚧 Feature coming soon...\n")   
+                print("\n🚧 Feature coming soon...\n")     
 
     # Method to change the password
     def change_password(self):
