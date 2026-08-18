@@ -33,4 +33,29 @@ class SettingsManager:
 
     # Method to change the password
     def change_password(self):
-        pass
+
+        while True:
+
+            password = input("\n🗝️  Enter the current password: ")
+
+            if (password.isdigit()):
+                password = int(password)
+
+                if self.real_password == password:
+                    print("\n✅ Password is correct !\n")
+
+                    while True :
+                            
+                        new_password = input("\nEnter the new password :")
+
+                        if (new_password.isdigit()):
+
+                            new_password = int(new_password)
+                            save_password(new_password)
+                            self.real_password = new_password
+                            print("Password changed sucessefully !")
+                            return
+                        else:
+                            print("\n❌ Password is incorrect. Only enter digit!")       
+                else:
+                    print("\n❌ Password is incorrect.")
