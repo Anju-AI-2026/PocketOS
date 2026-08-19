@@ -32,6 +32,7 @@ class Phone(ContactManager,
         CallManager.__init__(self, self.battery_manager)
         MessageManager.__init__(self, self.battery_manager)
         MusicManager.__init__(self, self.battery_manager)
+        SettingsManager.__init__(self, self.battery_manager)
 
         self.name = "Samsung"
         self.brand = "Galaxy S24"
