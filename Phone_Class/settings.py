@@ -10,6 +10,24 @@ class SettingsManager:
 
         self.real_password = storage.load_password()
 
+    # Password authentication before accessing the phone
+    def authenticate_password(self):
+
+        while True:
+
+            password = input("\n🗝️  Enter your password: ")
+
+            if (password.isdigit()):
+                password = int(password)
+
+                if (self.real_password == password):
+                    print("\n✅ Access Granted. Welcome!\n")
+                    break
+                else:
+                    print("\n❌ Incorrect password. Please try again.")
+
+            else:
+                print("\n❌ Password should contain digits only.")
     # Method to show the settings menu 
     def settings_menu(self):
         print("\n" + "═" * 14 + " ⚙️ SETTINGS " + "═" * 14 + "\n")
