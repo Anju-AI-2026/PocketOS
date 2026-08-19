@@ -100,3 +100,6 @@ class SettingsManager:
                     print("\n❌ Password is incorrect.")
             else:
                 print("\n❌ Password is incorrect. Only enter digit!")
+
+    def reset_data(self):
+        pass
