@@ -8,6 +8,8 @@ class SettingsManager:
     def __init__(self, battery_manager):
         self.battery_manager = battery_manager
 
+        self.real_password = storage.load_password()
+
     # Method to show the settings menu 
     def settings_menu(self):
         print("\n" + "═" * 14 + " ⚙️ SETTINGS " + "═" * 14 + "\n")
