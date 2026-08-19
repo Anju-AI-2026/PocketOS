@@ -16,7 +16,10 @@ input("⏩ Press Enter to continue...")
 # Creating a Phone object
 phone1 = Phone()
 
+# Calling the password authentication function
+phone1.authenticate_password()
 # Displaying the menu until the user exits the program
+
 phone1.see_menu()
 
 print("\n" + "─"*45)
