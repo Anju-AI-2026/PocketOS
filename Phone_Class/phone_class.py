@@ -7,6 +7,7 @@ from calculator import CalculatorManager
 from games import GameManager
 from battery import BatteryManager
 from music import MusicManager
+from settings import SettingsManager
 from storage import load_password
 import os
 
