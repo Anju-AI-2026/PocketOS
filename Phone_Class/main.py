@@ -10,24 +10,6 @@ print("             ╔═══════════════════
 print("             ║        🔐 PASSWORD AUTHENTICATION    ║")
 print("             ╚══════════════════════════════════════╝")
 
-# Password authentication before accessing the phone
-real_p = 12345
-
-while True:
-
-    password = input("\n🗝️  Enter your password: ")
-
-    if (password.isdigit()):
-        password = int(password)
-
-        if (real_p == password):
-            print("\n✅ Access Granted. Welcome!\n")
-            break
-        else:
-            print("\n❌ Incorrect password. Please try again.")
-
-    else:
-        print("\n❌ Password should contain digits only.")
 
 input("⏩ Press Enter to continue...")
 
