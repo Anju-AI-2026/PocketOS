@@ -151,3 +151,6 @@ class SettingsManager:
 
             else:
                 print("Please enter a valid input !!")
+
+    def show_system_status(self):
+        pass
