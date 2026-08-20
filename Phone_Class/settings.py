@@ -1,6 +1,6 @@
 # Settings manager class
 
-from storage import save_password, load_password
+import storage
 
 class SettingsManager:
 
