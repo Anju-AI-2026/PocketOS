@@ -90,9 +90,11 @@ class SettingsManager:
                                     confirm_password = int(confirm_password)
 
                                     if (confirm_password == new_password):
-                                        save_password(new_password)
+                                        storage.save_password(new_password)
                                         self.real_password = new_password
                                         print("Password changed sucessefully !")
+                                        if not self.battery_manager.consume_battery(2):
+                                            return
                                         return
                                     else:
                                         print("\n❌The password is not same. Please enter again!")
