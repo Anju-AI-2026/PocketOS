@@ -102,4 +102,45 @@ class SettingsManager:
                 print("\n❌ Password is incorrect. Only enter digit!")
 
     def reset_data(self):
-        pass
+
+        while True:
+
+            # Confirm before deleting all records
+            print("─" * 35)
+            sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
+            print("─" * 35)
+        
+            if (sure_thing == "y"):
+                # Reset contacts 
+                with open(storage.CONTACTS_FILE, "w") as file:
+                    json.dump({}, file, indent=4)
+
+                with open(storage.CALLS_FILE, "w") as file:
+                    json.dump([], file, indent = 4)
+
+                with open(storage.MESSAGES_FILE, "w") as file:
+                    json.dump([], file, indent = 4)
+
+                with open(storage.CALCULATOR_FILE, "w") as file:
+                    json.dump([], file, indent = 4)
+
+                with open(storage.BATTERY_FILE, "w") as file:
+                    json.dump({"level" : 20}, file, indent = 4)
+
+                with open(storage.MUSIC_FILE, "w") as file:
+                    json.dump({"playlist" : {}, "current_song" : None}, file, indent = 4)
+
+                with open(storage.PASSWORD_FILE, "w") as file:
+                    json.dump({"password" : self.real_password}, file, indent = 4)  
+
+                if not self.battery_manager.consume_battery(10):
+                    return    
+
+                print("✅ All data has been reset successfully!")     
+                return 
+
+            elif (sure_thing == "n"):
+                break
+
+            else:
+                print("Please enter a valid input !!")
