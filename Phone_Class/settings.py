@@ -52,6 +52,9 @@ class SettingsManager:
             if choice == "1":
                 self.change_password()   
 
+            elif choice == "2" :
+                self.reset_data()
+
             elif choice == "5":
                 break
 
