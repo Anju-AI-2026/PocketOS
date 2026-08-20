@@ -1,5 +1,6 @@
 # Settings manager class
 
+import json
 import storage
 
 class SettingsManager:
