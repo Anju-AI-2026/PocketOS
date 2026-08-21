@@ -153,4 +153,35 @@ class SettingsManager:
                 print("Please enter a valid input !!")
 
     def show_system_status(self):
-        pass
+        print("\n" + "─" * 20 + " System Status " + "─" * 20)
+        print(f"🔋 Battery: {self.battery_manager.battery}%")
+        print(f"🔐 Password set: {'Yes Protected ✅' if self.real_password is not None else 'No'}")
+
+        contacts = storage.load_contacts()
+        count = len(contacts)
+        print("💾 Contacts Stored :",count)
+
+        calls = storage.load_calls()
+        count = len(calls)
+        print("📞 Calls Stored :",count)
+
+        messages = storage.load_messages()
+        count = len(messages)
+        print("💬 Messages Stored :",count)
+
+        calculations = storage.load_calculations()
+        count = len(calculations)
+        print("🧮 Calculations Stored :",count)
+
+        songs = storage.load_music()
+        count = len(songs["playlist"])
+        current_song = songs["current_song"]
+
+        print("🎵 Music Tracks :",count)
+        print("🎵 Current Music :",current_song)
+
+        print("📱 PocketOS Version   : v2.0 ")
+
+        print("⚙️ System State       : Active ✅")
+
+        print("─" * 50)
