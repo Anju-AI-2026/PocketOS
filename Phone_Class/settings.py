@@ -111,6 +111,7 @@ class SettingsManager:
             else:
                 print("\n❌ Password is incorrect. Only enter digit!")
 
+    # Method to reset the data    
     def reset_data(self):
 
         while True:
@@ -139,7 +140,7 @@ class SettingsManager:
             if (contact_count == 0 and call_count == 0 and message_count == 0 and calculation_count == 0 and song_count == 0 ):
                 print ("ℹ️ There is no user data to reset.")
                 return
-        
+
             if (sure_thing == "y"):
                 # Reset contacts 
                 with open(storage.CONTACTS_FILE, "w") as file:
@@ -166,7 +167,13 @@ class SettingsManager:
                 if not self.battery_manager.consume_battery(10):
                     return    
 
-                print("✅ All data has been reset successfully!")     
+                print("✅ All data has been reset successfully!")  
+
+                print("📇 Contacts Cleared :",contact_count)
+                print("📞 Calls Cleared :",call_count)
+                print("💬 Messages Cleared :",message_count) 
+                print("🧮 Calculations Cleared :",calculation_count)
+                print("🎵 Music Cleared :",song_count)  
                 return 
 
             elif (sure_thing == "n"):
@@ -174,6 +181,7 @@ class SettingsManager:
 
             else:
                 print("Please enter a valid input !!")
+
 
     def show_system_status(self):
         print("\n" + "─" * 20 + " System Status " + "─" * 20)
