@@ -111,76 +111,111 @@ class SettingsManager:
             else:
                 print("\n❌ Password is incorrect. Only enter digit!")
 
-    # Method to reset the data    
     def reset_data(self):
 
         while True:
 
-            # Confirm before deleting all records
-            print("─" * 35)
-            sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
-            print("─" * 35)
-
+            # Load existing data before resetting
             contacts = storage.load_contacts()
             contact_count = len(contacts)
 
             calls = storage.load_calls()
             call_count = len(calls)
-            
+
             messages = storage.load_messages()
             message_count = len(messages)
-            
+
             calculations = storage.load_calculations()
             calculation_count = len(calculations)
-            
+
             songs = storage.load_music()
             song_count = len(songs["playlist"])
-            current_song = songs["current_song"]
 
-            if (contact_count == 0 and call_count == 0 and message_count == 0 and calculation_count == 0 and song_count == 0 ):
-                print ("ℹ️ There is no user data to reset.")
+            # Check whether there is any user data
+            if (contact_count == 0 and
+                call_count == 0 and
+                message_count == 0 and
+                calculation_count == 0 and
+                song_count == 0):
+
+                print("\nℹ️ There is no user data to reset.")
                 return
 
-            if (sure_thing == "y"):
-                # Reset contacts 
+            # Show existing data before confirmation
+            print("\n" + "═" * 18 + " ⚠️ RESET DATA " + "═" * 18)
+            print(f"\n📇 Contacts      : {contact_count}")
+            print(f"📞 Calls         : {call_count}")
+            print(f"💬 Messages      : {message_count}")
+            print(f"🧮 Calculations  : {calculation_count}")
+            print(f"🎵 Music Tracks  : {song_count}")
+
+            print("\n⚠️ This will permanently clear all user data.")
+
+            sure_thing = input("\nAre you sure? (y/n): ").lower()
+    
+            if sure_thing == "y":
+
+                # Reset contacts
                 with open(storage.CONTACTS_FILE, "w") as file:
                     json.dump({}, file, indent=4)
 
+                # Reset calls
                 with open(storage.CALLS_FILE, "w") as file:
-                    json.dump([], file, indent = 4)
+                    json.dump([], file, indent=4)
 
+                # Reset messages
                 with open(storage.MESSAGES_FILE, "w") as file:
-                    json.dump([], file, indent = 4)
+                    json.dump([], file, indent=4)
 
+                # Reset calculations
                 with open(storage.CALCULATOR_FILE, "w") as file:
-                    json.dump([], file, indent = 4)
+                    json.dump([], file, indent=4)
 
+                # Reset battery
                 with open(storage.BATTERY_FILE, "w") as file:
-                    json.dump({"level" : 20}, file, indent = 4)
+                    json.dump({"level": 20}, file, indent=4)
 
+                # Reset music
                 with open(storage.MUSIC_FILE, "w") as file:
-                    json.dump({"playlist" : {}, "current_song" : None}, file, indent = 4)
+                    json.dump({
+                        "playlist": {},
+                        "current_song": None
+                    }, file, indent=4)
 
+                # Keep current password
                 with open(storage.PASSWORD_FILE, "w") as file:
-                    json.dump({"password" : self.real_password}, file, indent = 4)  
+                    json.dump({
+                        "password": self.real_password
+                    }, file, indent=4)
 
+                # Consume battery for the reset operation
                 if not self.battery_manager.consume_battery(10):
-                    return    
+                    return
 
-                print("✅ All data has been reset successfully!")  
+                # Show reset result
+                print("\n" + "═" * 18 + " ✅ DATA CLEARED " + "═" * 18)
 
-                print("📇 Contacts Cleared :",contact_count)
-                print("📞 Calls Cleared :",call_count)
-                print("💬 Messages Cleared :",message_count) 
-                print("🧮 Calculations Cleared :",calculation_count)
-                print("🎵 Music Cleared :",song_count)  
-                return 
+                print(f"\n📇 Contacts Cleared      : {contact_count}")
+                print(f"📞 Calls Cleared         : {call_count}")
+                print(f"💬 Messages Cleared     : {message_count}")
+                print(f"🧮 Calculations Cleared : {calculation_count}")
+                print(f"🎵 Music Tracks Cleared : {song_count}")
 
-            elif (sure_thing == "n"):
-                break
+                print("\n🔋 Battery reset to 20%")
+                print("🔐 Password preserved 🔒")
+
+                print("\n✅ All selected data has been reset successfully!")
+
+                return
+
+            elif sure_thing == "n":
+
+                print("\n↩️ Reset cancelled. No data was changed.")
+                return
 
             else:
-                print("Please enter a valid input !!")
+
+                print("\n❌ Invalid choice! Please enter y or n.")
 
 
     def show_system_status(self):
