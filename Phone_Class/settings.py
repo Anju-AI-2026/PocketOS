@@ -55,6 +55,9 @@ class SettingsManager:
             elif choice == "2" :
                 self.reset_data()
 
+            elif choice == "3 " :
+                self.show_system_status()
+
             elif choice == "5":
                 break
 
