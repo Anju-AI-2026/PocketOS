@@ -119,6 +119,26 @@ class SettingsManager:
             print("─" * 35)
             sure_thing = input("⚠️  Are you sure? (y/n): ").lower()
             print("─" * 35)
+
+            contacts = storage.load_contacts()
+            contact_count = len(contacts)
+
+            calls = storage.load_calls()
+            call_count = len(calls)
+            
+            messages = storage.load_messages()
+            message_count = len(messages)
+            
+            calculations = storage.load_calculations()
+            calculation_count = len(calculations)
+            
+            songs = storage.load_music()
+            song_count = len(songs["playlist"])
+            current_song = songs["current_song"]
+
+            if (contact_count == 0 and call_count == 0 and message_count == 0 and calculation_count == 0 and song_count == 0 ):
+                print ("ℹ️ There is no user data to reset.")
+                return
         
             if (sure_thing == "y"):
                 # Reset contacts 
