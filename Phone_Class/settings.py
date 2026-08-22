@@ -11,6 +11,11 @@ class SettingsManager:
 
         self.real_password = storage.load_password()
 
+        self.name = "Samsung"
+        self.brand = "Galaxy S24"
+        self.colour = "Black"
+        self.memory = "256 GB"
+
      # Password authentication before accessing the phone
     def authenticate_password(self):
 
