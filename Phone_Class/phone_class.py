@@ -34,19 +34,6 @@ class Phone(ContactManager,
         MusicManager.__init__(self, self.battery_manager)
         SettingsManager.__init__(self, self.battery_manager)
 
-    # Method to display phone information
-    def showdetails(self):
-        self.battery_manager.consume_battery(2)
-
-        print("╔" + "═"*54 + "╗")
-        print("║                📱 PHONE INFORMATION                  ║")
-        print("╠" + "═"*54 + "╣")
-        print(f"║  🏢 Company : {self.name:<37}  ║")
-        print(f"║  📱 Model   : {self.brand:<37}  ║")
-        print(f"║  🎨 Colour  : {self.colour:<37}  ║")
-        print(f"║  💾 Storage : {self.memory:<37}  ║")
-        print("╚" + "═"*54 + "╝")
-
     # Method to display the main application menu
     def see_menu(self):
         print("╔" + "═"*54 + "╗")
@@ -60,8 +47,7 @@ class Phone(ContactManager,
         print("║  6. 🧮 Calculator                                    ║")
         print("║  7. 🎮 Games                                         ║")
         print("║  8. 🔋 Battery Status                                ║")
-        print("║  9. ⚙️  Battery Manager                               ║")
-        print("║ 10. 🚪 Exit                                          ║")
+        print("║  9. 🚪 Exit                                          ║")
         print("╚" + "═"*54 + "╝")
 
     # Method to clear the terminal screen for a new page view
