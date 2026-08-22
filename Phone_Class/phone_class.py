@@ -34,11 +34,6 @@ class Phone(ContactManager,
         MusicManager.__init__(self, self.battery_manager)
         SettingsManager.__init__(self, self.battery_manager)
 
-        self.name = "Samsung"
-        self.brand = "Galaxy S24"
-        self.colour = "Black"
-        self.memory = "256 GB"
-
     # Method to display phone information
     def showdetails(self):
         self.battery_manager.consume_battery(2)
