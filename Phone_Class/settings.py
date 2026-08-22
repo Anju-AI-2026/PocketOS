@@ -259,4 +259,14 @@ class SettingsManager:
 
     # Method to display phone information
     def showdetails(self):
-        pass
+        if not self.battery_manager.consume_battery(5):
+            return
+
+        print("╔" + "═"*54 + "╗")
+        print("║                📱 PHONE INFORMATION                  ║")
+        print("╠" + "═"*54 + "╣")
+        print(f"║  🏢 Company : {self.name:<37}  ║")
+        print(f"║  📱 Model   : {self.brand:<37}  ║")
+        print(f"║  🎨 Colour  : {self.colour:<37}  ║")
+        print(f"║  💾 Storage : {self.memory:<37}  ║")
+        print("╚" + "═"*54 + "╝")   
