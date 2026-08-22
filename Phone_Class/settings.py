@@ -251,3 +251,7 @@ class SettingsManager:
         print("⚙️ System State       : Active ✅")
 
         print("─" * 50)
+
+    # Method to display phone information
+    def showdetails(self):
+        pass
