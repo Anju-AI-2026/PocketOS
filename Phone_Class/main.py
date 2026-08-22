@@ -39,52 +39,47 @@ while True:
 
         choice = int(choice)
 
-        if choice == 1:
-            phone1.clear_screen()
-            phone1.see_menu()
-            phone1.showdetails()
-
-        elif choice == 2:
+        elif choice == 1:
             phone1.clear_screen()
             phone1.contact_manager()
             phone1.see_menu()
 
-        elif choice == 3:
+        elif choice == 2:
             phone1.clear_screen()
             phone1.call_manager()
             phone1.see_menu()
 
-        elif choice == 4:
+        elif choice == 3:
             phone1.clear_screen()
             phone1.message_manager()
             phone1.see_menu()
 
-        elif choice == 5:
+        elif choice == 4:
             phone1.clear_screen()
             phone1.music_manager()
             phone1.see_menu()
 
-        elif choice == 6:
+        elif choice == 5:
             phone1.clear_screen()
             phone1.calculator_manager()
             phone1.see_menu()
 
-        elif choice == 7:
+        elif choice == 6:
             phone1.clear_screen()
             phone1.game_manager()
             phone1.see_menu()
 
-        elif choice == 8:
+        elif choice == 7:
             phone1.clear_screen()
             phone1.battery_manager.show_battery()
             phone1.see_menu()
 
-        elif choice == 9:
+        elif choice == 8:
             phone1.clear_screen()
             phone1.battery_manager.battery_manager()
             phone1.see_menu()
             
-        elif choice == 10:
+        elif choice == 9:
             exit()
 
         else:
