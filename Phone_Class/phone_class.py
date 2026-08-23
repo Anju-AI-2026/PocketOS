@@ -26,6 +26,8 @@ class Phone(ContactManager,
     # Constructor to initialize phone details and manager classes
     def __init__(self):
 
+        self.real_password = load_password()
+
         self.battery_manager = BatteryManager()
         CalculatorManager.__init__(self, self.battery_manager)
         ContactManager.__init__(self, self.battery_manager)
@@ -46,9 +48,10 @@ class Phone(ContactManager,
         print("║  5. 🧮 Calculator                                    ║")
         print("║  6. 🎮 Games                                         ║")
         print("║  7. 🔋  Battery Manager                              ║")
-        print("║  8.🚪 Exit                                          ║")
+        print("║  8. ⚙️  Settings                                      ║")
+        print("║  9.🚪 Exit                                           ║")
         print("╚" + "═"*54 + "╝")
 
     # Method to clear the terminal screen for a new page view
     def clear_screen(self):
-        os.system("cls")   
+        os.system("cls")    
