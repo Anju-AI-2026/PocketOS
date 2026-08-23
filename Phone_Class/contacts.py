@@ -118,12 +118,13 @@ class ContactManager:
             while True:
                 print("\n" + "─" * 45)
                 contact_name = input("👤 Enter the contact name to delete:\n")
+                contact_key = self.find_contact(contact_name)
                 print("─" * 45)
 
                 # Validate user input
                 if contact_name.replace(" ", "").isalnum():
-                    if (contact_name in self.contacts):
-                        del self.contacts[contact_name]
+                    if contact_key is not None:
+                        del self.contacts[contact_key]
                         save_contacts(self.contacts)
                         print("\n✅ Contact deleted successfully!\n")
                         if not self.battery_manager.consume_battery(2):
