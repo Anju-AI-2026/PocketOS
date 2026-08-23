@@ -10,16 +10,15 @@ print("             ╔═══════════════════
 print("             ║        🔐 PASSWORD AUTHENTICATION    ║")
 print("             ╚══════════════════════════════════════╝")
 
-
-input("⏩ Press Enter to continue...")
-
 # Creating a Phone object
 phone1 = Phone()
 
 # Calling the password authentication function
 phone1.authenticate_password()
-# Displaying the menu until the user exits the program
 
+input("⏩ Press Enter to continue...")
+
+# Displaying the menu until the user exits the program
 phone1.see_menu()
 
 print("\n" + "─"*45)
@@ -39,7 +38,7 @@ while True:
 
         choice = int(choice)
 
-        elif choice == 1:
+        if choice == 1:
             phone1.clear_screen()
             phone1.contact_manager()
             phone1.see_menu()
@@ -73,13 +72,18 @@ while True:
             phone1.clear_screen()
             phone1.battery_manager.battery_manager()
             phone1.see_menu()
-            
+
         elif choice == 8:
+            phone1.clear_screen()
+            phone1.settings_manager()
+            phone1.see_menu()    
+            
+        elif choice == 9:
             exit()
 
         else:
             print("\n❌ Invalid choice!")
-            print("Please enter a number between 1 and 10.\n")
+            print("Please enter a number between 1 and 9.\n")
 
     else:
         print("\n❌ Error: Choice must be a digit.\n")
