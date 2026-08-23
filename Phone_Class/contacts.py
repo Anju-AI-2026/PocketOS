@@ -10,6 +10,16 @@ class ContactManager:
         self.contacts = load_contacts()
         self.battery_manager = battery_manager
 
+    # Healper method for name lower case and upper case problem solving
+    def find_contact(self, name):
+
+        for stored_name in self.contacts:
+
+            if stored_name.lower() == name.lower():
+                return stored_name
+
+        return None  
+
     # Method to display the contact menu
     def see_contact_menu(self):
         print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
