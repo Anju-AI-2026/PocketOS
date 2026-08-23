@@ -18,7 +18,7 @@ class ContactManager:
             if stored_name.lower() == name.lower():
                 return stored_name
 
-        return None  
+        return None    
 
     # Method to display the contact menu
     def see_contact_menu(self):
@@ -142,6 +142,7 @@ class ContactManager:
 
         print("\n" + "─" * 38)
         search_record = input("🔎 Enter the name or number to search:\n")
+        contact_key = self.find_contact(search_record)
         print("─" * 38)
 
         if (not self.contacts):
@@ -158,6 +159,7 @@ class ContactManager:
                     print(f"👤 Name   : {key}")
                     print(f"📞 Number : {value}")
                     print("=" * 22 + "\n")
+                    found = True
                     if not self.battery_manager.consume_battery(2):
                         return
 
@@ -168,27 +170,29 @@ class ContactManager:
                     print(f"👤 Name   : {call['name']}")
                     print(f"📞 Number : {call['number']}")
                     print("=" * 22 + "\n")
+                    found = True
                     if not self.battery_manager.consume_battery(2):
                         return
 
         else:
-            for key, value in self.contacts.items():
-                if (search_record == key):
-                    print("\n" + "=" * 22)
-                    print("✅ Search successful!\n")
-                    print(f"👤 Name   : {search_record}")
-                    print(f"📞 Number : {self.contacts[search_record]}")
-                    print("=" * 22 + "\n")
-                    if not self.battery_manager.consume_battery(2):
-                        return
+            if contact_key is not None:
+                print("\n" + "=" * 22)
+                print("✅ Search successful!\n")
+                print(f"👤 Name   : {contact_key}")
+                print(f"📞 Number : {self.contacts[contact_key]}")
+                print("=" * 22 + "\n")
+                found = True
+                if not self.battery_manager.consume_battery(2):
+                    return
 
             for call in self.call_list:
-                if (search_record == call["name"]):
+                if (search_record.lower() == call["name"].lower()):
                     print("\n" + "=" * 22)
                     print("✅ Search successful!\n")
                     print(f"👤 Name   : {call['name']}")
                     print(f"📞 Number : {call['number']}")
                     print("=" * 22 + "\n")
+                    found = True
                     if not self.battery_manager.consume_battery(2):
                         return
 
@@ -236,21 +240,23 @@ class ContactManager:
 
         contact_name = input("\n✏️ Enter the contact name to edit: ").strip()
 
-        if contact_name not in self.contacts:
+        contact_key = self.find_contact(contact_name)
+
+        if contact_key is None:
             print("\n❌ Contact not found.\n")
             return
 
-        old_number = self.contacts[contact_name]
+        old_number = self.contacts[contact_key]
 
         # Get new name
         while True:
             new_name = input("New name (leave empty to keep same): ").strip()
 
             if new_name == "":
-                new_name = contact_name
+                new_name = contact_key
                 break
 
-            elif new_name in self.contacts and new_name != contact_name:
+            elif self.find_contact(new_name) is not None and self.find_contact(new_name) != contact_key:
                 print("\n❌ Contact already exists.\n")
 
             elif new_name.replace(" ", "").isalnum():
@@ -285,7 +291,7 @@ class ContactManager:
                 print("\n❌ Phone number should contain numbers only.")
 
         # Update contact
-        del self.contacts[contact_name]
+        del self.contacts[contact_key]
         self.contacts[new_name] = new_number
 
         save_contacts(self.contacts)
@@ -293,7 +299,7 @@ class ContactManager:
         print("\n✅ Contact updated successfully!\n")
 
         if not self.battery_manager.consume_battery(2):
-            return              
+            return            
 
     # Method to control all contact operations
     def contact_manager(self):
