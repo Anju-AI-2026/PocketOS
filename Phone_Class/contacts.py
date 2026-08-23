@@ -46,7 +46,7 @@ class ContactManager:
             print()
             name = input("👤 Enter contact name:\n")
 
-            if (name in self.contacts):
+            if self.find_contact(name) is not None:
                 print("\n❌ Contact already exists.\n")
                 return
             else:
