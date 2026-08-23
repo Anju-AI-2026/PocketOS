@@ -7,7 +7,7 @@ class SettingsManager:
 
     # Constructor to initialize battery manager
     def __init__(self, battery_manager):
-        self.battery_manager = battery_manager
+        self.battery_manager = battery_manager 
 
         self.real_password = storage.load_password()
 
@@ -34,40 +34,19 @@ class SettingsManager:
 
             else:
                 print("\n❌ Password should contain digits only.")
-                
-    # Method to show the settings menu 
+
+
     def settings_menu(self):
+
+        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
+
         print("\n" + "═" * 14 + " ⚙️ SETTINGS " + "═" * 14 + "\n")
         
         print("1. 🔐 Change Password")
         print("2. 📦 Reset All Data")
         print("3. 📱 Show System Status")
         print("4. ℹ️ About PocketOS")
-        print("5. 🔙 Back")
-
-    # Method to display settings menu
-    def settings_manager(self):
-
-        self.settings_menu()
-        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
-        while True:
-
-            choice = input("\n👉 Enter your choice: ")
-
-            if choice == "1":
-                self.change_password()   
-
-            elif choice == "2" :
-                self.reset_data()
-
-            elif choice == "3 " :
-                self.show_system_status()
-
-            elif choice == "5":
-                break
-
-            else:
-                print("\n🚧 Feature coming soon...\n")     
+        print("5. 🔙 Back")   
 
     # Method to change the password
     def change_password(self):
@@ -157,7 +136,7 @@ class SettingsManager:
             print("\n⚠️ This will permanently clear all user data.")
 
             sure_thing = input("\nAre you sure? (y/n): ").lower()
-    
+
             if sure_thing == "y":
 
                 # Reset contacts
@@ -222,7 +201,6 @@ class SettingsManager:
 
                 print("\n❌ Invalid choice! Please enter y or n.")
 
-
     def show_system_status(self):
         print("\n" + "─" * 20 + " System Status " + "─" * 20)
         print(f"🔋 Battery: {self.battery_manager.battery}%")
@@ -269,4 +247,41 @@ class SettingsManager:
         print(f"║  📱 Model   : {self.brand:<37}  ║")
         print(f"║  🎨 Colour  : {self.colour:<37}  ║")
         print(f"║  💾 Storage : {self.memory:<37}  ║")
-        print("╚" + "═"*54 + "╝")   
+        print("╚" + "═"*54 + "╝")    
+
+    # Method to display settings menu
+    def settings_manager(self):
+
+        self.settings_menu()
+
+        while True:
+            if not self.battery_manager.check_battery():
+                return
+
+            print("\n" + "─"*42)
+            print("📱 What would you like to do?")
+            print("─"*42)
+        
+            choice = input("\n➡️  Enter your choice: ")
+            if choice.isdigit():
+                choice = int(choice)
+
+                if choice == 1 :
+                    self.change_password()
+
+                elif choice == 2 :
+                    self.reset_data()  
+
+                elif choice == 3 :
+                    self.show_system_status()     
+
+                elif choice == 4 :
+                    self.showdetails()     
+
+                elif choice == 5 :
+                    break
+
+                else:
+                    print("\n❌ Please enter a valid menu choice.\n")
+            else:
+                print("\n❌ Error: Choice must be a digit.\n")   
