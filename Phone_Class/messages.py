@@ -51,12 +51,13 @@ class MessageManager:
 
                             print("─"*35)
                             print("✅ Message sent successfully!\n")
-                            print(f"👤 Contact : \n{user_choice}\n")
+                            print(f"👤 Contact : \n{key}\n")
                             print(f"💬 Message :\n{msg}")
                             print("─"*35)
 
                             self.message_list.append(message_chat)
                             save_messages(self.message_list)
+
                             if not self.battery_manager.consume_battery(5):
                                 return
                             return
@@ -95,15 +96,17 @@ class MessageManager:
                                             self.message_list.append(message_chat)
                                             self.contacts[name] = user_choice
                                             save_messages(self.message_list)
+
                                             if not self.battery_manager.consume_battery(5):
                                                 return
                                             return
+
                                     else:
                                         print("\n❌ Invalid Input")
                                         print("Name should contain only letters or alphanumeric characters.\n")
 
                             elif (save_choice == "n"):
-                                msg = input("💬 Enter the message for the unknown number:\n")
+                                msg = input("💬 Enter your message for the unknown number:\n")
 
                                 # Save the operation in history
                                 message_chat = {
@@ -121,6 +124,7 @@ class MessageManager:
 
                                 self.message_list.append(message_chat)
                                 save_messages(self.message_list)
+
                                 if not self.battery_manager.consume_battery(5):
                                     return
                                 return
@@ -138,25 +142,30 @@ class MessageManager:
                     print("Phone number must contain exactly 10 digits.\n")
 
             else:
-                if(user_choice in self.contacts):
-                    msg = input(f"💬 Enter the message for {user_choice}: ")
+
+                # Find stored contact without case sensitivity
+                contact_key = self.find_contact(user_choice)
+
+                if(contact_key is not None):
+                    msg = input(f"💬 Enter the message for {contact_key}: ")
 
                     # Save the operation in history
                     message_chat = {
-                        "name" : user_choice,
-                        "number" : self.contacts[user_choice],
+                        "name" : contact_key,
+                        "number" : self.contacts[contact_key],
                         "message" : msg,
                         "type" : "Sent"
                     }
 
                     print("─"*35)
                     print("✅ Message sent successfully!\n")
-                    print(f"👤 Contact :\n {user_choice}\n")
+                    print(f"👤 Contact :\n {contact_key}\n")
                     print(f"💬 Message :\n{msg}")
                     print("─"*35)
 
                     self.message_list.append(message_chat)
                     save_messages(self.message_list)
+
                     if not self.battery_manager.consume_battery(5):
                         return
                     return
