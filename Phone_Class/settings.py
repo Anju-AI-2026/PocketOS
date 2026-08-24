@@ -48,7 +48,7 @@ class SettingsManager:
         print("║  3. 📱 Show System Status                            ║")
         print("║  4. ℹ️  About PocketOS                                ║")
         print("║  5. 🔙 Back                                          ║")
-        print("╚" + "═"*54 + "╝\n")  
+        print("╚" + "═"*54 + "╝\n")
 
     # Method to change the password
     def change_password(self):
@@ -96,7 +96,7 @@ class SettingsManager:
                     print("\n❌ Password is incorrect.")
             else:
                 print("\n❌ Password is incorrect. Only enter digit!")
-
+                
     # Method to reset the stored data 
     def reset_data(self):
 
@@ -205,38 +205,35 @@ class SettingsManager:
                 print("\n❌ Invalid choice! Please enter y or n.")
 
     def show_system_status(self):
-        print("\n" + "─" * 20 + " System Status " + "─" * 20)
-        print(f"🔋 Battery: {self.battery_manager.battery}%")
-        print(f"🔐 Password set: {'Yes Protected ✅' if self.real_password is not None else 'No'}")
+
+        print("\n╔" + "═"*54 + "╗")
+        print("║                  📱 SYSTEM STATUS                    ║")
+        print("╠" + "═"*54 + "╣")
+
+        print(f"║  🔋 Battery           : {self.battery_manager.battery}%                          ║ ")
+        print(f"║  🔐 Password          : {'Protected ✅' if self.real_password is not None else 'Not Set'}                 ║ ")
 
         contacts = storage.load_contacts()
-        count = len(contacts)
-        print("💾 Contacts Stored :",count)
+        print(f"║  📇 Contacts Stored   : {len(contacts)}                            ║  ")
 
         calls = storage.load_calls()
-        count = len(calls)
-        print("📞 Calls Stored :",count)
+        print(f"║  📞 Calls Stored      : {len(calls)}                            ║")
 
         messages = storage.load_messages()
-        count = len(messages)
-        print("💬 Messages Stored :",count)
+        print(f"║  💬 Messages Stored   : {len(messages)}                            ║")
 
         calculations = storage.load_calculations()
-        count = len(calculations)
-        print("🧮 Calculations Stored :",count)
+        print(f"║  🧮 Calculations      : {len(calculations)}                            ║")
 
         songs = storage.load_music()
-        count = len(songs["playlist"])
-        current_song = songs["current_song"]
+        print(f"║  🎵 Music Tracks      : {len(songs['playlist'])}                            ║")
+        print(f"║  🎵 Current Music     : {songs['current_song']}                         ║")
 
-        print("🎵 Music Tracks :",count)
-        print("🎵 Current Music :",current_song)
+        print("║                                                      ║")
+        print("║  📱 PocketOS Version  : v2.0                         ║")
+        print("║  ⚙️  System State     : Active ✅                     ║")
 
-        print("📱 PocketOS Version   : v2.0 ")
-
-        print("⚙️ System State       : Active ✅")
-
-        print("─" * 50)
+        print("╚" + "═"*54 + "╝\n")
 
     # Method to display phone information
     def showdetails(self):
