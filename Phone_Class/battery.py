@@ -55,6 +55,7 @@ class BatteryManager:
 
     # Method to reduce battery percentage
     def consume_battery(self, amount):
+
         self.battery -= amount
 
         if self.battery < 0:
