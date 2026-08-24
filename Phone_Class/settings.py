@@ -97,6 +97,7 @@ class SettingsManager:
             else:
                 print("\n❌ Password is incorrect. Only enter digit!")
 
+    # Method to reset the stored data 
     def reset_data(self):
 
         while True:
@@ -187,7 +188,7 @@ class SettingsManager:
                 print(f"🧮 Calculations Cleared : {calculation_count}")
                 print(f"🎵 Music Tracks Cleared : {song_count}")
 
-                print("\n🔋 Battery reset to 20%")
+                print("\n🔋 Battery reset to ", self.battery_manager.battery)
                 print("🔐 Password preserved 🔒")
 
                 print("\n✅ All selected data has been reset successfully!")
