@@ -208,25 +208,48 @@ class MessageManager:
             print("╔══════════════════════════════╗")
             print("║   📭 Message History Empty   ║")
             print("╚══════════════════════════════╝\n")
+            return
+
         else:
+            print("╔════════════════════════════════════╗")
+            print("║       📨 MESSAGE HISTORY           ║")
+            print("╚════════════════════════════════════╝\n")
+
+            # Display stored message records
+            for index, message in enumerate(self.message_list, start=1):
+                print(f"📌 Message #{index}")
+                print(f"👤 Name    : {message['name']}")
+                print(f"📞 Number  : {message['number']}")
+                print(f"💬 Message : {message['message']}")
+                print(f"📤 Type    : {message['type']}")
+                print("─" * 35)
+
             while True:
-                contact_name = input("👤 Enter the contact name to delete:\n")
+                choice = input("🗑️ Enter the message number to delete: ")
 
                 # Validate user input
-                if (contact_name.isalnum()):
-                    for i, message in enumerate(self.message_list):
-                        if contact_name == message["name"]:
-                            del self.message_list[i]
-                            save_messages(self.message_list)
-                            print("\n✅ Message deleted successfully!\n")
-                            if not self.battery_manager.consume_battery(2):
-                                return
+                if (choice.isdigit()):
+                    choice = int(choice)
+                    length = len(self.message_list)
 
-                    print("\n❌ Contact not found.\n")
+                    if (choice >= 1 and choice <= length):
+                        del self.message_list[choice-1]
+                        save_messages(self.message_list)
+
+                        print("\n✅ Message deleted successfully.\n")
+
+                        if not self.battery_manager.consume_battery(2):
+                            return
+
+                        return
+
+                    else:
+                        print("\n❌ Invalid Input")
+                        print("Message number is out of range.\n")
 
                 else:
                     print("\n❌ Invalid Input")
-                    print("Name should contain only alphanumeric characters.\n")
+                    print("Please enter a valid message number.\n")
 
     # Method to clear the message history
     def clear_message_history(self):
