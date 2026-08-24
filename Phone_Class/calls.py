@@ -151,7 +151,6 @@ class CallManager:
                     print("❌ Contact not found.")
                     print("="*22 + "\n")
 
-
     # Method to delete a call history
     def delete_call_history(self):
         print("\n" + "═"*14 + " 🗑️ DELETE CALL HISTORY " + "═"*14 + "\n")
