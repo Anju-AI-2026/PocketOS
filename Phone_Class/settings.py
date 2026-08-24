@@ -35,18 +35,20 @@ class SettingsManager:
             else:
                 print("\n❌ Password should contain digits only.")
 
-
+    # Method to display the settings menu
     def settings_menu(self):
 
         print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
 
-        print("\n" + "═" * 14 + " ⚙️ SETTINGS " + "═" * 14 + "\n")
-        
-        print("1. 🔐 Change Password")
-        print("2. 📦 Reset All Data")
-        print("3. 📱 Show System Status")
-        print("4. ℹ️ About PocketOS")
-        print("5. 🔙 Back")   
+        print("╔" + "═"*54 + "╗")
+        print("║                    ⚙️ SETTINGS                        ║")
+        print("╠" + "═"*54 + "╣")
+        print("║  1. 🔐 Change Password                               ║")
+        print("║  2. 📦 Reset All Data                                ║")
+        print("║  3. 📱 Show System Status                            ║")
+        print("║  4. ℹ️  About PocketOS                                ║")
+        print("║  5. 🔙 Back                                          ║")
+        print("╚" + "═"*54 + "╝\n")  
 
     # Method to change the password
     def change_password(self):
