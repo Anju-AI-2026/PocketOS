@@ -72,11 +72,53 @@ class BatteryManager:
 
     # Method to check battery status
     def check_battery(self):
+
+        # Battery completely empty
         if self.battery == 0:
             print("\n📴 Phone is switched off.")
             print("⚡ Please charge the battery.\n")
             return False
 
+        # Critical battery: only allow charging/status/exit
+        if self.battery <= 5:
+
+            while self.battery > 0 and self.battery <= 5:
+
+                print("\n" + "═" * 18 + " 🔋 BATTERY " + "═" * 18)
+                print(f"\n🔋 Battery: {self.battery}%")
+                print("\n⚠️ Battery critically low!")
+                print("Please charge your phone before using PocketOS.\n")
+
+                print("1. ⚡ Charge Battery")
+                print("2. 🔋 Show Battery Status")
+                print("3. 📴 Exit")
+
+                choice = input("\n➡️  Enter your choice: ")
+
+                if choice == "1":
+                    self.charge_battery()
+
+                elif choice == "2":
+                    self.show_battery()
+
+                elif choice == "3":
+                    print("\n📴 PocketOS shutting down...")
+                    return False
+
+                else:
+                    print("\n❌ Please enter a valid choice.\n")
+
+            # If battery was charged above 5%, allow the module to open
+            if self.battery > 5:
+                return True
+
+            # If battery somehow became 0
+            if self.battery == 0:
+                print("\n📴 Phone is switched off.")
+                print("⚡ Please charge the battery.\n")
+                return False
+
+        # Normal low battery warning
         if self.battery <= 10:
             print(f"\n🔋 Battery Level: {self.battery}%")
             print("⚠️ Low battery! Please charge your phone.\n")
