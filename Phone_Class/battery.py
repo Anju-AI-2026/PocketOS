@@ -47,12 +47,6 @@ class BatteryManager:
                 print("\n✅ Battery charged successfully.")
                 print(f"🔋 Current Battery : {self.battery}%\n")
 
-    # Method to protect the battery
-    def protect_battery(self):
-        if self.battery < 0:
-            self.battery = 0
-            return
-
     # Method to reduce battery percentage
     def consume_battery(self, amount):
 
