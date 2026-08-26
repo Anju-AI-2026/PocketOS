@@ -1,5 +1,6 @@
 # Battery manager class to simulate battery behavior
 
+from datetime import datetime
 from storage import save_battery, load_battery
 
 class BatteryManager:
