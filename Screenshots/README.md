@@ -124,5 +124,5 @@ The following screenshots show the JSON data files used by PocketOS for persiste
 
 | Contacts Data                                      | Calls Data                                  |
 | -------------------------------------------------- | ------------------------------------------- |
-| <img src="contacts_data.png" width="350"/>         | <img src="calls_data.png" width="350"/>     |
+| <img src="21_contacts_data.png" width="350"/>         | <img src="20_calls_data.png" width="350"/>     |
 
