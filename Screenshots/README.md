@@ -126,3 +126,10 @@ The following screenshots show the JSON data files used by PocketOS for persiste
 | -------------------------------------------------- | ------------------------------------------- |
 | <img src="21_contacts_data.png" width="350"/>         | <img src="20_calls_data.png" width="350"/>     |
 
+---
+
+| Messages Data                                      | Calculator Data                             |
+| -------------------------------------------------- | ------------------------------------------- |
+| <img src="22_messages_data.png" width="350"/>        | <img src="19_calculator_data.png" width="350"/>|
+
+---
