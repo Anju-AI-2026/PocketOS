@@ -122,11 +122,17 @@ This gallery serves as the **visual documentation** for the released **Phone Man
 
 The following screenshots show the JSON data files used by PocketOS for persistent application data. The `password.json` file is also used for persistent password storage, but its contents are intentionally not shown for security reasons.
 
+---
+
+This module shows **How contacts and calls are saved in json file**.
+
 | Contacts Data                                      | Calls Data                                  |
 | -------------------------------------------------- | ------------------------------------------- |
 | <img src="21_contacts_data.png" width="350"/>         | <img src="20_calls_data.png" width="350"/>     |
 
 ---
+
+This module shows **How messages and calculation data saved in jason file**.
 
 | Messages Data                                      | Calculator Data                             |
 | -------------------------------------------------- | ------------------------------------------- |
