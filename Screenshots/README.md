@@ -118,4 +118,11 @@ These screenshots provide a visual overview of the **Phone Management System v1.
 
 This gallery serves as the **visual documentation** for the released **Phone Management System v1.0** project.
 
+## 💾 Data File Screenshots
+
+The following screenshots show the JSON data files used by PocketOS for persistent application data. The `password.json` file is also used for persistent password storage, but its contents are intentionally not shown for security reasons.
+
+| Contacts Data                                      | Calls Data                                  |
+| -------------------------------------------------- | ------------------------------------------- |
+| <img src="contacts_data.png" width="350"/>         | <img src="calls_data.png" width="350"/>     |
 
