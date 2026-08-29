@@ -1,4 +1,4 @@
-from phone_class import Phone
+from modules.phone_class import Phone
 
 # Main interface of the Phone Management System
 print("╔" + "═"*68 + "╗")
