@@ -23,6 +23,11 @@ class BatteryManager:
     def show_battery(self):
         print("\n🔋 Current Battery :", self.battery, "%\n")
 
+    # Method to display real-time clock and battery
+    def show_status(self):
+        current_time = datetime.now().strftime("%I:%M %p")
+        print(f"\n🕐 {current_time}     🔋 Battery: {self.battery}%\n")       
+
     # Method to recharge the battery
     def charge_battery(self):
         if (self.battery == 100):
@@ -104,7 +109,7 @@ class BatteryManager:
 
                 elif choice == "3":
                     print("\n📴 PocketOS shutting down...")
-                    return False
+                    exit()
 
                 else:
                     print("\n❌ Please enter a valid choice.\n")
