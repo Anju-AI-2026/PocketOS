@@ -1,62 +1,80 @@
-# 📱 Phone Management System 
+# 📱 PocketOS — Phone Management System
 
-# 📖 Overview
+A Python-based **Phone Management System** that simulates the core functionality of a smartphone through a modular, menu-driven console application.
 
-The **Phone Management System** is a console-based Python project developed using Object-Oriented Programming (OOP) principles. It simulates the basic functionalities of a smartphone by organizing each application into separate manager classes.
+PocketOS demonstrates **Object-Oriented Programming, multiple inheritance, modular programming, JSON file handling, persistent data storage, battery management, input validation, and practical software design**.
 
-The project focuses on writing clean, modular, reusable, and maintainable code while strengthening core Python OOP concepts.
+---
+
+# 🚀 Current Version
+
+## PocketOS v2.0.0 — File Handling & Battery System Update
+
+Version 2.0.0 introduces persistent JSON-based data storage, improved battery management, enhanced module functionality, and a more complete smartphone-like experience.
 
 ---
 
 # ✨ Features
 
-## 📱 Phone
+## 📱 Phone System
 
 * 🔐 Password Authentication
-* 📄 Display Phone Details
 * 📋 Main Menu Navigation
+* 📄 Phone Information
+* 🕐 Real-Time Clock Display
+* 🔋 Centralized Battery Status
 
 ---
 
 ## 📇 Contact Manager
 
 * ➕ Add Contact
-* 👀 View All Contacts
+* 👀 View Contacts
 * 🔍 Search Contact
+* ✏️ Edit Contact
 * 🗑️ Delete Contact
 * 🧹 Clear All Contacts
-* 📋 Contact Menu
+* 📞 Phone Number Validation
+* 🔎 Duplicate Contact and Number Checking
+* 🔤 Case-Insensitive Contact Handling
 
 ---
 
 ## 📞 Call Manager
 
-* 📲 Make a Call
+* 📲 Make Calls
+* 👤 Call Using Contact Name
+* 📞 Call Using Phone Number
+* ❓ Call Unknown Numbers
+* 💾 Save Unknown Numbers as Contacts
 * 📜 View Call History
-* 🗑️ Delete Call History
+* 🗑️ Delete Individual Call Records
 * 🧹 Clear Call History
-* 📋 Call Menu
+* 🔤 Case-Insensitive Contact Lookup
 
 ---
 
 ## 💬 Message Manager
 
-* 📨 Send Message
+* 📨 Send Messages
 * 📜 View Message History
-* 🗑️ Delete Message History
+* 🔍 Search Messages
+* 🗑️ Delete Individual Messages
 * 🧹 Clear Message History
-* 📋 Message Menu
+* 👤 Contact-Based Messaging
+* 🔤 Case-Insensitive Contact Lookup
 
 ---
 
 ## 🎵 Music Manager
 
-* ▶️ Play Music
-* 🎶 Show Playlist
+* ➕ Add Songs
+* 👀 View Playlist
+* ▶️ Play Songs
 * ⏹️ Stop Music
-* ➕ Add Song
-* 🗑️ Delete Song
-* 📋 Music Menu
+* 🗑️ Delete Songs
+* 🎵 Track Currently Playing Song
+* 💾 Persistent Playlist Storage
 
 ---
 
@@ -74,61 +92,108 @@ The project focuses on writing clean, modular, reusable, and maintainable code w
 
 ### 📜 Calculator History
 
-* 👀 View Calculator History
-* 🧹 Clear Calculator History
-
-### 📋 Calculator Menu
+* 👀 View Calculation History
+* 🗑️ Delete Calculation Records
+* 🧹 Clear Calculation History
 
 ---
 
 ## 🎮 Game Manager
 
-### 🎲 Available Games
+Includes built-in console games for entertainment:
 
 * ✊ Rock Paper Scissors
 * 🍀 Lucky Fortune
 * 🎯 Hangman
 
-### 📋 Game Menu
-
-* Start Games
-* Return to Main Menu
-
 ---
 
 ## 🔋 Battery Manager
 
-* 🔋 Show Current Battery Percentage
+* 🔋 Display Current Battery Percentage
 * ⚡ Charge Battery
-* 🛡️ Battery Protection (prevents battery level from going below 0%)
-* ⚠️ Low Battery Warning
 * 🔄 Battery Consumption Management
+* ⚠️ Low Battery Warning
+* 🛡️ Battery Protection
+* 📴 Automatic Phone Shutdown at 0%
 * ✅ Battery Status Checking
-* 📋 Battery Manager Menu
+* 🕐 Battery Status Alongside Real-Time Clock
+
+The battery system is centralized through the `BatteryManager` and is shared across the phone application.
 
 ---
 
-# 🏗️ Project Structure
+## ⚙️ Settings
 
-```text
-Phone-Management-System/
-│
-├── Phone_class.py
-├── contacts.py
-├── calls.py
-├── messages.py
-├── music.py
-├── calculator.py
-├── games.py
-├── battery.py
-└── README.md
-```
-
-Each manager is responsible for a single module, making the project modular, maintainable, and easy to expand.
+* 🔐 Change Password
+* 🔄 Reset Application Data
+* 📊 Show System Status
+* 📱 View Phone Information
+* 🔒 Password Protection
 
 ---
 
-# 🧠 OOP Concepts Used
+# 💾 File Handling & JSON Persistence
+
+PocketOS uses **JSON files for persistent data storage**.
+
+Important application data is saved to files so that information can be restored when the program is started again.
+
+### Stored Data
+
+* 📇 Contact information
+* 📞 Call history
+* 💬 Message history
+* 🧮 Calculator history
+* 🔋 Battery state
+* 🎵 Music playlist and current song
+* 🔐 Password data
+
+The `password.json` file is used for persistent password storage. **Its contents are intentionally not shown in screenshots for security reasons.**
+
+---
+
+# 🔋 Battery System
+
+PocketOS uses a centralized `BatteryManager` to control battery-related operations across the application.
+
+Different phone activities can consume battery, while charging restores the battery level.
+
+The system provides:
+
+* 🔋 Battery monitoring
+* ⚡ Charging
+* 🔄 Battery consumption
+* ⚠️ Low-battery warnings
+* 🛡️ Protection against negative battery values
+* 📴 Automatic shutdown when battery reaches 0%
+* 🕐 Battery and time status information
+
+---
+
+# 🧱 Object-Oriented Design
+
+PocketOS is designed using Object-Oriented Programming principles.
+
+The main `Phone` class combines the different application managers using **multiple inheritance**, while individual managers are responsible for their own functionality.
+
+### Major Manager Classes
+
+* `Phone`
+* `ContactManager`
+* `CallManager`
+* `MessageManager`
+* `CalculatorManager`
+* `GameManager`
+* `MusicManager`
+* `BatteryManager`
+* `SettingsManager`
+
+This modular structure keeps individual features separated and makes the system easier to maintain and extend.
+
+---
+
+# 🧠 Concepts Demonstrated
 
 * 🏛️ Classes and Objects
 * 🔧 Constructors
@@ -142,79 +207,136 @@ Each manager is responsible for a single module, making the project modular, mai
 * 🌿 Conditional Statements
 * ⚙️ Methods
 * ✔️ Input Validation
-
----
-
-# 💾 Runtime Data Management
-
-The application stores data during execution using Python collections.
-
-### 📇 Contacts
-
-* Contact Name
-* Phone Number
-
-### 📞 Call History
-
-* Contact Name
-* Phone Number
-* Call Type
-
-### 💬 Message History
-
-* Contact Name
-* Phone Number
-* Message Content
-
-### 🧮 Calculator History
-
-* Operation
-* Expression
-* Answer
-
----
-
-# 🔋 Battery Management
-
-Battery functionality has been separated into a dedicated **BatteryManager** class.
-
-It is responsible for:
-
-* 🔋 Monitoring the current battery level.
-* ⚡ Charging the battery.
-* 🔄 Managing battery consumption after different phone activities.
-* 🛡️ Preventing the battery level from becoming negative.
-* ⚠️ Displaying low battery warnings.
-* 📱 Providing a centralized battery system shared across the entire phone application.
-
----
-
-# 🚀 Future Improvements
-
 * 💾 File Handling
-* 🗂️ Persistent Data Storage
-* 🔑 Password Change Feature
-* 🎵 Advanced Music Library Management
-* ❤️ Battery Health Monitoring
-* 🌙 Power Saving Mode
-* ⚠️ Exception Handling
-* 🖥️ Graphical User Interface (GUI)
+* 🗂️ JSON Data Storage
+* 🛡️ Exception Handling
+* 🔄 Persistent Data Management
 
 ---
 
-# 🎯 Purpose
+# 📂 Project Structure
 
-This project was developed to practice real-world Python programming by applying Object-Oriented Programming concepts in a structured smartphone simulation.
+```text
+PocketOS/
+│
+├── main.py
+│
+├── modules/
+│   ├── phone_class.py
+│   ├── contacts.py
+│   ├── calls.py
+│   ├── messages.py
+│   ├── calculator.py
+│   ├── games.py
+│   ├── battery.py
+│   ├── music.py
+│   ├── settings.py
+│   └── storage.py
+│
+├── data/
+│   ├── battery.json
+│   ├── calculator.json
+│   ├── calls.json
+│   ├── contacts.json
+│   ├── messages.json
+│   ├── music.json
+│   └── password.json
+│
+├── Screenshots/
+│
+├── .gitignore
+│
+└── README.md
+```
 
-The goal is to build the project incrementally while following clean coding practices and software design principles.
+### 📦 Module Organization
+
+Each manager is maintained as a separate Python module.
+
+The `storage.py` module handles JSON-based data loading and saving, while `phone_class.py` integrates the different managers into the main phone system.
 
 ---
 
-## 📌 Current Version
+# 📸 Screenshots
 
-**✅ Version 1 — Core Console Application**
+The `Screenshots/` folder contains visual demonstrations of PocketOS modules, functionality, and persistent data.
 
-### Included in Version 1
+**The complete screenshot documentation will be added here with the final screenshot layout.**
+
+---
+
+# 🧪 Testing
+
+PocketOS was tested after the implementation of the file-handling and battery-system updates.
+
+Testing included:
+
+* 📇 Contact operations
+* 📞 Call operations
+* 💬 Message operations
+* 🎵 Music operations
+* 🧮 Calculator operations
+* 🎮 Game functionality
+* 🔋 Battery consumption
+* ⚡ Battery charging
+* ⚠️ Low-battery behavior
+* 📴 Automatic shutdown
+* 💾 JSON data persistence
+* 🔐 Password functionality
+* ⚙️ Settings operations
+* 📋 Module navigation
+* 🔤 Case-insensitive contact handling
+* 🧪 Full-system testing and bug fixing
+
+---
+
+# 🛠️ Technologies Used
+
+* **Python**
+* **Object-Oriented Programming**
+* **Multiple Inheritance**
+* **JSON**
+* **File Handling**
+* **Persistent Storage**
+* **Modular Programming**
+* **Exception Handling**
+* **Command-Line Interface (CLI)**
+
+---
+
+# ▶️ How to Run
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Anju-AI-2026/PocketOS.git
+```
+
+### 2. Open the project directory
+
+```bash
+cd PocketOS
+```
+
+### 3. Run PocketOS
+
+```bash
+python main.py
+```
+
+### 4. Authenticate
+
+Enter the configured password to access the PocketOS main menu.
+
+---
+
+# 📌 Version History
+
+## v1.0.0 — Initial Release
+
+The first complete version of the Phone Management System.
+
+Included:
 
 * 📱 Phone Navigation
 * 📇 Contacts
@@ -224,24 +346,74 @@ The goal is to build the project incrementally while following clean coding prac
 * 🧮 Calculator
 * 🎮 Games
 * 🔋 Basic Battery Management
-* 🎨 Professional Console UI
+* 🔐 Password Authentication
+* 🎨 Console Interface
 
-## 💾 JSON Persistence Added
+---
 
-### Persistent Data Storage
+## v2.0.0 — File Handling & Battery System Update
 
-* 📇 **Contacts** are saved automatically.
-* 📞 **Call history** is stored permanently.
-* 💬 **Message history** is restored after restarting the program.
-* 🧮 **Calculator history** is preserved between sessions.
-* 🔋 **Battery level** is saved and loaded automatically.
-* 🎵 **Music playlist and current song** are stored using JSON files.
+Major improvements introduced:
 
-### Benefits
+* 💾 JSON-based persistent data storage
+* 📇 Persistent contacts
+* 📞 Persistent call history
+* 💬 Persistent message history
+* 🧮 Persistent calculator history
+* 🎵 Persistent music data
+* 🔋 Improved battery management
+* ⚠️ Low-battery warnings
+* 📴 Automatic shutdown at 0%
+* 🛡️ Battery protection
+* 🕐 Real-time status information
+* ✏️ Contact editing
+* 🔐 Password management
+* 🔄 Application data reset
+* 📊 System status
+* 🧪 Full-system testing and bug fixing
 
-* Data is **not lost after closing the application**.
-* The simulator behaves more like a **real smartphone**.
-* JSON files provide a **simple and lightweight storage system**.
-* Easy to **extend with new features in future versions**.
+---
+
+# 🎯 Project Purpose
+
+PocketOS was developed as a practical Python project to strengthen programming and software engineering fundamentals through a progressively developed application.
+
+The project demonstrates the progression:
+
+```text
+Python Fundamentals
+        ↓
+Object-Oriented Programming
+        ↓
+Modular Programming
+        ↓
+Application Development
+        ↓
+File Handling
+        ↓
+JSON Persistence
+        ↓
+System-Level Application Logic
+```
+
+The goal is to build a stronger foundation for developing larger and more advanced software systems in the future.
+
+---
+
+# 📦 Release
+
+### PocketOS v2.0.0
+
+**File Handling & Battery System Update**
+
+This release represents the completion of the **File Handling phase of PocketOS v2**, bringing persistent data storage, improved battery management, enhanced functionality, and system-wide testing to the project.
+
+---
+
+# 👩‍💻 Author
+
+**Anjali Sangannavar**
+
+A Python-based portfolio project developed to strengthen practical **Computer Science and Software Engineering fundamentals**.
 
 
