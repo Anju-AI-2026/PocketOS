@@ -1,4 +1,6 @@
 {
-    "playlist": {},
-    "current_song": null
+    "playlist": {
+        "1": "unholy"
+    },
+    "current_song": "unholy"
 }

@@ -81,7 +81,7 @@ class MusicManager:
             if (song_name.replace(" ", "").isalnum()):
 
                 if (not self.play_list):
-                    self.play_list[1] = song_name
+                    self.play_list["1"] = song_name
                     print("\n✅ Song added successfully!\n")
                     return
 
