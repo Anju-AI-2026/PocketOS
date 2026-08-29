@@ -132,10 +132,22 @@ This module shows **How contacts and calls are saved in json file**.
 
 ---
 
-This module shows **How messages and calculation data saved in jason file**.
+This module shows **How messages and calculation data saved in json file**.
 
 | Messages Data                                      | Calculator Data                             |
 | -------------------------------------------------- | ------------------------------------------- |
 | <img src="22_messages_data.png" width="350"/>        | <img src="19_calculator_data.png" width="350"/>|
 
 ---
+
+This module shows **How Battery and Music data saved in json file**.
+
+| Battery Data                                       | Music Data                                  |
+| -------------------------------------------------- | ------------------------------------------- |
+| <img src="battery_data.png" width="350"/>         | <img src="music_data.png" width="350"/>     |
+
+---
+
+### 🔐 Password Data
+
+The `password.json` file is used for persistent password storage. Its contents are not shown in the screenshots for security reasons.
