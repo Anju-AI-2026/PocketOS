@@ -1,7 +1,7 @@
 # Settings manager class
 
 import json
-import storage
+import modules.storage as storage
 
 class SettingsManager:
 
@@ -38,7 +38,7 @@ class SettingsManager:
     # Method to display the settings menu
     def settings_menu(self):
 
-        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
+        self.battery_manager.show_status()
 
         print("╔" + "═"*54 + "╗")
         print("║                    ⚙️ SETTINGS                        ║")
@@ -65,14 +65,14 @@ class SettingsManager:
 
                     while True :
                             
-                        new_password = input("\nEnter the new password :")
+                        new_password = input("\nEnter the new password :\n")
 
                         if (new_password.isdigit()):
 
                             new_password = int(new_password)
 
                             while True :
-                                confirm_password = input("\nEnter the password again :")
+                                confirm_password = input("\nEnter the password again :\n")
 
                                 if (confirm_password.isdigit()):
 
@@ -81,7 +81,7 @@ class SettingsManager:
                                     if (confirm_password == new_password):
                                         storage.save_password(new_password)
                                         self.real_password = new_password
-                                        print("Password changed sucessefully !")
+                                        print("\n Password changed sucessefully ✅")
                                         if not self.battery_manager.consume_battery(2):
                                             return
                                         return
@@ -284,4 +284,7 @@ class SettingsManager:
                 else:
                     print("\n❌ Please enter a valid menu choice.\n")
             else:
-                print("\n❌ Error: Choice must be a digit.\n")   
+                print("\n❌ Error: Choice must be a digit.\n")             
+
+
+

@@ -1,6 +1,6 @@
 # Call manager class to handle calling features
 
-from storage import save_calls, load_calls
+from modules.storage import save_calls, load_calls
 
 class CallManager:
 
@@ -11,7 +11,7 @@ class CallManager:
 
     # Method to create the call menu
     def see_call_menu(self):
-        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
+        self.battery_manager.show_status()
         print("╔" + "═"*54 + "╗")
         print("║                    📞 CALL MANAGER                   ║")
         print("╠" + "═"*54 + "╣")
@@ -184,14 +184,22 @@ class CallManager:
                     if (choice >= 1 and choice <= length):
                         del self.call_list[choice-1]
                         save_calls(self.call_list)
+
                         print("\n✅ Call history deleted successfully.\n")
 
                         if not self.battery_manager.consume_battery(2):
                             return
+                        
+                        return
 
                     else:
                         print("\n❌ Invalid Input")
                         print("Call number is out of range.\n")
+                        
+                else:
+                    print("\n❌ Invalid Input")
+                    print("Please enter a valid message number.\n")
+                    
 
     # Method to display call history
     def view_call_history(self):
@@ -219,46 +227,6 @@ class CallManager:
         if not self.battery_manager.consume_battery(1):
             return    
 
-    # Method to delete a call history
-    def delete_call_history(self):
-        print("\n" + "═"*14 + " 🗑️ DELETE CALL HISTORY " + "═"*14 + "\n")
-
-        if (not self.call_list):
-            print("╔══════════════════════════════╗")
-            print("║   📭 No Call History Found   ║")
-            print("╚══════════════════════════════╝\n")
-            return
-
-        else:
-            print("╔════════════════════════════════════╗")
-            print("║      📜 CALL HISTORY RECORDS       ║")
-            print("╚════════════════════════════════════╝\n")
-
-            for index, call in enumerate(self.call_list, start=1):
-                print(f"📌 Call #{index}")
-                print(f"👤 Name   : {call['name']}")
-                print(f"📞 Number : {call['number']}")
-                print(f"📤 Type   : {call['type']}")
-                print("─" * 35)
-
-            while True:
-                choice = input("🗑️ Enter the call number to delete: ")
-
-                # Validate user input
-                if (choice.isdigit()):
-                    choice = int(choice)
-                    length = len(self.call_list)
-
-                    if (choice >= 1 and choice <= length):
-                        del self.call_list[choice-1]
-                        save_calls(self.call_list)
-                        print("\n✅ Call history deleted successfully.\n")
-                        if not self.battery_manager.consume_battery(2):
-                            return
-                    else:
-                        print("\n❌ Invalid Input")
-                        print("Call number is out of range.\n")
-
     # Method to clear the call history
     def clear_call_history(self):
         print("\n" + "═"*15 + " 🧹 CLEAR CALL HISTORY " + "═"*15 + "\n")
@@ -283,6 +251,7 @@ class CallManager:
                     print("\n✅ Call history cleared successfully.\n")
                     if not self.battery_manager.consume_battery(2):
                         return
+                    return
 
                 elif (sure_thing == "n"):
                     return
@@ -299,6 +268,7 @@ class CallManager:
         while True:
             if not self.battery_manager.check_battery():
                 return
+            
             print("\n" + "─"*42)
             print("📱 What would you like to do?")
             print("─"*42)
@@ -324,3 +294,5 @@ class CallManager:
                     print("\n❌ Please enter a valid menu choice.\n")
             else:
                 print("\n❌ Error: Choice must be a digit.\n")
+
+            

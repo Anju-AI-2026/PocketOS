@@ -10,7 +10,7 @@ class GameManager:
 
     # Method to see the game menu
     def see_game_menu(self):
-        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
+        self.battery_manager.show_status()
         print("╔" + "═"*54 + "╗")
         print("║                    🎮 GAME CENTER                    ║")
         print("╠" + "═"*54 + "╣")
@@ -334,3 +334,5 @@ class GameManager:
 
             else:
                 print("\n❌ Error: Choice must be a digit.\n")
+
+

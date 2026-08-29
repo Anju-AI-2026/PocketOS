@@ -1,6 +1,6 @@
 # Music manager class to handle playlist and music playback
 
-from storage import save_music, load_music
+from modules.storage import save_music, load_music
 
 class MusicManager:
 
@@ -15,7 +15,7 @@ class MusicManager:
 
     # Method to see the music menu
     def see_music_menu(self):
-        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
+        self.battery_manager.show_status()
         print("╔" + "═"*54 + "╗")
         print("║                   🎵 MUSIC PLAYER                    ║")
         print("╠" + "═"*54 + "╣")
@@ -57,9 +57,8 @@ class MusicManager:
                 choice = input("\n▶️ Enter a song number from the playlist: ")
 
                 if (choice.isdigit()):
-                    choice = int(choice)
 
-                    if choice in self.play_list:
+                    if choice in self.play_list.keys():
                         self.current_song = self.play_list[choice]
                         save_music(self.play_list, self.current_song)
 
@@ -67,6 +66,7 @@ class MusicManager:
 
                         if not self.battery_manager.consume_battery(7):
                             return
+                        return
                     else:
                         print("\n❌ Song number not found.\n")
                 else:
@@ -97,6 +97,7 @@ class MusicManager:
 
                     if not self.battery_manager.consume_battery(2):
                         return
+                    return
 
             else:
                 print("\n❌ Song name should contain only letters or alphanumeric characters.\n")

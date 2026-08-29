@@ -1,6 +1,6 @@
 # Contact manager class to store and manage contacts
 
-from storage import save_contacts, load_contacts
+from modules.storage import save_contacts, load_contacts
 
 class ContactManager:
 
@@ -22,7 +22,7 @@ class ContactManager:
 
     # Method to display the contact menu
     def see_contact_menu(self):
-        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
+        self.battery_manager.show_status()
         print("╔" + "═"*54 + "╗")
         print("║                  📇 CONTACT MANAGER                  ║")
         print("╠" + "═"*54 + "╣")
@@ -339,3 +339,7 @@ class ContactManager:
                     print("❌ Enter a valid choice.")
             else:
                 print("❌ Error: Choice should be a digit.")
+
+
+
+        

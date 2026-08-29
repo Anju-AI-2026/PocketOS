@@ -1,6 +1,6 @@
 # Message manager class to handle messaging features
 
-from storage import save_messages, load_messages
+from modules.storage import save_messages, load_messages
 
 class MessageManager:
 
@@ -11,7 +11,7 @@ class MessageManager:
 
     # Method to see the message menu
     def see_message_menu(self):
-        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
+        self.battery_manager.show_status()
         print("╔" + "═"*54 + "╗")
         print("║                  ✉️ MESSAGE MANAGER                   ║")
         print("╠" + "═"*54 + "╣") 
@@ -273,6 +273,7 @@ class MessageManager:
                     print("\n✅ Message history cleared successfully.\n")
                     if not self.battery_manager.consume_battery(2):
                         return
+                    return
 
                 elif (sure_thing == "n"):
                     return

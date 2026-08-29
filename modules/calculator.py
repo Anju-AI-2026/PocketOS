@@ -1,6 +1,6 @@
 # Calculator manager class to perform arithmetic operations
 
-from storage import save_calculations, load_calculations
+from modules.storage import save_calculations, load_calculations
 
 class CalculatorManager:
 
@@ -11,7 +11,7 @@ class CalculatorManager:
 
     # Method to show calculator menu
     def see_calculator_menu(self):
-        print(f"\n🔋 Battery: {self.battery_manager.battery}%\n")
+        self.battery_manager.show_status()
         print("╔" + "═"*54 + "╗")
         print("║                 🧮 CALCULATOR                        ║")
         print("╠" + "═"*54 + "╣")
@@ -33,6 +33,8 @@ class CalculatorManager:
     def addition(self):
         while True:
             expression = input("➕ Enter the addition expression:\n")
+
+            expression = expression.replace(" ","")
 
             if (not expression):
                 print("\n❌ Expression cannot be empty.\n")
@@ -78,11 +80,14 @@ class CalculatorManager:
 
                 if not self.battery_manager.consume_battery(1):
                     return
+                return
 
     # Method to calculate the multiplication of numbers
     def multiplication(self):
         while True:
             expression = input("✖️ Enter the multiplication expression:\n")
+
+            expression = expression.replace(" ","")
 
             if (not expression):
                 print("\n❌ Expression cannot be empty.\n")
@@ -130,11 +135,14 @@ class CalculatorManager:
 
                 if not self.battery_manager.consume_battery(1):
                     return
+                return
 
     # Method to calculate the subtraction of numbers
     def subtraction(self):
         while True:
             expression = input("➖ Enter the subtraction expression:\n")
+
+            expression = expression.replace(" ","")
 
             if (not expression):
                 print("\n❌ Expression cannot be empty.\n")
@@ -224,6 +232,7 @@ class CalculatorManager:
 
                     if not self.battery_manager.consume_battery(1):
                         return
+                    return
 
                 else:
                     print("\n❌ Error: Cannot divide by zero.\n")
@@ -271,6 +280,7 @@ class CalculatorManager:
 
                     if not self.battery_manager.consume_battery(1):
                         return
+                    return
 
                 else:
                     print("\n❌ Error: Second number cannot be zero.\n")
@@ -307,6 +317,7 @@ class CalculatorManager:
 
                 if not self.battery_manager.consume_battery(1):
                     return
+                return
 
             else:
                 print("\n❌ Number should contain digits only.\n")
@@ -339,6 +350,7 @@ class CalculatorManager:
 
                 if not self.battery_manager.consume_battery(1):
                     return
+                return
 
             else:
                 print("\n❌ Number should contain digits only.\n")
@@ -388,6 +400,7 @@ class CalculatorManager:
 
                     if not self.battery_manager.consume_battery(2):
                         return
+                    return
 
                 elif (sure_thing == "n"):
                     return

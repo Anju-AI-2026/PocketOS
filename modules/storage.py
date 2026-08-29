@@ -3,15 +3,20 @@
 import json
 import os
 
+# Get the folder where storage.py is located
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-CONTACTS_FILE = os.path.join(BASE_DIR, "data", "contacts.json")
-CALLS_FILE = os.path.join(BASE_DIR, "data", "calls.json")
-MESSAGES_FILE = os.path.join(BASE_DIR, "data", "messages.json")
-CALCULATOR_FILE = os.path.join(BASE_DIR, "data", "calculator.json")
-BATTERY_FILE = os.path.join(BASE_DIR, "data", "battery.json")
-MUSIC_FILE = os.path.join(BASE_DIR, "data", "music.json")
-PASSWORD_FILE = os.path.join(BASE_DIR, "data", "password.json")
+# Create the full path to the data folder
+DATA_DIR = os.path.join(BASE_DIR, "..", "data")
+
+# Create the full paths to JSON files
+CONTACTS_FILE = os.path.join(DATA_DIR, "contacts.json")
+CALLS_FILE = os.path.join(DATA_DIR, "calls.json")
+MESSAGES_FILE = os.path.join(DATA_DIR, "messages.json")
+CALCULATOR_FILE = os.path.join(DATA_DIR, "calculator.json")
+BATTERY_FILE = os.path.join(DATA_DIR, "battery.json")
+MUSIC_FILE = os.path.join(DATA_DIR, "music.json")
+PASSWORD_FILE = os.path.join(DATA_DIR, "password.json")
 
 # storage.py
 
@@ -33,16 +38,17 @@ def load_contacts():
 
 # Save call history permanently
 def save_calls(call_list):
-    
+
     with open(CALLS_FILE, "w") as file:
-        
+
         json.dump(call_list, file, indent=4)
+
 
 # Load call history when program starts
 def load_calls():
-    
+
     with open(CALLS_FILE, "r") as file:
-        
+
         calls = json.load(file)
         
     return calls
@@ -61,7 +67,7 @@ def load_messages():
 
         messages = json.load(file)
 
-    return messages   
+    return messages    
 
 # Save calculation history permanently
 def save_calculations(calculator_history):
@@ -70,11 +76,12 @@ def save_calculations(calculator_history):
 
         json.dump(calculator_history, file, indent=4)
 
+
 # Load calculation history when program starts
 def load_calculations():
 
     with open(CALCULATOR_FILE, "r") as file:
-        
+
         calculations = json.load(file)
 
     return calculations    
@@ -84,7 +91,7 @@ def save_battery(level):
 
     with open(BATTERY_FILE, "w") as file:
 
-        json.dump({"level": level}, file, indent=4)  
+        json.dump({"level": level}, file, indent=4)    
 
 # Load battery level when program starts
 def load_battery():

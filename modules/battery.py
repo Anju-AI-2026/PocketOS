@@ -1,7 +1,7 @@
 # Battery manager class to simulate battery behavior
 
 from datetime import datetime
-from storage import save_battery, load_battery
+from modules.storage import save_battery, load_battery
 
 class BatteryManager:
 
@@ -162,3 +162,8 @@ class BatteryManager:
 
             else:
                 print("\n❌ Error: Choice must be a digit.\n")
+
+
+
+        
+
