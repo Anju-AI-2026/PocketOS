@@ -4,7 +4,7 @@ from modules.phone_class import Phone
 def main():
     # Main interface of the Phone Management System
     print("╔" + "═"*68 + "╗")
-    print("║               📱 PHONE MANAGEMENT SYSTEM                ║")
+    print("║                     📱 PHONE MANAGEMENT SYSTEM                     ║")
     print("╚" + "═"*68 + "╝")
 
     print()

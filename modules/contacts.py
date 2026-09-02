@@ -115,6 +115,16 @@ class ContactManager:
         if (not self.contacts):
             print("\n📭 Contact book is empty.\n")
         else:
+            print("╔════════════════════════════════════╗")
+            print("║    📜 CONTACT HISTORY RECORDS      ║")
+            print("╚════════════════════════════════════╝\n")
+            
+            for index, (name, number) in enumerate(self.contacts.items(), start=1):
+                print(f"📌 Contact #{index}")
+                print(f"👤 Name   : {name}")
+                print(f"📞 Number : {number}")
+                print("─" * 35)
+
             while True:
                 print("\n" + "─" * 45)
                 contact_name = input("👤 Enter the contact name to delete:\n")
@@ -220,6 +230,7 @@ class ContactManager:
                     print("\n✅ All contacts deleted successfully!\n")
                     if not self.battery_manager.consume_battery(2):
                         return
+                    break
 
                 elif (sure_thing == "n"):
                     return
