@@ -416,6 +416,10 @@ This release represents the completion of the **File Handling phase of PocketOS 
 
 A Python-based portfolio project developed to strengthen practical **Computer Science and Software Engineering fundamentals**.
 
+The `Screenshots/` folder contains 23 screenshots demonstrating the major modules, features, and JSON-based data persistence of PocketOS.
+
+📸 **[View the Complete PocketOS Screenshot Gallery →](Screenshots/README.md)**
+
 Copyright © 2026 Anjali Ramesh Sangannavar. All rights reserved.
 
 
