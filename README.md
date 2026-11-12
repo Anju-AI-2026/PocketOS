@@ -416,4 +416,6 @@ This release represents the completion of the **File Handling phase of PocketOS 
 
 A Python-based portfolio project developed to strengthen practical **Computer Science and Software Engineering fundamentals**.
 
+Copyright © 2026 Anjali Ramesh Sangannavar. All rights reserved.
+
 
